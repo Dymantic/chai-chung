@@ -25,7 +25,15 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin';
+
+    public function showResetForm($token = null)
+    {
+        $token = request('token');
+        return view('passwords.reset')->with(
+            ['token' => $token]
+        );
+    }
 
     /**
      * Create a new controller instance.

@@ -15,4 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/admin/users', 'Admin\UsersController@store')->middleware('is_manager');
+Route::get('/admin/logout', function() {
+    Auth::logout();
+
+    return redirect('/');
+});
+
+Route::view('admin/password/forgot', 'passwords/request-new');
+Route::post('admin/password/forgot', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+
+Route::get('admin/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('admin/password/reset', 'Auth\ResetPasswordController@reset');
+
+Route::post('admin/users', 'Admin\UsersController@store')->middleware('is_manager');
+Route::post('admin/users/{user}', 'Admin\UsersController@update');
+
+Route::post('admin/managers', 'Admin\ManagersController@store')->middleware('is_manager');
+Route::delete('admin/managers/{user}', 'Admin\ManagersController@delete')->middleware('is_manager');
+
+Route::post('admin/users/{user}/password', 'Admin\UserPasswordController@update');

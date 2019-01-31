@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Notifications\WelcomeUser;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
@@ -23,6 +25,20 @@ class UsersController extends Controller
             'password' => bcrypt(request('password')),
         ]);
 
+        $user->notify(new WelcomeUser(request()->only('name', 'email', 'password')));
+
         return $user;
+    }
+
+    public function update(User $user)
+    {
+        if(!$user->is_manager && request()->has('is_manager')) {
+            abort(403);
+        }
+        $data = request()->validate([
+            'name' => ['required'],
+            'email' => ['required', Rule::unique('users')->ignore($user->id),]
+        ]);
+        $user->update($data);
     }
 }

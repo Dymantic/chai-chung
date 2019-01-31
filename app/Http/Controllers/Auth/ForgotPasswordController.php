@@ -20,6 +20,8 @@ class ForgotPasswordController extends Controller
 
     use SendsPasswordResetEmails;
 
+    public $redirectsTo = '/admin/password/reset';
+
     /**
      * Create a new controller instance.
      *
@@ -29,4 +31,5 @@ class ForgotPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
 }

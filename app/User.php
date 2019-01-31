@@ -29,4 +29,22 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function promote()
+    {
+        $this->is_manager = true;
+        $this->save();
+    }
+
+    public function demote()
+    {
+        $this->is_manager = false;
+        $this->save();
+    }
+
+    public function setPassword($new_password)
+    {
+        $this->password = bcrypt($new_password);
+        $this->save();
+    }
 }
