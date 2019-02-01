@@ -24,7 +24,7 @@ class RequestResetPasswordEmailTest extends TestCase
 
         $user = factory(User::class)->create(['email' => 'test@test.com']);
 
-        $response = $this->post("/admin/password/reset", ['email' => 'test@test.com']);
+        $response = $this->post("/admin/password/forgot", ['email' => 'test@test.com']);
         $response->assertStatus(302);
 
         Notification::assertSentTo($user, ResetPassword::class);
