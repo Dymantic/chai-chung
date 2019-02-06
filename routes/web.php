@@ -30,8 +30,18 @@ Route::view('admin', 'admin.dashboard')->middleware('auth');
 
 Route::post('admin/users', 'Admin\UsersController@store')->middleware('is_manager');
 Route::post('admin/users/{user}', 'Admin\UsersController@update');
+Route::delete('admin/users/{user}', 'Admin\UsersController@delete');
 
 Route::post('admin/managers', 'Admin\ManagersController@store')->middleware('is_manager');
 Route::delete('admin/managers/{user}', 'Admin\ManagersController@delete')->middleware('is_manager');
 
+Route::get('admin/reset-password', 'Admin\UserPasswordController@edit');
 Route::post('admin/users/{user}/password', 'Admin\UserPasswordController@update');
+
+Route::get('admin/manage-users', 'Admin\ManagerPagesController@users')->middleware('is_manager');
+
+Route::get('admin/users', 'Admin\UsersController@index')->middleware('is_manager');
+
+Route::get('admin/users/{user}', 'Admin\UsersController@show');
+
+Route::get('admin/me', 'Admin\ProfilesController@show');

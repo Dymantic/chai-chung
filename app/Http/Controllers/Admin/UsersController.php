@@ -10,6 +10,16 @@ use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
+    public function index()
+    {
+        return User::all();
+    }
+
+    public function show(User $user)
+    {
+        return view('admin.users.show', ['user' => $user]);
+    }
+
     public function store()
     {
         request()->validate([
@@ -40,5 +50,12 @@ class UsersController extends Controller
             'email' => ['required', Rule::unique('users')->ignore($user->id),]
         ]);
         $user->update($data);
+
+        return $user->fresh();
+    }
+
+    public function delete(User $user)
+    {
+        $user->delete();
     }
 }

@@ -9,6 +9,12 @@ use App\Http\Controllers\Controller;
 
 class UserPasswordController extends Controller
 {
+
+    public function edit()
+    {
+        return view('admin.users.edit-password');
+    }
+
     public function update(User $user)
     {
         $this->ensureIsSelf($user);
@@ -19,6 +25,8 @@ class UserPasswordController extends Controller
         ]);
 
         $user->setPassword(request('password'));
+
+        return redirect('/admin/me');
     }
 
     private function ensureIsSelf($user)

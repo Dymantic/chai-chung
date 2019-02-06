@@ -24,7 +24,7 @@
 
                 <div class="mt-8">
                     <button type="submit"
-                            class="bg-navy hover:bg-navy-light rounded text-orange tracking-wide uppercase font-black w-full py-3">Login
+                            class="bg-navy hover:bg-navy-light rounded text-orange tracking-wide uppercase font-black w-full py-3">Request Reset
                     </button>
                 </div>
             </div>
