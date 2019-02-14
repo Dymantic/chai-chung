@@ -26,7 +26,7 @@ class ResetUserPasswordTest extends TestCase
             'password' => 'top_secret',
             'password_confirmation' => 'top_secret',
         ]);
-        $response->assertStatus(200);
+        $response->assertStatus(302);
 
         $this->assertTrue(
             Hash::check('top_secret', $user->fresh()->password),
