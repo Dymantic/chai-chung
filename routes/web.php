@@ -18,7 +18,7 @@ Route::group([
 
     Route::view('/', 'front.home.page');
     Route::view('about', 'front.about.page');
-    Route::view('services', 'front.services.page');
+    Route::view('services', 'front.services.index');
     Route::view('contact', 'front.contact.page');
 
 
