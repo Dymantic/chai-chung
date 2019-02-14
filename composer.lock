@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8669dcfa01854732cb33bb673694ad40",
+    "content-hash": "bb56f4169d6ebd4c66acb12bdfe51e11",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -208,6 +208,53 @@
                 "schedule"
             ],
             "time": "2018-06-06T03:12:17+00:00"
+        },
+        {
+            "name": "dymantic/secretary",
+            "version": "v0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dymantic/secretary.git",
+                "reference": "032c58ca2757674129fc0fd7710f3b982cc9149e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dymantic/secretary/zipball/032c58ca2757674129fc0fd7710f3b982cc9149e",
+                "reference": "032c58ca2757674129fc0fd7710f3b982cc9149e",
+                "shasum": ""
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.5",
+                "phpunit/phpunit": "^6.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Dymantic\\Secretary\\SecretaryServiceProvider"
+                    ],
+                    "aliases": {
+                        "Secretary": "Dymantic\\Secretary\\Facades\\Secretary"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dymantic\\Secretary\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Joyner",
+                    "email": "joyner.michael@gmail.com"
+                }
+            ],
+            "description": "Message and notification system for basic admin sections. It handles contact forms.",
+            "time": "2018-12-05T04:10:46+00:00"
         },
         {
             "name": "egulias/email-validator",

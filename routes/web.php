@@ -24,6 +24,8 @@ Route::group([
 
 });
 
+Route::post('contact', 'ContactMessageController@store');
+
 Route::view('admin/login', 'admin.auth.login')->name('login');
 Route::post('admin/login', 'Auth\LoginController@login');
 Route::post('admin/logout', 'Auth\LoginController@logout');
