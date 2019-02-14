@@ -1,19 +1,20 @@
 <template>
-    <div class="relative">
-        <div class="flex items-center bg-grey-lighter p-2 rounded">
-            <span class="font-bold text-navy">Status: </span>
-            <span class="px-4 text-navy w-24 text-center block">{{ status }}</span>
-            <button class="p-1 ml-2 border-l border-grey pl-2"
+    <div class="relative" :class="{'is-manager': is_manager}">
+        <div class="flex items-center main-bg p-2 rounded">
+            <span class="font-bold">Status: </span>
+            <span class="px-4 w-24 text-center block">{{ status }}</span>
+            <button class="p-1 ml-2 border-l border-grey pl-2" :class="{'text-white': is_manager}"
                     @click="showStatusPanel = !showStatusPanel">
                 <svg xmlns="http://www.w3.org/2000/svg"
                      viewBox="0 0 20 20"
                      height="12px"
+                     class="fill-current"
                      :transform="iconTransform">
                     <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
                 </svg>
             </button>
         </div>
-        <div class="absolute change-status p-2 bg-grey-lighter rounded"
+        <div class="absolute change-status p-2 main-bg rounded"
              :class="{'show': showStatusPanel}">
             <div v-if="is_manager"
                  class="flex flex-col items-end">
@@ -97,6 +98,19 @@
 
     .change-status.show {
         transform: rotateX(0deg);
+    }
+
+    .main-bg {
+        @apply .bg-grey-lighter;
+    }
+
+
+    .is-manager .main-bg {
+        @apply .bg-navy;
+    }
+
+    .is-manager {
+        @apply .text-white;
     }
 
 </style>

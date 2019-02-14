@@ -14,9 +14,11 @@ const tailwindcss = require('tailwindcss');
 
 mix.js('resources/js/app.js', 'public/js')
    .less('resources/less/app.less', 'public/css')
+   .js('resources/js/front.js', 'public/js')
+   .less('resources/less/front.less', 'public/css')
    .options({
        postCss: [
            tailwindcss('tailwind.js'),
        ]
    })
-    .version();
+   .version();

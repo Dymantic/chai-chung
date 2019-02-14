@@ -3,7 +3,7 @@
         <div class="px-8 max-w-xl mb-20 mt-4 mx-auto items-center flex justify-between">
             <p class="font-black text-5xl">Users</p>
             <div class="flex justify-end">
-                <button @click="showNewUserForm = true" class="bg-orange text-navy px-4 py-2 rounded uppercase hover:bg-orange-light shadow ml-4">New User</button>
+                <button @click="showNewUserForm = true" class="btn btn-orange">New User</button>
                 <modal :show="showNewUserForm"
                        @close="showNewUserForm = false">
                     <new-user-form @cancel="showNewUserForm = false" @user-created="userAdded"></new-user-form>

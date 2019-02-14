@@ -9,7 +9,7 @@
                                     @demoted="is_manager = false"
                 ></user-status-button>
                 <button @click="showDeleteForm = true"
-                        class="bg-red text-white px-4 py-2 rounded font-bold hover:bg-orange-light shadow ml-4"
+                        class="btn btn-red ml-4"
                 >Delete
                 </button>
                 <modal :show="showDeleteForm"

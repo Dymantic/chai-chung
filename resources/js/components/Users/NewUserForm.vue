@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="w-screen max-w-sm">
         <p class="text-center py-2 bg-navy text-white">Add a new user</p>
         <div class="p-4">
             <vue-form url="/admin/users" :form-model="form" @submission-okay="userPersisted">
@@ -34,9 +34,9 @@
                         <span class="text-xs text-red" v-show="formErrors.password_confirmation">{{ formErrors.password_confirmation }}</span>
                         <input type="text" name="name" v-model="formData.password_confirmation" class="w-full h-8 pl-2 mt-1 border" id="password_confirmation">
                     </div>
-                    <div class="my-4 flex justify-end">
-                        <button type="button" class="bg-grey text-navy px-4 py-2 rounded uppercase hover:bg-grey-darker shadow" @click="cancel">Cancel</button>
-                        <button class="bg-orange text-navy px-4 py-2 rounded uppercase hover:bg-orange-light shadow ml-4" type="submit">Create</button>
+                    <div class="my-4 mt-8 flex justify-end">
+                        <button type="button" class="btn btn-white mx-4" @click="cancel">Cancel</button>
+                        <button class="btn btn-orange" type="submit">Create</button>
                     </div>
                 </div>
             </vue-form>

@@ -4,7 +4,7 @@
             <p class="text-5xl font-black">{{ name }}</p>
             <div class="flex justify-end items-center">
                 <button @click="showUserForm = true"
-                        class="bg-orange text-navy px-4 py-2 rounded uppercase hover:bg-orange-light shadow ml-4">Edit
+                        class="btn btn-orange">Edit
                 </button>
                 <modal :show="showUserForm"
                        @close="showUserForm = false">
