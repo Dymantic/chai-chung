@@ -46,12 +46,18 @@ let defaultConfig = require('tailwindcss/defaultConfig')()
 let colors = {
     'transparent': 'transparent',
 
+    'navy-opq': 'rgba(33,42,49,.8)',
+    'baby-blue-opq': 'rgba(231,240,237,.9)',
+
     'navy': '#212a31',
     'navy-light': '#435869',
 
     'pale-baby-blue': '#e7f0ed',
+    'pale-baby-blue-light': '#becacc',
+    'mid-grey': '#95a4ab',
     'orange': '#f37121',
     'orange-light': '#f9a86b',
+    'orange-lightest': '#fcd3b5',
 
     'black': '#22292f',
     'grey-darkest': '#3d4852',
@@ -196,6 +202,7 @@ module.exports = {
 
     fonts: {
         'sans': [
+            'cresta',
             'system-ui',
             'BlinkMacSystemFont',
             '-apple-system',
@@ -259,7 +266,7 @@ module.exports = {
         'lg': '1.125rem',   // 18px
         'xl': '1.25rem',    // 20px
         '2xl': '1.5rem',    // 24px
-        '3xl': '1.875rem',  // 30px
+        '3xl': '1.75rem',  // 28px
         '4xl': '2.25rem',   // 36px
         '5xl': '3rem',      // 48px
     },
@@ -493,10 +500,12 @@ module.exports = {
         '10': '2.5rem',
         '12': '3rem',
         '16': '4rem',
+        '20': '5rem',
         '24': '6rem',
         '32': '8rem',
         '48': '12rem',
         '64': '16rem',
+        '80': '20rem',
         '1/2': '50%',
         '1/3': '33.33333%',
         '2/3': '66.66667%',
@@ -542,10 +551,12 @@ module.exports = {
         '10': '2.5rem',
         '12': '3rem',
         '16': '4rem',
+        '20': '5rem',
         '24': '6rem',
         '32': '8rem',
         '48': '12rem',
         '64': '16rem',
+        '80': '20rem',
         'full': '100%',
         'screen': '100vh',
     },
@@ -613,6 +624,7 @@ module.exports = {
     maxWidth: {
         'xs': '20rem',
         'sm': '30rem',
+        'narrow': '35rem',
         'md': '40rem',
         'lg': '50rem',
         'xl': '60rem',
@@ -713,6 +725,7 @@ module.exports = {
         '20': '5rem',
         '24': '6rem',
         '32': '8rem',
+        '40': '10rem',
     },
 
 

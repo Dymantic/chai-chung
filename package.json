@@ -25,6 +25,7 @@
         "@dymantic/modal": "^0.1.0",
         "@dymantic/vue-forms": "^1.1.0",
         "@dymantic/vuetilities": "^0.3.3",
+        "lodash.throttle": "^4.1.1",
         "tailwindcss": "^0.7.4"
     }
 }
