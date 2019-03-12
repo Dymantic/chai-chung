@@ -12,7 +12,7 @@
         "dymantic/laravel-static": "^0.1.0",
         "dymantic/secretary": "^0.2.0",
         "fideloper/proxy": "^4.0",
-        "laravel/framework": "5.7.*",
+        "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "mcamara/laravel-localization": "^1.3"
     },
