@@ -2,7 +2,7 @@
 
 return [
     'intro' => [
-        'heading' => 'A wide range of accounting services for all your needs.',
+        'heading' => 'We offer a wide range of accounting services.',
         'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae dicta eligendi iusto magnam maxime nihil odit quos sunt. Incidunt nulla, vitae? Consequuntur dolores ducimus eum illum magnam perspiciatis praesentium, tenetur!'
     ],
 
@@ -30,5 +30,7 @@ return [
         'heading' => 'Business Registration',
         'description' => '    Lorem ipsum dolor sit amet, consectetur adipisicing elit. At doloribus esse fugiat illum iure modi voluptatum. A animi asperiores, cupiditate eaque fugiat ipsum iste, pariatur porro possimus sapiente vero voluptate.',
         'link' => 'More about Business Reg. &#155;'
-    ]
+    ],
+
+
 ];

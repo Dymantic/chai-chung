@@ -5,12 +5,12 @@ return [
         [
             'name' => 'Tino Chen',
             'title' => 'Master Chief',
-            'avatar' => '/images/profiles/tino.jpg'
+            'avatar' => '/images/profiles/bob.jpg'
         ],
         [
             'name' => 'Billy Bob Bro',
             'title' => 'Janitorial Staff',
-            'avatar' => '/images/profiles/bob.jpg'
+            'avatar' => '/images/profiles/tino.jpg'
         ],
         [
             'name' => 'Missy M Marve',

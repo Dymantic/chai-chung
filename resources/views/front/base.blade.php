@@ -9,6 +9,7 @@
     <title>@yield('title', 'CPA')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="alternate" hreflang="{{ app()->getLocale() === 'en' ? 'zh' : 'en' }}" href="{{ url(transUrl(Request::path())) }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @if(app()->getLocale() === 'en')
     <link rel="stylesheet" href="https://use.typekit.net/zbv2jka.css">
@@ -16,7 +17,7 @@
         <script>
             (function(d) {
                 var config = {
-                        kitId: `bla2lwu`,
+                        kitId: 'rpz0mug',
                         scriptTimeout: 3000,
                         async: true
                     },
@@ -30,7 +31,7 @@
     @yield('head')
 </head>
 
-<body class="body-text leading-normal {{ $bodyClasses ?? '' }}">
+<body class="body-text leading-relaxed {{ $bodyClasses ?? '' }}">
 <!--[if lte IE 9]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 <![endif]-->

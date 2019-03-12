@@ -9,37 +9,39 @@
     </section>
 
     <section class="max-w-lg mx-auto">
-        <div class="mb-20 p-8 bg-pale-baby-blue">
-            <div class="max-w-md mx-auto">
-                <h2 class="h2 text-orange">{{ trans('services.audits.heading') }}</h2>
-                <p class="mt-8">{{ trans('services.audits.description') }}</p>
-                <a href="" class="mt-12 text-link text-navy block text-center">{!! trans('services.audits.link') !!}</a>
-            </div>
-        </div>
 
-        <div class="mb-20 p-8 bg-pale-baby-blue">
-            <div class="max-w-md mx-auto">
-                <h2 class="h2 text-orange">{{ trans('services.bookkeeping.heading') }}</h2>
+        @component('front.components.soft-card', ['usher' => false, 'classes' => 'fadeUpOnLoad'])
+            <h2 class="h2 text-orange">
+                {{ trans('services.audits.heading') }}
+            </h2>
+            <p class="mt-8">{{ trans('services.audits.description') }}</p>
+            <a href="{{ localUrl("/services/audits") }}" class="mt-12 text-link text-navy block text-center">{!! trans('services.audits.link') !!}</a>
+        @endcomponent
+
+        @component('front.components.soft-card', ['usher' => false, 'classes' => 'fadeUpAfterLoad'])
+                <h2 class="h2 text-orange">
+                    {{ trans('services.bookkeeping.heading') }}
+                </h2>
                 <p class="mt-8">{{ trans('services.bookkeeping.description') }}</p>
-                <a href="" class="mt-12 text-link text-navy block text-center">{!! trans('services.bookkeeping.link') !!}</a>
-            </div>
-        </div>
+                <a href="{{ localUrl("/services/bookkeeping") }}" class="mt-12 text-link text-navy block text-center">{!! trans('services.bookkeeping.link') !!}</a>
+        @endcomponent
 
-        <div class="mb-20 p-8 bg-pale-baby-blue">
-            <div class="max-w-md mx-auto">
-                <h2 class="h2 text-orange">{{ trans('services.tax.heading') }}</h2>
+        @component('front.components.soft-card', ['usher' => true])
+                <h2 class="h2 text-orange">
+                    {{ trans('services.tax.heading') }}
+                </h2>
                 <p class="mt-8">{{ trans('services.tax.description') }}</p>
-                <a href="" class="mt-12 text-link text-navy block text-center">{!! trans('services.tax.link') !!}</a>
-            </div>
-        </div>
+                <a href="{{ localUrl("/services/tax") }}" class="mt-12 text-link text-navy block text-center">{!! trans('services.tax.link') !!}</a>
+        @endcomponent
 
-        <div class="mb-20 p-8 bg-pale-baby-blue">
-            <div class="max-w-md mx-auto">
-                <h2 class="h2 text-orange">{{ trans('services.business_registration.heading') }}</h2>
+        @component('front.components.soft-card', ['usher' => true])
+                <h2 class="h2 text-orange">
+                    {{ trans('services.business_registration.heading') }}
+                </h2>
                 <p class="mt-8">{{ trans('services.business_registration.description') }}</p>
-                <a href="" class="mt-12 text-link text-navy block text-center">{!! trans('services.business_registration.link') !!}</a>
-            </div>
-        </div>
+                <a href="{{ localUrl("/services/business-registration") }}" class="mt-12 text-link text-navy block text-center">{!! trans('services.business_registration.link') !!}</a>
+        @endcomponent
+
     </section>
 
 @endsection

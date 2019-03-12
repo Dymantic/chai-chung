@@ -1,17 +1,21 @@
 .banner-text {
-  @appy .font-sans .text-5xl .font-black;
+  @apply .font-sans .text-banner .font-black;
+}
+
+.banner-text:lang(zh) {
+@apply .font-sans .text-banner-lg .font-black;
 }
 
 .h1 {
-@apply .font-sans .text-5xl .font-black;
+@apply .font-sans .text-5xl .font-black .leading-tight;
 }
 
 .h2 {
-@apply .font-sans .text-3xl .font-black;
+@apply .font-sans .text-3xl .font-black .leading-tight;
 }
 
 .h3 {
-@apply .font-sans .text-lg .font-bold;
+@apply .font-sans .text-lg .font-bold .leading-tight;
 }
 
 .body-text {
@@ -19,7 +23,7 @@
 }
 
 .body-text-sm {
-@apply .font-sans .text-sm .font-normal;
+@apply .font-sans .text-sm .font-normal .leading-normal;
 }
 
 .btn-type-1 {

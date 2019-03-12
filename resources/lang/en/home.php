@@ -12,7 +12,7 @@ return [
     'services' => [
         'heading'             => 'Accounting services you really need.',
         'content'             => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis debitis explicabo id illo illum omnis praesentium, recusandae reiciendis voluptatibus voluptatum. Aperiam debitis dolores inventore, minus neque nostrum rerum sed voluptate?',
-        'link'                => 'View all services >',
+        'link'                => 'View all services &#155;',
         'audits'              => [
             'title'       => 'Audits',
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis debitis explicabo id illo illum omnis praesentium.'
@@ -33,6 +33,6 @@ return [
     'contact' => [
         'heading' => 'Ready to put your business in safe hands?',
         'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis debitis explicabo id illo illum omnis praesentium, recusandae reiciendis voluptatibus voluptatum.',
-        'link' => 'Get in touch >'
+        'link' => 'Get in touch &#155;'
     ]
 ];

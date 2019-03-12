@@ -1,0 +1,40 @@
+.home .main-nav {
+@apply .bg-navy-opq;
+}
+
+.main-nav, .home .main-nav.scrolled {
+@apply .bg-navy;
+}
+
+.service-nav-outer {
+  top: 95%;
+  left: 50%;
+  transform: translate3d(-50%, -15px, 0);
+  transition: .3s;
+  transform-origin: top center;
+  will-change: opacity;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.services-link:hover .service-nav-outer {
+  transform: translate3d(-50%, 0, 0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.service-nav-outer > div {
+
+}
+
+.service-nav-outer > div::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  transform: translateX(-50%) rotate(45deg);
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: -8px;
+  @apply .bg-navy;
+}

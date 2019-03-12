@@ -53,7 +53,7 @@ let colors = {
     'navy-light': '#435869',
 
     'pale-baby-blue': '#e7f0ed',
-    'pale-baby-blue-light': '#becacc',
+    'pale-baby-blue-light': '#f7f8f9',
     'mid-grey': '#95a4ab',
     'orange': '#f37121',
     'orange-light': '#f9a86b',
@@ -203,6 +203,7 @@ module.exports = {
     fonts: {
         'sans': [
             'cresta',
+            'source-han-sans-traditional',
             'system-ui',
             'BlinkMacSystemFont',
             '-apple-system',
@@ -269,6 +270,8 @@ module.exports = {
         '3xl': '1.75rem',  // 28px
         '4xl': '2.25rem',   // 36px
         '5xl': '3rem',      // 48px
+        'banner': '3.5rem',
+        'banner-lg': '5rem'
     },
 
 
@@ -315,8 +318,9 @@ module.exports = {
 
     leading: {
         'none': 1,
-        'tight': 1.25,
+        'tight': 1.3,
         'normal': 1.5,
+        'relaxed': 1.75,
         'loose': 2,
     },
 
@@ -503,6 +507,7 @@ module.exports = {
         '20': '5rem',
         '24': '6rem',
         '32': '8rem',
+        '40': '10rem',
         '48': '12rem',
         '64': '16rem',
         '80': '20rem',
@@ -782,7 +787,7 @@ module.exports = {
     */
 
     shadows: {
-        default: '0 2px 4px 0 rgba(0,0,0,0.10)',
+        default: '5px 5px 5px 1px rgba(0,0,0,0.10)',
         'md': '0 4px 8px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.08)',
         'lg': '0 15px 30px 0 rgba(0,0,0,0.11), 0 5px 15px 0 rgba(0,0,0,0.08)',
         'inner': 'inset 0 2px 4px 0 rgba(0,0,0,0.06)',

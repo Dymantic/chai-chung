@@ -1,0 +1,26 @@
+@keyframes fadeUp {
+  from {opacity: 0; transform: translate3d(0,15px,0);}
+  to {opacity: 1; transform: translate3d(0,0,0);}
+}
+
+@keyframes fadeUpSmall {
+  from {opacity: 0; transform: translate3d(0,5px,0);}
+  to {opacity: 1; transform: translate3d(0,0,0);}
+}
+
+.fadeUpOnLoad {
+  animation-direction: normal;
+  animation-fill-mode: both;
+  animation-duration: .75s;
+  animation-timing-function: ease-in-out;
+  animation-name: fadeUp;
+}
+
+.fadeUpAfterLoad {
+  animation-direction: normal;
+  animation-fill-mode: both;
+  animation-duration: .75s;
+  animation-timing-function: ease-in-out;
+  animation-name: fadeUp;
+  animation-delay: .3s;
+}

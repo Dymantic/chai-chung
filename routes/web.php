@@ -21,6 +21,8 @@ Route::group([
     Route::view('services', 'front.services.index');
     Route::view('contact', 'front.contact.page');
 
+    Route::get('services/{service}', 'ServicesController@show');
+
 
 });
 
