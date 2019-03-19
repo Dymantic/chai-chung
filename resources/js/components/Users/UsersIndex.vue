@@ -13,32 +13,29 @@
 
         <div class="max-w-lg mx-auto my-20">
             <h3 class="px-4 mb-4">Managers</h3>
-            <div v-for="manager in managers"
-                 :key="manager.id"
-                 class="bg-grey-lighter p-4">
-                <p class="text-navy font-bold"><a :href="`/admin/users/${manager.id}`" class="no-underline text-navy">{{ manager.name}}</a></p>
-                <p class="text-sm mt-2">{{ manager.email}}</p>
-            </div>
+            <user-index-card v-for="manager in managers"
+                 :key="manager.id" :user="manager">
+            </user-index-card>
         </div>
 
         <div class="max-w-lg mx-auto my-20">
             <h3 class="px-4 mb-4">Staff</h3>
-            <div v-for="staff in staffs"
-                 :key="staff.id"
-                 class="bg-grey-lighter p-4">
-                <p class="text-navy font-bold"><a :href="`/admin/users/${staff.id}`" class="no-underline text-navy">{{ staff.name }}</a></p>
-                <p class="text-sm mt-2">{{ staff.email}}</p>
-            </div>
+            <user-index-card v-for="staff in staffs"
+                             :key="staff.id" :user="staff">
+            </user-index-card>
+
         </div>
     </div>
 </template>
 
 <script type="text/babel">
     import NewUserForm from "./NewUserForm";
+    import UserIndexCard from "./UserIndexCard";
 
     export default {
         components: {
             NewUserForm,
+            UserIndexCard,
         },
 
         data() {

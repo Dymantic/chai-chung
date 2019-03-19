@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\CreateUserForm;
 use App\Notifications\WelcomeUser;
 use App\User;
 use Illuminate\Http\Request;
@@ -20,22 +21,11 @@ class UsersController extends Controller
         return view('admin.users.show', ['user' => $user]);
     }
 
-    public function store()
+    public function store(CreateUserForm $form)
     {
-        request()->validate([
-            'name' => ['required'],
-            'email' => ['required', 'email', 'unique:users,email'],
-            'password' => ['confirmed', 'min:6']
-        ]);
+        $user = User::create($form->userAttributes());
 
-        $user = User::create([
-            'name' => request('name'),
-            'email' => request('email'),
-            'is_manager' => request('is_manager'),
-            'password' => bcrypt(request('password')),
-        ]);
-
-        $user->notify(new WelcomeUser(request()->only('name', 'email', 'password')));
+        $user->notify(new WelcomeUser($form->only('name', 'email', 'password')));
 
         return $user;
     }

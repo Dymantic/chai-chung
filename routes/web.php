@@ -56,4 +56,9 @@ Route::get('admin/users', 'Admin\UsersController@index')->middleware('is_manager
 
 Route::get('admin/users/{user}', 'Admin\UsersController@show');
 
+Route::post('admin/users/{user}/rate', 'Admin\UserHourlyRateController@update')->middleware('is_manager');
+
 Route::get('admin/me', 'Admin\ProfilesController@show');
+
+
+Route::post('admin/clients', 'Admin\ClientsController@store')->middleware('is_manager');

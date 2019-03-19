@@ -23,9 +23,12 @@
         </div>
     </div>
     <div>
-        <div class="text-white text-center">
-            <p class="h3">^</p>
-            <p class="h3">Top</p>
+        <div class="text-white text-center flex justify-center">
+            <a href="" class="flex items-center flex-col no-underline">
+                @include('svgs.icons.top_arrow', ['classes' => 'h-3 mb-2'])
+                <p class="h3 text-mid-grey">Top</p>
+            </a>
+
         </div>
     </div>
     <p class="text-sm text-mid-grey text-center mt-8 pb-2">@Copyright {{ \Illuminate\Support\Carbon::now()->year }}. Beautifully built by <a href="" class="text-mid-grey no-underline">Dymantic Design</a></p>

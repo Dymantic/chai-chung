@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'is_manager'
+        'name', 'email', 'password', 'is_manager', 'user_code', 'hourly_rate'
     ];
 
     protected $casts = ['is_manager' => 'bool'];

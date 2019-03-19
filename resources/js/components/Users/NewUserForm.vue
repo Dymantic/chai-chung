@@ -14,6 +14,16 @@
                         <span class="text-xs text-red" v-show="formErrors.email">{{ formErrors.email }}</span>
                         <input type="email" name="name" v-model="formData.email" class="w-full h-8 pl-2 mt-1 border" id="email">
                     </div>
+                    <div class="form-group my-3" :class="{'has-error': formErrors.user_code}">
+                        <label class="text-sm text-navy font-bold" for="user_code">User Code</label>
+                        <span class="text-xs text-red" v-show="formErrors.user_code">{{ formErrors.user_code }}</span>
+                        <input type="text" name="user_code" v-model="formData.user_code" class="w-full h-8 pl-2 mt-1 border" id="user_code">
+                    </div>
+                    <div class="form-group my-3" :class="{'has-error': formErrors.hourly_rate}">
+                        <label class="text-sm text-navy font-bold" for="hourly_rate">Hourly Rate</label>
+                        <span class="text-xs text-red" v-show="formErrors.hourly_rate">{{ formErrors.hourly_rate }}</span>
+                        <input type="text" name="hourly_rate" v-model="formData.hourly_rate" class="w-full h-8 pl-2 mt-1 border" id="hourly_rate">
+                    </div>
                     <div class="form-group my-6" :class="{'has-error': formErrors.is_manager}">
                         <label class="text-sm text-navy font-bold" for="is_manager">Manager
                             <input type="checkbox" name="name" v-model="formData.is_manager" id="is_manager" class="hidden">

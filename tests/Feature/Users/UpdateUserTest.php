@@ -11,18 +11,18 @@ class UpdateUserTest extends TestCase
     use RefreshDatabase;
 
     /**
-     *@test
+     * @test
      */
     public function a_users_name_and_email_may_be_updated()
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create([
-            'name' => 'Old name',
+            'name'  => 'Old name',
             'email' => 'old@test.test'
         ]);
 
         $response = $this->actingAs($user)->postJson("/admin/users/{$user->id}", [
-            'name' => 'New name',
+            'name'  => 'New name',
             'email' => 'new@test.test'
         ]);
         $response->assertStatus(200);
@@ -35,18 +35,18 @@ class UpdateUserTest extends TestCase
     }
 
     /**
-     *@test
+     * @test
      */
     public function the_name_may_be_updated_and_email_left_the_same()
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create([
-            'name' => 'Old name',
+            'name'  => 'Old name',
             'email' => 'old@test.test'
         ]);
 
         $response = $this->actingAs($user)->postJson("/admin/users/{$user->id}", [
-            'name' => 'New name',
+            'name'  => 'New name',
             'email' => 'old@test.test'
         ]);
         $response->assertStatus(200);
@@ -56,26 +56,26 @@ class UpdateUserTest extends TestCase
     }
 
     /**
-     *@test
+     * @test
      */
     public function a_non_manager_may_not_update_their_is_manager_status()
     {
         $user = factory(User::class)->create([
-            'name' => 'Old name',
-            'email' => 'old@test.test',
+            'name'       => 'Old name',
+            'email'      => 'old@test.test',
             'is_manager' => false
         ]);
 
         $response = $this->actingAs($user)->postJson("/admin/users/{$user->id}", [
-            'name' => 'New name',
-            'email' => 'old@test.test',
+            'name'       => 'New name',
+            'email'      => 'old@test.test',
             'is_manager' => true
         ]);
         $response->assertStatus(403);
     }
 
     /**
-     *@test
+     * @test
      */
     public function the_name_field_is_required()
     {
@@ -83,7 +83,7 @@ class UpdateUserTest extends TestCase
     }
 
     /**
-     *@test
+     * @test
      */
     public function the_email_field_is_required()
     {
@@ -91,15 +91,17 @@ class UpdateUserTest extends TestCase
     }
 
     /**
-     *@test
+     * @test
      */
     public function the_email_must_be_unique()
     {
         User::create([
-            'name' => 'existing',
-            'email' => 'existing@test.test',
-            'is_manager' => true,
-            'password' => 'secret'
+            'name'        => 'existing',
+            'email'       => 'existing@test.test',
+            'is_manager'  => true,
+            'password'    => 'secret',
+            'user_code'   => 'test_user_code',
+            'hourly_rate' => 500,
         ]);
 
         $this->assertFieldIsInvalid(['email' => 'existing@test.test']);
@@ -109,12 +111,12 @@ class UpdateUserTest extends TestCase
     {
 
         $valid = [
-            'name'                  => 'New name',
-            'email'                 => 'new@test.test',
+            'name'  => 'New name',
+            'email' => 'new@test.test',
         ];
 
         $user = factory(User::class)->create([
-            'name' => 'Old name',
+            'name'  => 'Old name',
             'email' => 'old@test.test'
         ]);
 

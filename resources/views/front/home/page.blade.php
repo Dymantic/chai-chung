@@ -5,6 +5,6 @@
     @include('front.home.about')
     @include('front.home.services')
     @include('front.home.contact')
-{{--    @include('front.home.city-sketch')--}}
+    @include('front.home.city-sketch')
 
 @endsection

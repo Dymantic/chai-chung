@@ -34,15 +34,25 @@
                 </modal>
             </div>
         </div>
+        <section class="max-w-lg mx-auto">
+            <p class="mr-8"><strong>Code: </strong>{{ user.user_code}}</p>
+            <p class="mr-8 flex items-center">
+                <strong>Rate: </strong>
+                {{ `NT$${current_rate}/hr` }}
+                <update-hourly-rate-form :user-name="user.name" :user-id="user.id" :current-rate="user.hourly_rate" @rate-updated="updateRate"></update-hourly-rate-form>
+            </p>
+        </section>
     </div>
 </template>
 
 <script type="text/babel">
     import UserStatusButton from "./UserStatusButton";
+    import UpdateHourlyRateForm from "./UpdateHourlyRateForm";
 
     export default {
         components: {
-            UserStatusButton
+            UserStatusButton,
+            UpdateHourlyRateForm
         },
 
         props: ['user'],
@@ -51,8 +61,13 @@
             return {
                 showDeleteForm: false,
                 is_manager: this.user.is_manager,
-                name: this.user.name
+                name: this.user.name,
+                current_rate: null,
             };
+        },
+
+        mounted() {
+          this.current_rate = this.user.hourly_rate;
         },
 
         methods: {
@@ -62,8 +77,8 @@
                      .catch(err => console.log(err));
             },
 
-            promoteUser() {
-
+            updateRate({hourly_rate}) {
+                this.current_rate = hourly_rate;
             },
 
 

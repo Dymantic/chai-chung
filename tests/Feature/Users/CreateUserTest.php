@@ -20,6 +20,8 @@ class CreateUserTest extends TestCase
         $user_data = [
             'name'                  => 'Test Name',
             'email'                 => 'test@test.test',
+            'user_code'             => 'abc123',
+            'hourly_rate'           => 600,
             'is_manager'            => true,
             'password'              => 'secret',
             'password_confirmation' => 'secret'
@@ -31,9 +33,11 @@ class CreateUserTest extends TestCase
         $user = User::where(['email' => 'test@test.test'])->first();
 
         $this->assertDatabaseHas('users', [
-            'name'       => 'Test Name',
-            'email'      => 'test@test.test',
-            'is_manager' => true,
+            'name'        => 'Test Name',
+            'email'       => 'test@test.test',
+            'user_code'   => 'abc123',
+            'hourly_rate' => 600,
+            'is_manager'  => true,
         ]);
 
         $this->assertTrue(
@@ -43,7 +47,7 @@ class CreateUserTest extends TestCase
     }
 
     /**
-     *@test
+     * @test
      */
     public function a_user_can_only_be_created_by_a_manager()
     {
@@ -84,22 +88,65 @@ class CreateUserTest extends TestCase
     }
 
     /**
+     * @test
+     */
+    public function the_user_code_is_required()
+    {
+        $this->assertFieldIsInvalid(['user_code' => '']);
+    }
+
+    /**
+     * @test
+     */
+    public function a_user_code_must_be_unique()
+    {
+        User::create([
+            'name'        => 'existing',
+            'email'       => 'existing@test.test',
+            'user_code'   => 'existing_test_user_code',
+            'hourly_rate' => 500,
+            'is_manager'  => true,
+            'password'    => 'secret'
+        ]);
+
+        $this->assertFieldIsInvalid(['user_code' => 'existing_test_user_code']);
+    }
+
+    /**
      *@test
+     */
+    public function the_hourly_rate_is_required()
+    {
+        $this->assertFieldIsInvalid(['hourly_rate' => '']);
+    }
+
+    /**
+     *@test
+     */
+    public function the_hourly_rate_must_be_an_integer()
+    {
+        $this->assertFieldIsInvalid(['hourly_rate' => 'not-an-integer']);
+    }
+
+    /**
+     * @test
      */
     public function the_email_must_be_unique()
     {
         User::create([
-            'name' => 'existing',
-            'email' => 'existing@test.test',
-            'is_manager' => true,
-            'password' => 'secret'
+            'name'        => 'existing',
+            'email'       => 'existing@test.test',
+            'user_code'   => 'existing_test_user_code',
+            'hourly_rate' => 500,
+            'is_manager'  => true,
+            'password'    => 'secret'
         ]);
 
         $this->assertFieldIsInvalid(['email' => 'existing@test.test']);
     }
 
     /**
-     *@test
+     * @test
      */
     public function the_password_is_required()
     {
@@ -121,7 +168,7 @@ class CreateUserTest extends TestCase
     }
 
     /**
-     *@test
+     * @test
      */
     public function the_password_must_be_over_six_characters()
     {
@@ -136,6 +183,8 @@ class CreateUserTest extends TestCase
         $valid = [
             'name'                  => 'Test name',
             'email'                 => 'test@test.test',
+            'user_code'             => 'test_user_code',
+            'hourly_rate'           => 500,
             'is_manager'            => true,
             'password'              => 'secret',
             'password_confirmation' => 'secret'

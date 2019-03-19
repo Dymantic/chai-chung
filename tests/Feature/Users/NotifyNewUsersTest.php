@@ -27,7 +27,9 @@ class NotifyNewUsersTest extends TestCase
             'email'                 => 'test@test.test',
             'is_manager'            => false,
             'password'              => 'secret',
-            'password_confirmation' => 'secret'
+            'password_confirmation' => 'secret',
+            'user_code'             => 'test_user_code',
+            'hourly_rate'           => 500,
         ]);
         $response->assertStatus(201);
         $user = User::where(['email' => 'test@test.test'])->first();
