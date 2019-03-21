@@ -31,4 +31,9 @@ class ClientsController extends Controller
 
         return $client->fresh();
     }
+
+    public function delete(Client $client)
+    {
+        $client->delete();
+    }
 }

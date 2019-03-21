@@ -63,3 +63,4 @@ Route::get('admin/me', 'Admin\ProfilesController@show');
 
 Route::post('admin/clients', 'Admin\ClientsController@store')->middleware('is_manager');
 Route::post('admin/clients/{client}', 'Admin\ClientsController@update')->middleware('is_manager');
+Route::delete('admin/clients/{client}', 'Admin\ClientsController@delete');
