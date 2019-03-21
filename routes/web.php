@@ -63,4 +63,9 @@ Route::get('admin/me', 'Admin\ProfilesController@show');
 
 Route::post('admin/clients', 'Admin\ClientsController@store')->middleware('is_manager');
 Route::post('admin/clients/{client}', 'Admin\ClientsController@update')->middleware('is_manager');
-Route::delete('admin/clients/{client}', 'Admin\ClientsController@delete');
+Route::delete('admin/clients/{client}', 'Admin\ClientsController@delete')->middleware('is_manager');
+
+Route::post('/admin/engagement-codes', 'Admin\EngagementCodesController@store')->middleware('is_manager');
+Route::post('/admin/engagement-codes/{engagement_code}', 'Admin\EngagementCodesController@update')->middleware('is_manager');
+Route::delete('/admin/engagement-codes/{engagement_code}', 'Admin\EngagementCodesController@delete')->middleware('is_manager');
+

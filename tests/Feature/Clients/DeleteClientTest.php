@@ -25,4 +25,17 @@ class DeleteClientTest extends TestCase
 
         $this->assertDatabaseMissing('clients', ['id' => $client->id]);
     }
+
+    /**
+     *@test
+     */
+    public function only_a_manager_can_delete_a_client()
+    {
+        $client = factory(Client::class)->create();
+
+        $response = $this->asStaff()->deleteJson("/admin/clients/{$client->id}");
+        $response->assertStatus(403);
+
+        $this->assertDatabaseHas('clients', ['id' => $client->id]);
+    }
 }
