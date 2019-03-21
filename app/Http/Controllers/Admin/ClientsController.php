@@ -19,4 +19,16 @@ class ClientsController extends Controller
 
         return $client;
     }
+
+    public function update(Client $client)
+    {
+        request()->validate([
+            'name' => ['required'],
+            'annual_revenue' => ['required', 'integer']
+        ]);
+
+        $client->update(request()->only('name', 'annual_revenue'));
+
+        return $client->fresh();
+    }
 }
