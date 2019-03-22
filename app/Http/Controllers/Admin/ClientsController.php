@@ -8,6 +8,17 @@ use App\Http\Controllers\Controller;
 
 class ClientsController extends Controller
 {
+
+    public function index()
+    {
+        return Client::all();
+    }
+
+    public function show(Client $client)
+    {
+        return view('admin.clients.show', ['client' => $client->toArray()]);
+    }
+
     public function store()
     {
         request()->validate([

@@ -8,6 +8,17 @@ use App\Http\Controllers\Controller;
 
 class EngagementCodesController extends Controller
 {
+
+    public function index()
+    {
+        return EngagementCode::all();
+    }
+
+    public function show(EngagementCode $engagementCode)
+    {
+        return view('admin.engagement-codes.show', ['engagement_code' => $engagementCode->toArray()]);
+    }
+
     public function store()
     {
         request()->validate([

@@ -11,4 +11,14 @@ class ManagerPagesController extends Controller
     {
         return view('admin.users.index');
     }
+
+    public function clients()
+    {
+        return view('admin.clients.index');
+    }
+
+    public function engagementCodes()
+    {
+        return view('admin.engagement-codes.index');
+    }
 }

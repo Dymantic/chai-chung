@@ -51,6 +51,8 @@ Route::get('admin/reset-password', 'Admin\UserPasswordController@edit');
 Route::post('admin/users/{user}/password', 'Admin\UserPasswordController@update');
 
 Route::get('admin/manage-users', 'Admin\ManagerPagesController@users')->middleware('is_manager');
+Route::get('admin/manage-clients', 'Admin\ManagerPagesController@clients')->middleware('is_manager');
+Route::get('admin/manage-engagement-codes', 'Admin\ManagerPagesController@engagementCodes')->middleware('is_manager');
 
 Route::get('admin/users', 'Admin\UsersController@index')->middleware('is_manager');
 
@@ -60,11 +62,14 @@ Route::post('admin/users/{user}/rate', 'Admin\UserHourlyRateController@update')-
 
 Route::get('admin/me', 'Admin\ProfilesController@show');
 
-
+Route::get('admin/clients', 'Admin\ClientsController@index')->middleware('is_manager');
+Route::get('admin/clients/{client}', 'Admin\ClientsController@show')->middleware('is_manager');
 Route::post('admin/clients', 'Admin\ClientsController@store')->middleware('is_manager');
 Route::post('admin/clients/{client}', 'Admin\ClientsController@update')->middleware('is_manager');
 Route::delete('admin/clients/{client}', 'Admin\ClientsController@delete')->middleware('is_manager');
 
+Route::get('/admin/engagement-codes', 'Admin\EngagementCodesController@index');
+Route::get('/admin/engagement-codes/{engagementCode}', 'Admin\EngagementCodesController@show')->middleware('is_manager');
 Route::post('/admin/engagement-codes', 'Admin\EngagementCodesController@store')->middleware('is_manager');
 Route::post('/admin/engagement-codes/{engagement_code}', 'Admin\EngagementCodesController@update')->middleware('is_manager');
 Route::delete('/admin/engagement-codes/{engagement_code}', 'Admin\EngagementCodesController@delete')->middleware('is_manager');

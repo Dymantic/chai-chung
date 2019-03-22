@@ -18,6 +18,11 @@ import UserPage from "./components/Users/UserPage";
 
 import ProfilePage from "./components/Users/ProfilePage";
 
+import ClientIndex from "./components/Clients/ClientIndexPage";
+import ClientPage from "./components/Clients/ClientPage";
+import EngagementCodesIndex from "./components/Clients/EngagementCodesIndex";
+import EngagementCodePage from "./components/Clients/EngagementCodePage";
+
 Vue.component('dropdown-menu', Dropdown);
 Vue.component('modal', Modal);
 Vue.component('vue-form', VueForm);
@@ -25,6 +30,11 @@ Vue.component('vue-form', VueForm);
 Vue.component('users-index', UsersIndex);
 Vue.component('user-page', UserPage);
 Vue.component('profile-page', ProfilePage);
+
+Vue.component('client-index', ClientIndex);
+Vue.component('client-page', ClientPage);
+Vue.component('engagement-codes-index', EngagementCodesIndex);
+Vue.component('engagement-code-page', EngagementCodePage);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

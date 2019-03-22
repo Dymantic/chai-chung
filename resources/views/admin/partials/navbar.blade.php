@@ -2,6 +2,17 @@
     <div class="font-black text-orange">Tino's</div>
     <div class="flex items-center justify-end text-orange">
         @if(auth()->user()->is_manager)
+            <dropdown-menu v-cloak
+                           name="Clients"
+                           class="text-white h-12 flex items-center">
+                <div slot="dropdown_content"
+                     class="pt-3">
+                    <a href="/admin/manage-clients"
+                       class="text-grey-darker no-underline hover:text-orange-light pb-3 block">Clients</a>
+                    <a href="/admin/manage-engagement-codes"
+                       class="text-grey-darker no-underline hover:text-orange-light">Engagement Codes</a>
+                </div>
+            </dropdown-menu>
             <a href="/admin/manage-users" class="text-white no-underline hover:text-orange mx-4">Users</a>
         @endif
         <dropdown-menu v-cloak
