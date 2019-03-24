@@ -25,6 +25,7 @@
 
 <script type="text/babel">
     import NewClientForm from "./NewClientForm";
+    import {notify} from "../notify";
 
     export default {
         components: {
@@ -39,19 +40,28 @@
         },
 
         mounted() {
-            this.fetchClients();
+            this.fetchClients()
+                .catch(() => notify.error({message: 'Unable to fetch clients. Please try again later.'}));
         },
 
         methods: {
             fetchClients() {
-                axios.get("/admin/clients")
-                     .then(({data}) => this.clients = data)
-                     .catch(err => console.log(err));
+                return new Promise((resolve, reject) => {
+                    axios.get("/admin/clients")
+                         .then(({data}) => {
+                             this.clients = data;
+                             resolve();
+                         })
+                         .catch(reject);
+                });
+
             },
 
             clientAdded() {
                 this.showNewClientForm = false;
-                this.fetchClients();
+                this.fetchClients()
+                    .then(() => notify.success({message: 'Client has been added.', clear: true}))
+                    .catch(() => notify.error({message: 'Unable to fetch clients. Please try again later.'}));
             }
         }
     }

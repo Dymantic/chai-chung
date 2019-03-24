@@ -10,6 +10,7 @@
 </template>
 
 <script type="text/babel">
+
     export default {
         props: ['user']
     }

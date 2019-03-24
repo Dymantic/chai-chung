@@ -45,6 +45,7 @@ class ClientsController extends Controller
 
     public function delete(Client $client)
     {
+        $this->flashSuccess(['message' => "{$client->name} has been deleted"]);
         $client->delete();
     }
 }

@@ -23,6 +23,7 @@ class UsersController extends Controller
 
     public function store(CreateUserForm $form)
     {
+
         $user = User::create($form->userAttributes());
 
         $user->notify(new WelcomeUser($form->only('name', 'email', 'password')));
@@ -46,6 +47,7 @@ class UsersController extends Controller
 
     public function delete(User $user)
     {
+        $this->flashSuccess(['message' => $user->name .' has been deleted!']);
         $user->delete();
     }
 }

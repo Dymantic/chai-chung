@@ -39,6 +39,7 @@ class EngagementCodesController extends Controller
 
     public function delete(EngagementCode $engagement_code)
     {
+        $this->flashSuccess(['message' => 'Engagement code has been deleted!']);
         $engagement_code->delete();
     }
 }

@@ -24,6 +24,7 @@
 
 <script type="text/babel">
     import NewEngagementCodeForm from "./NewEngagementCodeForm";
+    import {notify} from "../notify";
 
     export default {
         components: {
@@ -39,19 +40,28 @@
         },
 
         mounted() {
-            this.fetchEngagementCodes();
+            this.fetchEngagementCodes()
+                .catch(() => notify.error({message: "Unable to fetch engagement codes."}));
         },
 
         methods: {
             fetchEngagementCodes() {
-                axios.get("/admin/engagement-codes")
-                    .then(({data}) => this.engagement_codes = data)
-                    .catch(err => console.log(err));
+                return new Promise((resolve, reject) => {
+                    axios.get("/admin/engagement-codes")
+                         .then(({data}) => {
+                             this.engagement_codes = data;
+                             resolve();
+                         })
+                         .catch(reject);
+                })
+
             },
 
             engagementCodeAdded() {
                 this.showNewEngagementCodeForm = false;
-                this.fetchEngagementCodes();
+                this.fetchEngagementCodes()
+                    .then(() => notify.success({message: 'Engagement code added', clear: true}))
+                    .catch(() => notify.error({message: "Unable to fetch engagement codes."}));
             }
         }
     }

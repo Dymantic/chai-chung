@@ -26,11 +26,17 @@
     <div class="container">
         @yield('content')
     </div>
+    <notification-hub></notification-hub>
 </div>
 
 {{--<div class="main-footer"></div>--}}
 <script src="{{ mix('js/app.js') }}"></script>
 {{--@include('admin.partials.flash')--}}
 @yield('bodyscripts')
+@if(session()->has('flash-message'))
+    <script>
+        window.flashMessage = @json(session('flash-message'));
+    </script>
+@endif
 </body>
 </html>

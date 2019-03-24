@@ -31,6 +31,7 @@
 <script type="text/babel">
     import NewUserForm from "./NewUserForm";
     import UserIndexCard from "./UserIndexCard";
+    import {notify} from "../notify";
 
     export default {
         components: {
@@ -60,18 +61,27 @@
 
         mounted() {
             this.fetchUsers()
+                .catch(() => notify.error({message: "Unable to fetch users"}));
         },
 
         methods: {
             fetchUsers() {
-                axios.get("/admin/users")
-                     .then(({data}) => this.users = data)
-                     .catch(err => console.log(err));
+                return new Promise((resolve, reject) => {
+                    axios.get("/admin/users")
+                         .then(({data}) => {
+                             this.users = data;
+                             resolve();
+                         })
+                         .catch(reject);
+                });
+
             },
 
             userAdded() {
                 this.showNewUserForm = false;
-                this.fetchUsers();
+                this.fetchUsers()
+                    .then(() => notify.success({message: 'New user added', clear: true}))
+                    .catch(() => notify.error({message: "Unable to fetch users"}));
             }
 
         }

@@ -13,6 +13,8 @@ import {Dropdown} from "@dymantic/vuetilities";
 import Modal from "@dymantic/modal";
 import {VueForm} from "@dymantic/vue-forms";
 
+import NotificationHub from "./components/NotfificationHub";
+
 import UsersIndex from "./components/Users/UsersIndex";
 import UserPage from "./components/Users/UserPage";
 
@@ -27,6 +29,7 @@ Vue.component('dropdown-menu', Dropdown);
 Vue.component('modal', Modal);
 Vue.component('vue-form', VueForm);
 
+Vue.component('notification-hub', NotificationHub);
 Vue.component('users-index', UsersIndex);
 Vue.component('user-page', UserPage);
 Vue.component('profile-page', ProfilePage);
