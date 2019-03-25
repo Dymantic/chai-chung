@@ -18,7 +18,7 @@ class IsManager
         if(!auth()->check()) {
             return redirect('/admin/login');
         }
-        
+
         $user = $request->user();
 
         if (!$user || !$user->is_manager) {

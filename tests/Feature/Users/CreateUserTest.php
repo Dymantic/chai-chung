@@ -59,7 +59,7 @@ class CreateUserTest extends TestCase
             'password_confirmation' => 'secret'
         ];
 
-        $response = $this->postJson('/admin/users', $user_data);
+        $response = $this->asStaff()->postJson('/admin/users', $user_data);
         $response->assertStatus(403);
     }
 

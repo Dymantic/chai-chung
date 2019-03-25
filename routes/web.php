@@ -74,3 +74,5 @@ Route::post('/admin/engagement-codes', 'Admin\EngagementCodesController@store')-
 Route::post('/admin/engagement-codes/{engagement_code}', 'Admin\EngagementCodesController@update')->middleware('is_manager');
 Route::delete('/admin/engagement-codes/{engagement_code}', 'Admin\EngagementCodesController@delete')->middleware('is_manager');
 
+
+Route::post('admin/sessions', 'Admin\SessionsController@store');
