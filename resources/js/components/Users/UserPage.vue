@@ -48,6 +48,7 @@
 <script type="text/babel">
     import UserStatusButton from "./UserStatusButton";
     import UpdateHourlyRateForm from "./UpdateHourlyRateForm";
+    import {notify} from "../notify";
 
     export default {
         components: {
@@ -74,7 +75,7 @@
             deleteUser() {
                 axios.delete(`/admin/users/${this.user.id}`)
                      .then(() => window.location = "/admin/manage-users")
-                     .catch(err => console.log(err));
+                     .catch(() => notify.error({message: 'Unable to delete user'}));
             },
 
             updateRate({hourly_rate}) {

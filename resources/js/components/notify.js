@@ -6,7 +6,7 @@ const notify = {
     },
 
     error(alert) {
-        EventHub.$emit("notify:success", alert);
+        EventHub.$emit("notify:error", alert);
     }
 };
 

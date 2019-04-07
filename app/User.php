@@ -57,19 +57,7 @@ class User extends Authenticatable
 
     public function addSession($session_data)
     {
-        $start = explode(":", $session_data['start_time']);
-        $end = explode(":", $session_data['end_time']);
 
-        $start_time = Carbon::parse($session_data['session_date'])->startOfDay()->setHours($start[0])->setMinutes($start[1]);
-        $end_time = Carbon::parse($session_data['session_date'])->startOfDay()->setHours($end[0])->setMinutes($end[1]);
-        return $this->sessions()->create([
-            'start_time' => $start_time,
-            'end_time' => $end_time,
-            'client_id' => $session_data['client_id'],
-            'engagement_code_id' => $session_data['engagement_code_id'],
-            'service_period' => $session_data['service_period'],
-            'notes' => $session_data['notes'],
-            'description' => $session_data['description'],
-        ]);
+        return $this->sessions()->create($session_data);
     }
 }

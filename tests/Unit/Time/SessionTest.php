@@ -23,9 +23,8 @@ class SessionTest extends TestCase
         $engagement_code = factory(EngagementCode::class)->create();
 
         $session_data = [
-            'session_date' => Carbon::today()->format('Y-m-d'),
-            'start_time' => Carbon::now()->subHours(3)->hour . ":30",
-            'end_time' => Carbon::now()->subHours(1)->hour . ":30",
+            'start_time' => Carbon::now()->subHours(3)->setMinutes(30),
+            'end_time' => Carbon::now()->subHours(1)->setMinutes(30),
             'service_period' => Carbon::today()->year,
             'client_id' => $client->id,
             'engagement_code_id' => $engagement_code->id,
@@ -36,7 +35,7 @@ class SessionTest extends TestCase
         $session = $user->addSession($session_data);
 
         $this->assertTrue($session->start_time->isToday());
-        $this->assertEquals(120, $session->duration());
+        $this->assertEquals('2 hrs', $session->duration()->asString());
         $this->assertEquals(Carbon::today()->year, $session->service_period);
         $this->assertTrue($session->client->is($client));
         $this->assertTrue($session->engagement_code->is($engagement_code));

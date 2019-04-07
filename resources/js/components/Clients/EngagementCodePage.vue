@@ -49,6 +49,7 @@
 
 <script type="text/babel">
     import EditEngagementCodeForm from "./EditEngagementCodeForm";
+    import {notify} from "../notify";
 
     export default {
         components: {
@@ -75,7 +76,7 @@
             deleteEngagementCode() {
                 axios.delete(`/admin/engagement-codes/${this.engagementCode.id}`)
                     .then(() => window.location = '/admin/manage-engagement-codes')
-                    .catch(err => console.log(err));
+                    .catch(() => notify.error({message: 'Unable to delete engagement code'}));
             }
         }
     }

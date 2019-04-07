@@ -49,6 +49,7 @@
 
 <script type="text/babel">
     import EditClientForm from "./EditClientForm";
+    import {notify} from "../notify";
 
     export default {
         components: {
@@ -77,7 +78,7 @@
             deleteClient() {
                 axios.delete(`/admin/clients/${this.client.id}`)
                     .then(() => window.location = '/admin/manage-clients')
-                    .catch(err => console.log(err));
+                     .catch(() => notify.error({message: 'Unable to delete client.'}));
             }
         }
     }

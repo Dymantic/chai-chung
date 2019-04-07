@@ -75,4 +75,12 @@ Route::post('/admin/engagement-codes/{engagement_code}', 'Admin\EngagementCodesC
 Route::delete('/admin/engagement-codes/{engagement_code}', 'Admin\EngagementCodesController@delete')->middleware('is_manager');
 
 
+Route::get('admin/sessions', 'Admin\SessionsController@index');
 Route::post('admin/sessions', 'Admin\SessionsController@store');
+
+Route::get('admin/dashboard', 'Admin\DashboardController@show');
+
+Route::post('admin/holidays', 'Admin\HolidaysController@store')->middleware('is_manager');
+Route::delete('admin/holidays/{holiday}', 'Admin\HolidaysController@delete')->middleware('is_manager');
+Route::post('admin/make-up-days', 'Admin\MakeUpDaysController@store')->middleware('is_manager');
+Route::delete('admin/make-up-days/{makeUpDay}', 'Admin\MakeUpDaysController@delete')->middleware('is_manager');

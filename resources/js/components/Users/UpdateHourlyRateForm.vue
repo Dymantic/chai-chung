@@ -25,6 +25,8 @@
 </template>
 
 <script type="text/babel">
+    import {notify} from "../notify";
+
     export default {
         props: ['current-rate', 'user-name', 'user-id'],
         data() {
@@ -51,10 +53,10 @@
             onRateUpdated(hourly_rate) {
                 this.$emit('rate-updated', {hourly_rate});
                 this.showEditForm = false;
+                notify.success({message: 'The rate has ben updated'});
             },
 
             handleError({status}) {
-                console.log(status);
                 if(status === 422) {
                      return this.error = 'The value you entered is not valid. Please enter a positive integer.';
                 }

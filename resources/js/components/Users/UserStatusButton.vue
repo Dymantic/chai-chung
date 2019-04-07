@@ -40,6 +40,8 @@
 </template>
 
 <script type="text/babel">
+    import {notify} from "../notify";
+
     export default {
         props: ['is_manager', 'user_id'],
 
@@ -66,7 +68,7 @@
 
                 axios.post("/admin/managers", {user_id: this.user_id})
                      .then(() => this.$emit('promoted'))
-                     .catch(err => console.log(err))
+                     .catch(() => notify.error({message: 'Unable to perform that action. Please refresh and try again.'}))
                      .then(() => this.waiting = false)
                      .then(() => this.showStatusPanel = false);
             },
@@ -76,7 +78,7 @@
 
                 axios.delete(`/admin/managers/${this.user_id}`)
                      .then(() => this.$emit('demoted'))
-                     .catch(err => console.log(err))
+                     .catch(() => notify.error({message: 'Unable to perform that action. Please refresh and try again.'}))
                      .then(() => this.waiting = false)
                      .then(() => this.showStatusPanel = false);
 
