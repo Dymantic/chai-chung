@@ -37,6 +37,7 @@ class DurationTest extends TestCase
         collect($cases)->each(function($case) {
             $duration = new Duration($case['mins']);
             $this->assertEquals($case['expects'], $duration->asString());
+            $this->assertEquals($case['mins'], $duration->minutes());
         });
     }
 }

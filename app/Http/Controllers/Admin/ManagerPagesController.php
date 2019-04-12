@@ -21,4 +21,14 @@ class ManagerPagesController extends Controller
     {
         return view('admin.engagement-codes.index');
     }
+
+    public function holidays()
+    {
+        return view('admin.holidays.index');
+    }
+
+    public function sessions()
+    {
+        return view('admin.all-sessions.index');
+    }
 }

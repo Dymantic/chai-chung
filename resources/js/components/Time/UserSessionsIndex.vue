@@ -19,7 +19,14 @@
                 </modal>
             </div>
         </div>
-        <session-list :sessions="sessions" title="Recent Sessions"></session-list>
+        <session-list :sessions="sessions" title="Recent Sessions" @session-selected="onSessionSelected"></session-list>
+        <staff-session :open="showSelected"
+                       :session="selectedSession"
+                       @close="showSelected = false"
+                       @session-deleted="removeSession"
+                       @session-deleted-error="failedToDeleteSession"
+                       v-if="selectedSession"
+        ></staff-session>
     </div>
 </template>
 
@@ -27,11 +34,13 @@
     import NewSessionForm from "./NewSessionForm";
     import SessionList from "./SessionList";
     import {notify} from "../notify";
+    import StaffSession from "./StaffSession";
 
     export default {
         components: {
             NewSessionForm,
-            SessionList
+            SessionList,
+            StaffSession
         },
 
         props: ['clients', 'engagements', 'service_periods'],
@@ -39,7 +48,9 @@
         data() {
             return {
                 showNewSessionForm: false,
-                sessions: []
+                sessions: [],
+                selectedSession: null,
+                showSelected: false,
             };
         },
 
@@ -69,6 +80,21 @@
             sessionAdded() {
                 this.fetchSessions()
                     .catch(() => notify.error({message: 'Unable to fetch recent sessions'}));
+            },
+
+            onSessionSelected(session) {
+                this.showSelected = true;
+                this.selectedSession = session;
+            },
+
+            removeSession() {
+                notify.success({message: 'Session has been deleted'});
+                this.fetchSessions()
+                    .catch(() => notify.error({message: 'Unable to fetch recent sessions'}));
+            },
+
+            failedToDeleteSession() {
+                notify.error({message: 'Failed to delete session'});
             }
         }
     }

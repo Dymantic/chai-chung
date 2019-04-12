@@ -53,6 +53,7 @@ Route::post('admin/users/{user}/password', 'Admin\UserPasswordController@update'
 Route::get('admin/manage-users', 'Admin\ManagerPagesController@users')->middleware('is_manager');
 Route::get('admin/manage-clients', 'Admin\ManagerPagesController@clients')->middleware('is_manager');
 Route::get('admin/manage-engagement-codes', 'Admin\ManagerPagesController@engagementCodes')->middleware('is_manager');
+Route::get('admin/manage-sessions', 'Admin\ManagerPagesController@sessions')->middleware('is_manager');
 
 Route::get('admin/users', 'Admin\UsersController@index')->middleware('is_manager');
 
@@ -75,11 +76,21 @@ Route::post('/admin/engagement-codes/{engagement_code}', 'Admin\EngagementCodesC
 Route::delete('/admin/engagement-codes/{engagement_code}', 'Admin\EngagementCodesController@delete')->middleware('is_manager');
 
 
+Route::get('admin/staff-sessions', 'Admin\StaffSessionsController@index')->middleware('is_manager');
+
 Route::get('admin/sessions', 'Admin\SessionsController@index');
 Route::post('admin/sessions', 'Admin\SessionsController@store');
 
+Route::delete('admin/sessions/{session}', 'Admin\SessionsController@delete');
+
+Route::post('admin/sessions/{session}/overtime', 'Admin\SessionOvertimeController@update')->middleware('is_manager');
+
 Route::get('admin/dashboard', 'Admin\DashboardController@show');
 
+Route::get('admin/manage-holidays', 'Admin\ManagerPagesController@holidays')->middleware('is_manager');
+
+Route::get('admin/holidays', 'Admin\HolidaysController@index')->middleware('is_manager');
+Route::get('admin/make-up-days', 'Admin\MakeUpDaysController@index')->middleware('is_manager');
 Route::post('admin/holidays', 'Admin\HolidaysController@store')->middleware('is_manager');
 Route::delete('admin/holidays/{holiday}', 'Admin\HolidaysController@delete')->middleware('is_manager');
 Route::post('admin/make-up-days', 'Admin\MakeUpDaysController@store')->middleware('is_manager');

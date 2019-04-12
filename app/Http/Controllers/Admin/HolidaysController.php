@@ -9,6 +9,12 @@ use Illuminate\Support\Carbon;
 
 class HolidaysController extends Controller
 {
+
+    public function index()
+    {
+        return Holiday::all();
+    }
+
     public function store()
     {
         request()->validate([

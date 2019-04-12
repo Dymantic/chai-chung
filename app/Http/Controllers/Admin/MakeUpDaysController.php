@@ -8,6 +8,12 @@ use App\Http\Controllers\Controller;
 
 class MakeUpDaysController extends Controller
 {
+
+    public function index()
+    {
+        return MakeUpDay::all();
+    }
+
     public function store()
     {
         request()->validate([

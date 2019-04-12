@@ -23,6 +23,11 @@ class CreateSessionsTable extends Migration
             $table->integer('engagement_code_id')->unsigned();
             $table->text('description')->nullable();
             $table->text('notes')->nullable();
+            $table->boolean('on_holiday')->default(0);
+            $table->boolean('on_make_up_day')->default(0);
+            $table->integer('manual_overtime')->unsigned()->nullable();
+            $table->integer('overtime_set_by')->unsigned()->nullable();
+            $table->string('manual_overtime_reason')->nullable();
             $table->timestamps();
         });
     }

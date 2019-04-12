@@ -47,6 +47,8 @@ class CreateSessionTest extends TestCase
             'engagement_code_id' => $engagement_code->id,
             'description' => 'test description',
             'notes' => 'test notes',
+            'on_holiday' => false,
+            'on_make_up_day' => false
         ]);
     }
 

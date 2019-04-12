@@ -14,6 +14,10 @@ class Duration
         $this->minutes = $minutes;
     }
 
+    public function minutes() {
+        return $this->minutes;
+    }
+
     public function asString()
     {
         $hours = floor($this->minutes / 60);
@@ -29,7 +33,6 @@ class Duration
         }
 
         return "{$padded_mins} mins";
-
 
     }
 

@@ -7,18 +7,12 @@
                 <p class="font-bold text-navy my-4">{{ day.date }}</p>
                 <div v-for="session in day.sessions"
                      :key="session.id"
-                     class="p-4 bg-pale-baby-blue my-2 mx-auto">
-                    <div class="flex text-sm">
+                     class="px-4 py-2 bg-pale-baby-blue mx-auto flex items-center text-sm">
                         <p class="w-40 font-bold text-grey-dark">{{ session.start_time }} - {{ session.end_time }}</p>
+                        <p @click="$emit('session-selected', session)" class="text-navy hover:text-orange cursor-pointer text-lg flex-1">{{ session.client_name }}</p>
                         <p class="w-40 font-bold text-grey-dark">{{ session.duration }}</p>
-                    </div>
-                    <div>
-                        <p class="text-navy text-lg my-4">{{ session.client_name }}</p>
-                        <p>{{ session.engagement_code_description }}</p>
-                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 </template>

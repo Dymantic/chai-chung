@@ -11,6 +11,8 @@ $factory->define(\App\Time\Session::class, function (Faker $faker) {
         'end_time' => \Illuminate\Support\Carbon::now()->subDays(3)->setHours(10)->setMinutes(30),
         'service_period' => '2019',
         'description' => $faker->sentence,
-        'notes' => $faker->sentence
+        'notes' => $faker->sentence,
+        'on_holiday' => false,
+        'on_make_up_day' => false,
     ];
 });

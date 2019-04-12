@@ -20,4 +20,16 @@ class MakeUpDay extends Model
             'reason' => $reason
         ]);
     }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->id,
+            'year' => $this->year,
+            'month' => $this->month,
+            'day' => $this->day,
+            'name' => $this->reason,
+            'reason' => $this->reason
+        ];
+    }
 }
