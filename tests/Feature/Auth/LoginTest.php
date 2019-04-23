@@ -22,7 +22,7 @@ class LoginTest extends TestCase
 
         $response = $this->post("/admin/login", ['email' => 'test@test.test', 'password' => 'secret']);
         $response->assertStatus(302);
-        $response->assertRedirect('/admin');
+        $response->assertRedirect('/admin/dashboard');
 
         $this->assertTrue(Auth::check());
     }

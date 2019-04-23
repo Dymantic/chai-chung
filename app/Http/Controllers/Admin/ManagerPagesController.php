@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Clients\Client;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -29,6 +31,8 @@ class ManagerPagesController extends Controller
 
     public function sessions()
     {
-        return view('admin.all-sessions.index');
+        $clients = Client::all();
+        $staff = User::all();
+        return view('admin.all-sessions.index', ['clients' => $clients, 'staff' => $staff]);
     }
 }

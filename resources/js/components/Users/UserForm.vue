@@ -16,8 +16,8 @@
                     </div>
 
                     <div class="my-4 flex justify-end">
-                        <button type="button" class="bg-grey text-navy px-4 py-2 rounded uppercase hover:bg-grey-darker shadow" @click="cancel">Cancel</button>
-                        <button class="bg-orange text-navy px-4 py-2 rounded uppercase hover:bg-orange-light shadow ml-4" type="submit">Update</button>
+                        <button type="button" class="btn btn-white" @click="$emit('cancel')">Cancel</button>
+                        <button class="btn btn-orange ml-4" type="submit">Update</button>
                     </div>
                 </div>
             </vue-form>
@@ -43,9 +43,7 @@
                 this.$emit('user-edited', {name, email})
             },
 
-            cancel() {
 
-            }
         }
     }
 </script>

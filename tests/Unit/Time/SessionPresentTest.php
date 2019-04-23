@@ -55,7 +55,11 @@ class SessionPresentTest extends TestCase
             'engagement_code_description' => $engagement_code->description,
             'description'                 => $session->description,
             'notes'                       => $session->notes,
-            'duration'                    => "2 hrs"
+            'duration'                    => "2 hrs",
+            'overtime'                    => 120,
+            'overtime_set_by'             => $manager->name,
+            'overtime_reason'             => 'test overtime reason',
+            'user'                        => $staff->name,
         ];
 
         $expected_for_manager = [
@@ -77,7 +81,9 @@ class SessionPresentTest extends TestCase
             'overtime'                    => 120,
             'overtime_set_by'             => $manager->name,
             'overtime_reason'             => 'test overtime reason',
-            'cost'                        => 1000
+            'cost'                        => 1000,
+            'user'                        => $staff->name,
+            'for_manager'                 => true
         ];
 
         $this->assertEquals($expected_for_staff, $session->presentFor($staff));

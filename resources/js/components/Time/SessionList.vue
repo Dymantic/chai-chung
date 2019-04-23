@@ -1,17 +1,16 @@
 <template>
     <div class="my-20 max-w-lg mx-auto">
         <p class="text-xl font-bold text-navy">{{ title }}</p>
-        <div class="recent-sessions max-w-md mx-auto">
+        <div class="recent-sessions mx-auto" :class="expanded ? 'max-w-lg' : 'max-w-md'">
             <div v-for="day, index in session_days"
                  :key="index">
                 <p class="font-bold text-navy my-4">{{ day.date }}</p>
-                <div v-for="session in day.sessions"
-                     :key="session.id"
-                     class="px-4 py-2 bg-pale-baby-blue mx-auto flex items-center text-sm">
-                        <p class="w-40 font-bold text-grey-dark">{{ session.start_time }} - {{ session.end_time }}</p>
-                        <p @click="$emit('session-selected', session)" class="text-navy hover:text-orange cursor-pointer text-lg flex-1">{{ session.client_name }}</p>
-                        <p class="w-40 font-bold text-grey-dark">{{ session.duration }}</p>
-                </div>
+                <session-list-row v-for="session in day.sessions"
+                                  :session="session"
+                                  :key="session.id"
+                                  :expanded="expanded"
+                                  @session-selected="sessionSelected">
+                </session-list-row>
             </div>
         </div>
     </div>
@@ -19,9 +18,14 @@
 
 <script type="text/babel">
     import {sortSessionsByTimeOfDay} from "../../lib/time_helpers";
+    import SessionListRow from "./SessionListRow";
 
     export default {
-        props: ['sessions', 'title'],
+        components: {
+            SessionListRow
+        },
+
+        props: ['sessions', 'title', 'expanded'],
 
         computed: {
 
@@ -42,6 +46,12 @@
                                  day.sessions = day.sessions.sort(sortSessionsByTimeOfDay);
                                  return day;
                              });
+            }
+        },
+
+        methods: {
+            sessionSelected(session) {
+                this.$emit('session-selected', session);
             }
         }
     }
