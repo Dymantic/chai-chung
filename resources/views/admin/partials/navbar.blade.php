@@ -14,6 +14,19 @@
                 </div>
             </dropdown-menu>
             <dropdown-menu v-cloak
+                           name="Reports"
+                           class="text-white h-12 flex items-center mr-4">
+                <div slot="dropdown_content"
+                     class="pt-3">
+                    <a href="/admin/manage-reports/staff-time"
+                       class="text-grey-darker no-underline hover:text-orange-light pb-3 block">Staff</a>
+                    <a href="/admin/manage-reports/client-time"
+                       class="text-grey-darker no-underline hover:text-orange-light pb-3 block">Client</a>
+                    <a href="/admin/manage-reports/engagement-time"
+                       class="text-grey-darker no-underline hover:text-orange-light pb-3 block">Engagement</a>
+                </div>
+            </dropdown-menu>
+            <dropdown-menu v-cloak
                            name="Clients"
                            class="text-white h-12 flex items-center">
                 <div slot="dropdown_content"
@@ -24,6 +37,7 @@
                        class="text-grey-darker no-underline hover:text-orange-light">Engagement Codes</a>
                 </div>
             </dropdown-menu>
+
             <a href="/admin/manage-users" class="text-white no-underline hover:text-orange mx-4">Users</a>
         @endif
         <dropdown-menu v-cloak

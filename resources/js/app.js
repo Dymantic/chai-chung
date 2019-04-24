@@ -31,6 +31,8 @@ import HolidaysIndexPage from "./components/Time/HolidaysIndexPage";
 
 import ManageSesions from "./components/Time/ManageSessions";
 
+import TimeReport from "./components/Reports/TimeReport";
+
 Vue.component('dropdown-menu', Dropdown);
 Vue.component('modal', Modal);
 Vue.component('vue-form', VueForm);
@@ -49,6 +51,8 @@ Vue.component('user-sessions-index', UserSessionsIndex);
 
 Vue.component('holidays-index-page', HolidaysIndexPage);
 Vue.component('manage-sessions', ManageSesions);
+
+Vue.component('time-report', TimeReport);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

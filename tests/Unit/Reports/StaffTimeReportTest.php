@@ -39,7 +39,7 @@ class StaffTimeReportTest extends TestCase
         $this->createSession($staffC, 21, 1);
 
         $report = Session::staffTimeReport([
-            'from' => Carbon::today()->subDays(7),
+            'from' => Carbon::today()->subDays(11),
             'to' => Carbon::today()->endOfDay()
         ]);
 

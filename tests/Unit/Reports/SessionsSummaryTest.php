@@ -24,7 +24,7 @@ class SessionsSummaryTest extends TestCase
         $this->createSession(4, 3);
 
         $summary = Session::summary([
-            'from' => Carbon::today()->subDays(10),
+            'from' => Carbon::today()->subDays(20),
             'to' => Carbon::today()->endOfDay()
         ]);
 
@@ -35,8 +35,8 @@ class SessionsSummaryTest extends TestCase
     private function createSession($days_ago, $hours, $is_overtime = false)
     {
         return factory(Session::class)->create([
-            'start_time' => Carbon::today()->subDays($days_ago)->setHours(14)->setMinutes(0),
-            'end_time' => Carbon::today()->subDays($days_ago)->setHours(14 + $hours)->setMinutes(0),
+            'start_time' => Carbon::parse('last friday')->subDays($days_ago)->setHours(14)->setMinutes(0),
+            'end_time' => Carbon::parse('last friday')->subDays($days_ago)->setHours(14 + $hours)->setMinutes(0),
             'on_holiday' => $is_overtime
         ]);
     }
