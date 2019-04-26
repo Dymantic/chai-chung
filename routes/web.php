@@ -107,4 +107,15 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('admin/reports/engagement-time', 'Admin\EngagementTimeReportController@show')->middleware('is_manager');
 
     Route::get('admin/exports/reports/staff-time', 'Admin\StaffTimeExportController@show')->middleware('is_manager');
+
+
+    Route::post('admin/users/{user}/leave-requests', 'Admin\UserLeaveRequestsController@store');
+
+    Route::post('admin/leave-requests/{leaveRequest}', 'Admin\UserLeaveRequestsController@update');
+
+    Route::post('admin/covered-leave-requests', 'Admin\CoveredLeaveRequestsController@store');
+    Route::post('admin/cover-rejected-leave-requests', 'Admin\CoverRejectedLeaveRequestsController@store');
+    Route::post('admin/accepted-leave-requests', 'Admin\AcceptedLeaveRequestsController@store')->middleware('is_manager');
+    Route::post('admin/denied-leave-requests', 'Admin\DeniedLeaveRequestsController@store')->middleware('is_manager');
+    Route::post('admin/cancelled-leave-requests', 'Admin\CancelledLeaveRequestsController@store');
 });

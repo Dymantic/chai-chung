@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Leave\LeaveRequest;
 use App\Time\Session;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -32,6 +33,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function scopeManagers($query)
+    {
+        return $query->where('is_manager', true);
+    }
+
     public function promote()
     {
         $this->is_manager = true;
@@ -59,5 +65,15 @@ class User extends Authenticatable
     {
 
         return $this->sessions()->create($session_data);
+    }
+
+    public function leaveRequests()
+    {
+        return $this->hasMany(LeaveRequest::class);
+    }
+
+    public function createLeaveRequest($input)
+    {
+        return $this->leaveRequests()->create($input);
     }
 }
