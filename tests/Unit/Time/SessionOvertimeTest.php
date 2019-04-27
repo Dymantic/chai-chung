@@ -20,7 +20,7 @@ class SessionOvertimeTest extends TestCase
      */
     public function overtime_for_after_hours()
     {
-        $session = $this->makeSession(Carbon::today(), "19:00", "20:00");
+        $session = $this->makeSession(Carbon::parse("last friday"), "19:00", "20:00");
         $this->assertEquals(60, $session->overtime());
     }
 
@@ -29,7 +29,7 @@ class SessionOvertimeTest extends TestCase
      */
     public function overtime_for_early_hours()
     {
-        $session = $this->makeSession(Carbon::today(), "05:00", "07:00");
+        $session = $this->makeSession(Carbon::parse("last friday"), "05:00", "07:00");
         $this->assertEquals(120, $session->overtime());
     }
 
@@ -38,10 +38,10 @@ class SessionOvertimeTest extends TestCase
      */
     public function overtime_for_overlapping_time()
     {
-        $early_session = $this->makeSession(Carbon::today(), "07:00", "10:00");
+        $early_session = $this->makeSession(Carbon::parse("last friday"), "07:00", "10:00");
         $this->assertEquals(120, $early_session->overtime());
 
-        $late_session = $this->makeSession(Carbon::today(), "17:00", "19:00");
+        $late_session = $this->makeSession(Carbon::parse("last friday"), "17:00", "19:00");
         $this->assertEquals(90, $late_session->overtime());
     }
 
@@ -81,7 +81,7 @@ class SessionOvertimeTest extends TestCase
      */
     public function no_overtime()
     {
-        $session = $this->makeSession(Carbon::today(), "14:00", "16:00");
+        $session = $this->makeSession(Carbon::parse("last friday"), "14:00", "16:00");
         $this->assertEquals(0, $session->overtime());
     }
 

@@ -91,6 +91,8 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('admin/manage-holidays', 'Admin\ManagerPagesController@holidays')->middleware('is_manager');
 
+    Route::get('admin/manage-staff-leave', 'Admin\ManagerPagesController@leave');
+
     Route::get('admin/holidays', 'Admin\HolidaysController@index')->middleware('is_manager');
     Route::get('admin/make-up-days', 'Admin\MakeUpDaysController@index')->middleware('is_manager');
     Route::post('admin/holidays', 'Admin\HolidaysController@store')->middleware('is_manager');
@@ -109,7 +111,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('admin/exports/reports/staff-time', 'Admin\StaffTimeExportController@show')->middleware('is_manager');
 
 
-    Route::post('admin/users/{user}/leave-requests', 'Admin\UserLeaveRequestsController@store');
+    Route::post('admin/leave-requests', 'Admin\UserLeaveRequestsController@store');
 
     Route::post('admin/leave-requests/{leaveRequest}', 'Admin\UserLeaveRequestsController@update');
 
@@ -118,4 +120,13 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('admin/accepted-leave-requests', 'Admin\AcceptedLeaveRequestsController@store')->middleware('is_manager');
     Route::post('admin/denied-leave-requests', 'Admin\DeniedLeaveRequestsController@store')->middleware('is_manager');
     Route::post('admin/cancelled-leave-requests', 'Admin\CancelledLeaveRequestsController@store');
+
+    Route::get('admin/leave', 'Admin\StaffLeaveController@index');
+    Route::get('admin/leave-requests', 'Admin\UserLeaveRequestsController@index');
+
+    Route::get('admin/covering-requests', 'Admin\CoveringRequestsController@index');
+
+    Route::get('admin/user-covering-requests', 'Admin\UserCoveringRequestsController@index');
+
+    Route::get('admin/staff-leave-requests', 'Admin\StaffLeaveRequestsController@index')->middleware('is_manager');
 });

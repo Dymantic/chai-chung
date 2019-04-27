@@ -35,4 +35,9 @@ class ManagerPagesController extends Controller
         $staff = User::all();
         return view('admin.all-sessions.index', ['clients' => $clients, 'staff' => $staff]);
     }
+
+    public function leave()
+    {
+        return view('admin.leave.manage.index');
+    }
 }

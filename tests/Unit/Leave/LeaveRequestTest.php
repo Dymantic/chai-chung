@@ -15,7 +15,7 @@ class LeaveRequestTest extends TestCase
     use RefreshDatabase;
 
     /**
-     *@test
+     * @test
      */
     public function a_leave_request_may_be_covered()
     {
@@ -29,7 +29,7 @@ class LeaveRequestTest extends TestCase
     }
 
     /**
-     *@test
+     * @test
      */
     public function cover_may_be_rejected()
     {
@@ -43,7 +43,7 @@ class LeaveRequestTest extends TestCase
     }
 
     /**
-     *@test
+     * @test
      */
     public function a_leave_request_may_be_accepted()
     {
@@ -60,7 +60,7 @@ class LeaveRequestTest extends TestCase
     }
 
     /**
-     *@test
+     * @test
      */
     public function a_leave_request_can_be_denied()
     {
@@ -77,7 +77,7 @@ class LeaveRequestTest extends TestCase
     }
 
     /**
-     *@test
+     * @test
      */
     public function update_covering_user()
     {
@@ -91,7 +91,7 @@ class LeaveRequestTest extends TestCase
     }
 
     /**
-     *@test
+     * @test
      */
     public function cancel_leave_request()
     {
@@ -105,7 +105,7 @@ class LeaveRequestTest extends TestCase
     }
 
     /**
-     *@test
+     * @test
      */
     public function presents_as_array()
     {
@@ -117,27 +117,33 @@ class LeaveRequestTest extends TestCase
         $ends = Carbon::parse('next monday')->setHour(17)->setMinutes(0);
 
         $leave_request = factory(LeaveRequest::class)->create([
-            'user_id' => $staff->id,
+            'user_id'          => $staff->id,
             'covering_user_id' => $covering->id,
-            'reason' => 'test reason',
-            'starts' => $starts,
-            'ends' => $ends,
-            'status' => LeaveRequest::ACCEPTED,
-            'decided_by' => $manager->id,
-            'decided_on' => Carbon::today()
+            'reason'           => 'test reason',
+            'starts'           => $starts,
+            'ends'             => $ends,
+            'status'           => LeaveRequest::ACCEPTED,
+            'decided_by'       => $manager->id,
+            'decided_on'       => Carbon::today()
         ]);
 
         $expected = [
-            'user_id' => $staff->id,
-            'requestee' => $staff->name,
+            'id'               => $leave_request->id,
+            'user_id'          => $staff->id,
+            'requestee'        => $staff->name,
             'covering_user_id' => $covering->id,
-            'covered_by' => $covering->name,
-            'starts' => $starts->format('Y-m-d (H:i)'),
-            'ends' => $ends->format('Y-m-d (H:i)'),
-            'reason' => 'test reason',
-            'status' => LeaveRequest::ACCEPTED,
-            'decider' => $manager->name,
-            'decided_on' => Carbon::today()->format('Y-m-d')
+            'covered_by'       => $covering->name,
+            'starts_date'      => $starts->format('Y-m-d'),
+            'starts_time'      => $starts->format('H:i'),
+            'starts_day'       => $starts->format('D'),
+            'ends_date'        => $ends->format('Y-m-d'),
+            'ends_time'        => $ends->format('H:i'),
+            'ends_day'         => $ends->format('D'),
+            'reason'           => 'test reason',
+            'status'           => LeaveRequest::ACCEPTED,
+            'decider'          => $manager->name,
+            'decided_on'       => Carbon::today()->format('Y-m-d'),
+            'has_past'         => false
         ];
 
         $this->assertEquals($expected, $leave_request->toArray());

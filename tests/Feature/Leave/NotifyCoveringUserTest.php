@@ -35,7 +35,7 @@ class NotifyCoveringUserTest extends TestCase
             'reason' => 'test reason'
         ];
 
-        $response = $this->actingAs($staffA)->postJson("/admin/users/{$staffA->id}/leave-requests", $leave_data);
+        $response = $this->actingAs($staffA)->postJson("/admin/leave-requests", $leave_data);
         $response->assertStatus(201);
 
         Notification::assertSentTo($staffB, RequestForCover::class, function($notification, $channels) use ($staffA) {

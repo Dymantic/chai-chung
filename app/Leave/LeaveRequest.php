@@ -20,9 +20,24 @@ class LeaveRequest extends Model
     protected $dates = ['starts', 'ends', 'decided_on'];
 
 
+    public function scopeUndecided($query)
+    {
+        return $query
+            ->where('status', static::COVERED)
+            ->where('starts', '>=', Carbon::now());
+    }
+
+
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public static function needsCoverBy(User $user)
+    {
+        return static::where('covering_user_id', $user->id)
+            ->where('status', static::SUBMITTED)
+            ->where('starts', '>=', Carbon::now());
     }
 
     public function covered_by()
@@ -79,16 +94,22 @@ class LeaveRequest extends Model
     public function toArray()
     {
         return [
-            'user_id' => $this->user->id,
-            'requestee' => $this->user->name,
+            'id'               => $this->id,
+            'user_id'          => $this->user->id,
+            'requestee'        => $this->user->name,
             'covering_user_id' => $this->covered_by->id,
-            'covered_by' => $this->covered_by->name,
-            'starts' => $this->starts->format('Y-m-d (H:i)'),
-            'ends' => $this->ends->format('Y-m-d (H:i)'),
-            'reason' => 'test reason',
-            'status' => $this->status,
-            'decider' => $this->decider ? $this->decider->name : '',
-            'decided_on' => $this->decided_on ? $this->decided_on->format('Y-m-d') : ''
+            'covered_by'       => $this->covered_by->name,
+            'starts_date'      => $this->starts->format('Y-m-d'),
+            'starts_time'      => $this->starts->format('H:i'),
+            'starts_day'       => $this->starts->format('D'),
+            'ends_date'        => $this->ends->format('Y-m-d'),
+            'ends_time'        => $this->ends->format('H:i'),
+            'ends_day'         => $this->ends->format('D'),
+            'reason'           => $this->reason,
+            'status'           => $this->status,
+            'decider'          => $this->decider ? $this->decider->name : '',
+            'decided_on'       => $this->decided_on ? $this->decided_on->format('Y-m-d') : '',
+            'has_past'         => $this->starts->isPast()
         ];
     }
 }

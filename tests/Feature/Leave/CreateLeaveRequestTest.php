@@ -30,7 +30,7 @@ class CreateLeaveRequestTest extends TestCase
             'reason'           => 'test reason'
         ];
 
-        $response = $this->actingAs($staffA)->postJson("/admin/users/{$staffA->id}/leave-requests", $leave_data);
+        $response = $this->actingAs($staffA)->postJson("/admin/leave-requests", $leave_data);
         $response->assertStatus(201);
 
         $this->assertDatabaseHas('leave_requests', [
@@ -171,7 +171,7 @@ class CreateLeaveRequestTest extends TestCase
             'reason'           => 'test reason'
         ];
 
-        $response = $this->actingAs($staffA)->postJson("/admin/users/{$staffA->id}/leave-requests",
+        $response = $this->actingAs($staffA)->postJson("/admin/leave-requests",
             array_merge($valid, $field));
         $response->assertStatus(422);
 

@@ -13,6 +13,13 @@ use Illuminate\Support\Carbon;
 
 class UserLeaveRequestsController extends Controller
 {
+
+    public function index()
+    {
+        return request()->user()->leaveRequests->map->toArray();
+    }
+
+
     public function store(UserLeaveRequestForm $form)
     {
         $leave_request = request()->user()->createLeaveRequest($form->parsedInput());
