@@ -39,9 +39,8 @@ class LeaveRequestCancelled extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->subject('Leave cancelled')
+            ->markdown('mail.leave.cancelled', ['request' => $this->leave_request_info]);
     }
 
     /**

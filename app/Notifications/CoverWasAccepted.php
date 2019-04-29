@@ -39,9 +39,8 @@ class CoverWasAccepted extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->subject('Cover accepted')
+            ->markdown('mail.leave.cover-accepted', ['request' => $this->leave_request_info]);
     }
 
     /**

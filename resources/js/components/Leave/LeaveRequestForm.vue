@@ -2,6 +2,7 @@
     <div>
         <form action="" @submit.prevent="submitRequest" class="p-8 w-full max-w-md">
             <p class="text-lg font-bold text-navy mb-8">Apply for Leave</p>
+            <p v-if="error_msg" class="mb-4 text-center py-2 border border-red text-red">{{ error_msg }}</p>
             <div>
                 <p class="font-bold text-navy">From:</p>
                 <div class="flex justify-between">
@@ -59,6 +60,7 @@
 
         data() {
             return {
+                error_msg: '',
                 form: {
                     start_date: new Date(),
                     start_time: "08:00",
@@ -73,6 +75,7 @@
 
         methods: {
             submitRequest() {
+                this.error_msg = '';
                 this.waiting = true;
                 axios.post("/admin/leave-requests", {
                     start_date: this.form.start_date.toISOString().slice(0,10),
@@ -82,7 +85,7 @@
                     covering_user_id: this.form.covering_user_id,
                     reason: this.form.reason
                 }).then(() => this.onSubmitted())
-                    .catch(() => this.onFailedToSubmit())
+                    .catch(({response}) => this.onFailedToSubmit(response.status, response.data))
                     .then(() => this.waiting = false);
             },
 
@@ -102,8 +105,10 @@
                 };
             },
 
-            onFailedToSubmit() {
-                console.log('boo');
+            onFailedToSubmit(status, {errors}) {
+                if(status === 422) {
+                    this.error_msg = 'There was a problem with your input, please check.';
+                }
             }
         }
 

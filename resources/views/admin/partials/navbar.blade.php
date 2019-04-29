@@ -1,9 +1,24 @@
 <div class="h-12 bg-navy flex justify-between items-center px-4">
-    <a href="/admin/dashboard" class="font-black text-orange no-underline">ChiaChung CPA</a>
+    <div class="flex items-center">
+        <a href="/admin/dashboard" class="font-black text-orange no-underline">ChiaChung CPA</a>
+        <a href="/admin/dashboard" class="text-white no-underline hover:text-orange mx-4">Time</a>
+        <dropdown-menu v-cloak
+                       name="Leave"
+                       class="text-white h-12 flex items-center mx-4">
+            <div slot="dropdown_content"
+                 class="pt-3">
+                <a href="/admin/leave"
+                   class="text-grey-darker no-underline hover:text-orange-light pb-3 block">My Leave</a>
+                <a href="/admin/covering-requests"
+                   class="text-grey-darker no-underline hover:text-orange-light">Covering</a>
+            </div>
+        </dropdown-menu>
+    </div>
+
     <div class="flex items-center justify-end text-orange">
         @if(auth()->user()->is_manager)
             <dropdown-menu v-cloak
-                           name="Time"
+                           name="Staff Time"
                            class="text-white h-12 flex items-center mr-4">
                 <div slot="dropdown_content"
                      class="pt-3">

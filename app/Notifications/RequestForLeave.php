@@ -38,9 +38,8 @@ class RequestForLeave extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->subject('Request for leave')
+            ->markdown('mail.leave.request-for-leave', ['request' => $this->leave_request_info]);
     }
 
     /**

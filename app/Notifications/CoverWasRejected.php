@@ -39,9 +39,8 @@ class CoverWasRejected extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->subject('Cover rejected')
+            ->markdown('mail.leave.cover-rejected', ['request' => $this->leave_request_info]);
     }
 
     /**

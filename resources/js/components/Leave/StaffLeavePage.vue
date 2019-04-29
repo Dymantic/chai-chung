@@ -94,6 +94,7 @@
             requestAdded() {
                 this.showLeaveRequestForm = false;
                 notify.success({message: 'Your application has been submitted'});
+                this.refreshList();
             }
         }
     }
