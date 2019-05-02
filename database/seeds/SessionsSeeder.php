@@ -210,9 +210,6 @@ class SessionsSeeder extends Seeder
             'end_time' => \Carbon\Carbon::today()->subDays(1)->setHour(16)->setMinutes(0),
         ]);
 
-        \App\Time\Session::all()->each(function($s) {
-            $s->overtime_minutes = $s->overtime();
-            $s->save();
-    });
+
     }
 }

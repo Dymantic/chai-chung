@@ -114,8 +114,6 @@ class OverwriteOvertimeTest extends TestCase
             'on_make_up_day' => $on_make_up_day
         ]);
 
-        $session->overtime_minutes = $session->overtime();
-        $session->save();
 
         return $session;
 

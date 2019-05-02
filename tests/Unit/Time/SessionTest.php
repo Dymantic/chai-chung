@@ -4,6 +4,7 @@ namespace Test\Unit\Time;
 
 use App\Clients\Client;
 use App\Clients\EngagementCode;
+use App\Time\Session;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
@@ -41,5 +42,33 @@ class SessionTest extends TestCase
         $this->assertTrue($session->engagement_code->is($engagement_code));
         $this->assertEquals('test description', $session->description);
         $this->assertEquals('test notes', $session->notes);
+    }
+
+    /**
+     *@test
+     */
+    public function a_session_can_set_the_overtime()
+    {
+        $user = factory(User::class)->create();
+        $client = factory(Client::class)->create();
+        $engagement_code = factory(EngagementCode::class)->create();
+
+        $session = Session::forceCreate([
+            'user_id' => $user->id,
+            'start_time' => Carbon::parse('last friday')->setHour(10)->setMinutes(30),
+            'end_time' => Carbon::parse('last friday')->setHour(12)->setMinutes(30),
+            'on_holiday' => true,
+            'service_period' => Carbon::today()->year,
+            'client_id' => $client->id,
+            'engagement_code_id' => $engagement_code->id,
+            'description' => 'test description',
+            'notes' => 'test notes',
+        ]);
+
+        $session->setOvertime();
+
+        $this->assertEquals(120, $session->fresh()->overtime_minutes);
+
+
     }
 }

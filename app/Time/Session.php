@@ -4,6 +4,7 @@ namespace App\Time;
 
 use App\Clients\Client;
 use App\Clients\EngagementCode;
+use App\Events\SessionCreated;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -26,6 +27,10 @@ class Session extends Model
     ];
 
     protected $dates = ['start_time', 'end_time'];
+
+    protected $dispatchesEvents = [
+        'created' => SessionCreated::class,
+    ];
 
     public static function matching($query)
     {
@@ -156,6 +161,12 @@ class Session extends Model
     private function endedAfterDayEnd($day_end)
     {
         return $this->start_time->lessThanOrEqualTo($day_end) && $this->end_time->greaterThanOrEqualTo($day_end);
+    }
+
+    public function setOvertime()
+    {
+        $this->overtime_minutes = $this->overtime();
+        $this->save();
     }
 
     public function client()

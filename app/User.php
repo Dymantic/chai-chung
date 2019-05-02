@@ -65,8 +65,6 @@ class User extends Authenticatable
     {
 
         $session =  $this->sessions()->create($session_data);
-        $session->overtime_minutes = $session->overtime();
-        $session->save();
 
         return $session;
     }

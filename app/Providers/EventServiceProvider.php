@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\SessionCreated;
 use App\Listeners\SessionUpdated;
+use App\Listeners\SetOvertimeMinutes;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -18,6 +20,9 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+        SessionCreated::class => [
+            SetOvertimeMinutes::class,
         ],
 
 
