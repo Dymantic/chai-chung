@@ -79,6 +79,7 @@ class Session extends Model
         $sessions = static::matching($date_range);
 
         return [
+            'date_range' => $date_range['from']->format('Y-m-d') . ' - ' . $date_range['to']->format('Y-m-d'),
             'rows' => $sessions->groupBy($group)
                                ->map(function ($sessions, $id) use ($get_name) {
                                    $summary = new SessionSummary($sessions);
@@ -110,8 +111,8 @@ class Session extends Model
         $day_start = Carbon::parse($this->start_time)->setHour(9)->setMinutes(0);
         $day_end = Carbon::parse($this->start_time)->setHour(17)->setMinutes(30);
 
-        if (!is_null($this->manual_overtime)) {
-            return $this->manual_overtime;
+        if (!is_null($this->overtime_set_by)) {
+            return $this->overtime_minutes;
         }
 
         if ($this->on_holiday) {

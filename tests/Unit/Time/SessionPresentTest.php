@@ -35,7 +35,7 @@ class SessionPresentTest extends TestCase
         ]);
 
         $session->overtime_set_by = $manager->id;
-        $session->manual_overtime = 120;
+        $session->overtime_minutes = 120;
         $session->manual_overtime_reason = 'test overtime reason';
         $session->save();
         $session = $session->fresh();

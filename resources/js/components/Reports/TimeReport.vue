@@ -25,16 +25,12 @@
             <table class="w-full">
                 <thead>
                     <tr>
-                        <th class="text-left">Name</th>
-                        <th class="text-right">Time (hrs)</th>
-                        <th class="text-right">Overtime (hrs)</th>
+                        <th v-for="heading in headings" class="text-left">{{ heading }}</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="row in rows" :key="row.id" class="hover:bg-grey-lighter">
-                        <td class="py-1">{{ row.name }}</td>
-                        <td class="text-right">{{ row.time / 60 }}</td>
-                        <td class="text-right">{{ row.overtime / 60 }}</td>
+                        <td v-for="value in row" class="py-1">{{ value }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -51,7 +47,7 @@
             DatePicker
         },
 
-        props: ['fetch-url'],
+        props: ['fetch-url', 'export-url'],
 
         data() {
             return {
@@ -81,6 +77,7 @@
                     axios.get(`${this.fetchUrl}?${this.date_query}`)
                         .then(({data}) => {
                             this.rows = data.rows;
+                            this.headings = data.headings;
                             resolve();
                         })
                         .catch(() => reject({message: 'Failed to fetch report'}));
@@ -92,7 +89,7 @@
             },
 
             exportReport() {
-                window.location = `/admin/exports/reports/staff-time?${this.date_query}`;
+                window.location = `${this.exportUrl}?${this.date_query}`;
             }
         }
     }

@@ -3,6 +3,7 @@
 namespace Tests\Feature\Sessions;
 
 use App\Clients\EngagementCode;
+use App\Time\Holiday;
 use App\User;
 use App\Clients\Client;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -23,11 +24,16 @@ class CreateSessionTest extends TestCase
         $user = factory(User::class)->create();
         $client = factory(Client::class)->create();
         $engagement_code = factory(EngagementCode::class)->create();
+        Holiday::setDates([
+            'start' => Carbon::parse('last friday'),
+            'end' => Carbon::parse('last friday'),
+            'name' => 'test holiday'
+        ]);
 
         $session_data = [
-            'session_date' => Carbon::today()->format('Y-m-d'),
-            'start_time' => Carbon::now()->subHours(3)->hour . ":30",
-            'end_time' => Carbon::now()->subHours(1)->hour . ":30",
+            'session_date' => Carbon::parse('last friday')->format('Y-m-d'),
+            'start_time' => "10:30",
+            'end_time' => "12:30",
             'service_period' => Carbon::today()->year,
             'client_id' => $client->id,
             'engagement_code_id' => $engagement_code->id,
@@ -40,15 +46,16 @@ class CreateSessionTest extends TestCase
 
         $this->assertDatabaseHas('time_sessions', [
             'user_id' => $user->id,
-            'start_time' => Carbon::now()->subHours(3)->startOfHour()->addMinutes(30),
-            'end_time' => Carbon::now()->subHours(1)->startOfHour()->addMinutes(30),
+            'start_time' => Carbon::parse('last friday')->setHour(10)->startOfHour()->setMinutes(30),
+            'end_time' => Carbon::parse('last friday')->setHour(12)->startOfHour()->setMinutes(30),
             'service_period' => Carbon::today()->year,
             'client_id' => $client->id,
             'engagement_code_id' => $engagement_code->id,
             'description' => 'test description',
             'notes' => 'test notes',
-            'on_holiday' => false,
-            'on_make_up_day' => false
+            'on_holiday' => true,
+            'on_make_up_day' => false,
+            'overtime_minutes' => 120
         ]);
     }
 

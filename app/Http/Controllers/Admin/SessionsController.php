@@ -24,12 +24,7 @@ class SessionsController extends Controller
             ->presentFor($user);
 
 
-//        return $user
-//            ->sessions()
-//            ->with(['client', 'engagement_code', 'user'])
-//            ->get()
-//            ->map
-//            ->presentFor($user);
+
     }
 
     public function store(CreateSessionForm $form)

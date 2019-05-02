@@ -34,7 +34,7 @@ class OverwriteOvertimeTest extends TestCase
 
         $this->assertDatabaseHas('time_sessions', [
             'id'                     => $session->id,
-            'manual_overtime'        => 0,
+            'overtime_minutes'        => 0,
             'overtime_set_by'        => $manager->id,
             'manual_overtime_reason' => 'test reason'
         ]);
@@ -59,7 +59,7 @@ class OverwriteOvertimeTest extends TestCase
 
         $this->assertDatabaseHas('time_sessions', [
             'id'                     => $session->id,
-            'manual_overtime'        => null,
+            'overtime_minutes'        => 120,
             'overtime_set_by'        => null,
             'manual_overtime_reason' => null
         ]);
@@ -107,12 +107,18 @@ class OverwriteOvertimeTest extends TestCase
         $end_hours = intval(substr($to, 0, 2));
         $end_mins = intval(substr($to, 3, 2));
 
-        return factory(Session::class)->create([
+        $session =  factory(Session::class)->create([
             'start_time'     => Carbon::parse($date)->setHours($start_hours)->setMinutes($start_mins),
             'end_time'       => Carbon::parse($date)->setHours($end_hours)->setMinutes($end_mins),
             'on_holiday'     => $on_holiday,
             'on_make_up_day' => $on_make_up_day
         ]);
+
+        $session->overtime_minutes = $session->overtime();
+        $session->save();
+
+        return $session;
+
     }
 
     private function assertFieldInvalid($field)

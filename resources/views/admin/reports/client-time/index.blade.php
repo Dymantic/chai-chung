@@ -7,5 +7,7 @@
 
         </div>
     </div>
-    <time-report fetch-url="/admin/reports/client-time"></time-report>
+    <time-report export-url="/admin/exports/reports/client-time"
+                 fetch-url="/admin/reports/client-time"
+    ></time-report>
 @endsection

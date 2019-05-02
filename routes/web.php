@@ -109,6 +109,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('admin/reports/engagement-time', 'Admin\EngagementTimeReportController@show')->middleware('is_manager');
 
     Route::get('admin/exports/reports/staff-time', 'Admin\StaffTimeExportController@show')->middleware('is_manager');
+    Route::get('admin/exports/reports/client-time', 'Admin\ClientTimeExportController@show')->middleware('is_manager');
+    Route::get('admin/exports/reports/engagement-time', 'Admin\EngagementTimeExportController@show')->middleware('is_manager');
 
 
     Route::post('admin/leave-requests', 'Admin\UserLeaveRequestsController@store');

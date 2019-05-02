@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Reports\EngagementTimeReport;
+use App\Time\DateRange;
 use App\Time\Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,12 +13,12 @@ class EngagementTimeReportController extends Controller
 {
     public function show()
     {
-        $from = Carbon::parse(request('from'));
-        $to = Carbon::parse(request('to'));
+        $date_range = new DateRange(Carbon::parse(request('from')), Carbon::parse(request('to')));
+        $report = new EngagementTimeReport($date_range);
 
-        return Session::engagementTimeReport([
-            'from' => $from,
-            'to' => $to
-        ]);
+        return [
+            'headings' => $report->headings(),
+            'rows' => $report->rows()
+        ];
     }
 }

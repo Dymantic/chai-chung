@@ -16,7 +16,7 @@ class SessionOvertimeController extends Controller
         ]);
 
         $session->overtime_set_by = request()->user()->id;
-        $session->manual_overtime = request('minutes');
+        $session->overtime_minutes = request('minutes');
         $session->manual_overtime_reason = request('reason');
         $session->save();
     }

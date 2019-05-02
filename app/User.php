@@ -64,7 +64,11 @@ class User extends Authenticatable
     public function addSession($session_data)
     {
 
-        return $this->sessions()->create($session_data);
+        $session =  $this->sessions()->create($session_data);
+        $session->overtime_minutes = $session->overtime();
+        $session->save();
+
+        return $session;
     }
 
     public function leaveRequests()
