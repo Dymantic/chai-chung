@@ -28,6 +28,7 @@
                        class="text-grey-darker no-underline hover:text-orange-light">Holidays</a>
                 </div>
             </dropdown-menu>
+            <a href="/admin/manage-staff-leave" class="text-white no-underline hover:text-orange mr-4">Staff Leave</a>
             <dropdown-menu v-cloak
                            name="Reports"
                            class="text-white h-12 flex items-center mr-4">

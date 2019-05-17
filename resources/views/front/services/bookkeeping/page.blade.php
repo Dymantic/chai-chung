@@ -1,0 +1,27 @@
+@extends('front.base', ['bodyClasses' => "pt-12 service-page bookkeeping"])
+
+@section('content')
+    <section class="top-banner"></section>
+
+    <section class="reg-section-space">
+        <div class="max-w-lg mx-auto">
+            <h1 class="h1 text-orange mb-12">{{ trans('service_bookkeeping.page_title') }}</h1>
+            <p class="mb-8 max-w-md">{{ trans('service_bookkeeping.service_intro') }}</p>
+            <p class="max-w-md">{{ trans('service_bookkeeping.service_list_intro') }}</p>
+            <ul class="max-w-md mb-8">
+                @foreach(trans('service_bookkeeping.services_list') as $service)
+                    <li>{{ $service }}</li>
+                @endforeach
+            </ul>
+            <p>{{ trans('service_bookkeeping.service_range_intro') }}</p>
+        </div>
+
+    </section>
+
+    <section class="reg-section-space flex flex-col items-center">
+        <a href="{{ localUrl('/contact') }}"
+           class="btn btn-orange">{!! trans('service_bookkeeping.links.contact') !!}</a>
+        <a href="{{ localUrl('/services') }}"
+           class="text-link text-navy mt-12">{!! trans('service_bookkeeping.links.back') !!}</a>
+    </section>
+@endsection

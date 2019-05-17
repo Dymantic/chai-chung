@@ -1,17 +1,22 @@
 <?php
 
 return [
-    'service' => 'bookkeeping',
-    'title' => 'Bookkeeping',
-    'paragraphs' => [
-        'Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
-        'Maecenas sed diam eget risus varius blandit sit amet non magna. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
-        'Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'
-    ],
+    'page_title' => 'Bookkeeping',
 
-    'logos' => [
-        'header' => 'Our clients include:',
-        'intro' => 'We have had the pleasure of working with these fine people.'
+    'service_range_intro' => 'We provide services for a wide range of industries, such as franchising chains, manufacturing, retail, hospitality, construction, investment companies, education, foreign conglomerates, and charitable organizations.',
+
+    'service_intro' => 'Our experienced and knowledgeable specialists can develop tax strategies that take advantage of income tax laws and legislation.',
+    
+    'service_list_intro' => 'Our services include:',
+    
+    'services_list' => [
+        'Profit-seeking enterprise income tax declaration',
+        'Employment tax reports and returns',
+        'Filing Profit-seeking enterprise provisional income tax returns',
+        'Filing a timely financial report to meet our clients’ needs',
+        'Filing financial statement in Chinese and English',
+        'Corporate income tax return filing',
+        'Consultation on the combination of financial and tax accounts',
     ],
 
     'links' => [

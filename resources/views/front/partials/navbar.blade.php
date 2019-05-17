@@ -20,9 +20,9 @@
                         @include('svgs.icons.bookkeeping_icon', ['classes' => 'w-6 mr-6'])
                         <span>Bookkeeping</span>
                     </a>
-                    <a class="no-underline flex items-center px-4 py-8 text-white hover:text-orange-light border-b border-pale-baby-blue" href="/en/services/business-registration">
+                    <a class="no-underline flex items-center px-4 py-8 text-white hover:text-orange-light border-b border-pale-baby-blue" href="/en/services/business-assistance">
                         @include('svgs.icons.biz_reg_icon', ['classes' => 'w-6 mr-6'])
-                        <span>Business Registration</span>
+                        <span>Business Assistance</span>
                     </a>
                     <a class="no-underline flex items-center px-4 py-8 text-white hover:text-orange-light" href="/en/services/tax">
                         @include('svgs.icons.tax_icon', ['classes' => 'w-6 mr-6'])

@@ -21,7 +21,18 @@ Route::group([
     Route::view('services', 'front.services.index');
     Route::view('contact', 'front.contact.page');
 
+    Route::get('services/audits', 'ServicePagesController@audits');
+    Route::get('services/bookkeeping', 'ServicePagesController@bookkeeping');
+    Route::get('services/tax', 'ServicePagesController@tax');
+    Route::get('services/business-assistance', 'ServicePagesController@businessAssistance');
     Route::get('services/{service}', 'ServicesController@show');
+    
+    Route::get('business-planning', 'BusinessAssistancePagesController@planning');
+    Route::get('business-formation', 'BusinessAssistancePagesController@formation');
+    Route::get('succession-planning', 'BusinessAssistancePagesController@succession');
+    Route::get('foreign-investment-in-taiwan', 'BusinessAssistancePagesController@foreign');
+
+
 
 
 });

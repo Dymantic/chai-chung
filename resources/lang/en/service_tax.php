@@ -1,17 +1,21 @@
 <?php
 
 return [
-    'service' => 'tax',
-    'title' => 'Tax',
-    'paragraphs' => [
-        'Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
-        'Maecenas sed diam eget risus varius blandit sit amet non magna. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
-        'Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'
-    ],
+    'page_title' => 'Tax Services',
 
-    'logos' => [
-        'header' => 'Our clients include:',
-        'intro' => 'We have had the pleasure of working with these fine people.'
+    'intro' => "It's been a consideration for business owners to find out a balance between benefits and risks of taxation. Our experienced staff can develop tax strategies which take advantage of income tax laws and legislation.",
+
+
+    'services_list_intro' => 'Our services include:',
+
+    'services_list' => [
+        'Consultation on business income tax',
+        'Transfer pricing services',
+        'Individual income tax/ overseas income tax',
+        'Filing of Individual Estate/ Gift Tax Return',
+        'Family income tax advisory services',
+        'Tax agents of overseas employment collective account ',
+        'Administrative Remedies',
     ],
 
     'links' => [
