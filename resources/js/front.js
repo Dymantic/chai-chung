@@ -8,6 +8,7 @@ window.Vue = require('vue');
 
 import ContactForm from "./components/ContactForm";
 import Usher from "./components/Usher";
+import NightLights from "./components/NightLights";
 
 Vue.component('contact-form', ContactForm);
 
@@ -35,3 +36,22 @@ window.addEventListener('scroll', throttle(() => {
 
 
 const usher = new Usher();
+
+window.addEventListener('load', () => {
+   if(document.querySelector('svg.skyline')) {
+       const nightLights = new NightLights();
+       nightLights.twinkle();
+   }
+
+    document.querySelector('.nav-trigger').addEventListener('click', () => {
+        const nav = document.querySelector('.main-nav');
+        if(nav.classList.contains('show-subnav')) {
+            return nav.classList.remove('show-subnav');
+        }
+        return nav.classList.add('show-subnav');
+    })
+});
+
+
+
+

@@ -1,8 +1,8 @@
 <div class="max-w-md mx-auto bg-grey-lightest p-8 shadow-lg my-20 body-text-sm">
-    <div class="flex mb-12" data-usher>
-        <img src="/images/profiles/bob.jpg" class="w-32 h-32"
+    <div class="flex flex-col md:flex-row items-center md:items-start mb-12" data-usher>
+        <img src="/images/profiles/bob.jpg" class="w-32 h-32 mb-8 md:mb-0"
              alt="{{ $member['name'] }}">
-        <div class="pl-12 flex flex-col justify-center">
+        <div class="md:pl-12 flex flex-col justify-center">
             <p>
                 <span class="text-lg font-bold text-navy">{{ $member['name'] }}</span>
                 <span class="text-lg font-bold text-orange">({{ $member['title'] }})</span>

@@ -3,7 +3,7 @@
 @section('content')
     <section class="reg-section-space">
         <div class="max-w-lg mx-auto">
-            <h1 class="h1 text-orange mb-12">{{ trans('br_planning.page_title') }}</h1>
+            <h1 class="biz-ass-title number-1 h1 text-orange mb-12">{{ trans('br_planning.page_title') }}</h1>
             <p>{{ trans('br_planning.intro') }}</p>
             <h2 class="h2 my-12 text-navy">{{ trans('br_planning.questions.intro') }}</h2>
             @foreach(trans('br_planning.questions.list') as $question)

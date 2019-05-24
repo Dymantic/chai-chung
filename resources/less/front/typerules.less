@@ -1,5 +1,9 @@
 .banner-text {
   @apply .font-sans .text-banner .font-black;
+
+  @media screen and (max-width: 576px) {
+    @apply .text-4xl;
+  }
 }
 
 .banner-text:lang(zh) {
@@ -8,6 +12,10 @@
 
 .h1 {
 @apply .font-sans .text-5xl .font-black .leading-tight;
+
+  @media screen and (max-width: 576px) {
+    @apply .text-4xl;
+  }
 }
 
 .h2 {

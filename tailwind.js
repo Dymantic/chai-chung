@@ -48,6 +48,7 @@ let colors = {
 
     'navy-opq': 'rgba(33,42,49,.8)',
     'baby-blue-opq': 'rgba(231,240,237,.9)',
+    'orange-opaque': 'rgba(249, 168, 107,.9)',
 
     'navy': '#212a31',
     'navy-light': '#435869',
@@ -522,6 +523,7 @@ module.exports = {
         '4/5': '80%',
         '1/6': '16.66667%',
         '5/6': '83.33333%',
+        'lg': '50rem',
         'full': '100%',
         'screen': '100vw',
     },
@@ -559,6 +561,7 @@ module.exports = {
         '20': '5rem',
         '24': '6rem',
         '32': '8rem',
+        '40': '10rem',
         '48': '12rem',
         '64': '16rem',
         '80': '20rem',
@@ -637,6 +640,7 @@ module.exports = {
         '3xl': '80rem',
         '4xl': '90rem',
         '5xl': '100rem',
+        '90': '90%',
         'full': '100%',
     },
 

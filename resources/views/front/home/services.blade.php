@@ -1,26 +1,26 @@
 <section class="services reg-section-space">
     <div class="flex flex-col sm:flex-row justify-center">
-        <div data-usher class="bg-baby-blue-opq w-80 h-80 mx-auto sm:mx-4 my-4 max-w-full p-8 flex flex-col justify-between">
-            @include('svgs.icons.audit_circle', ['classes' => 'h-16'])
-            <p class="h3 text-center">{{ trans('home.services.audits.title') }}</p>
-            <p class="body-text-sm">{{ trans('home.services.audits.description') }}</p>
-        </div>
-        <div data-usher class="bg-baby-blue-opq w-80 h-80 mx-auto sm:mx-4 my-4 max-w-full p-8 flex flex-col justify-between">
-            @include('svgs.icons.bookkeeping_circle', ['classes' => 'h-16'])
-            <p class="h3 text-center">{{ trans('home.services.bookkeeping.title') }}</p>
-            <p class="body-text-sm">{{ trans('home.services.bookkeeping.description') }}</p>
-        </div>
+        @include('front.home.service-link-card', [
+            'url' => '/services/audits',
+            'icon' => 'svgs.icons.audit_circle',
+            'title' => trans('home.services.audits.title')
+        ])
+        @include('front.home.service-link-card', [
+            'url' => '/services/bookkeeping',
+            'icon' => 'svgs.icons.bookkeeping_circle',
+            'title' => trans('home.services.bookkeeping.title')
+        ])
     </div>
     <div class="flex flex-col sm:flex-row justify-center">
-        <div data-usher class="bg-baby-blue-opq w-80 h-80 mx-auto sm:mx-4 my-4 max-w-full p-8 flex flex-col justify-between">
-            @include('svgs.icons.tax_circle', ['classes' => 'h-16'])
-            <p class="h3 text-center">{{ trans('home.services.tax.title') }}</p>
-            <p class="body-text-sm">{{ trans('home.services.tax.description') }}</p>
-        </div>
-        <div data-usher class="bg-baby-blue-opq w-80 h-80 mx-auto sm:mx-4 my-4 max-w-full p-8 flex flex-col justify-between">
-            @include('svgs.icons.biz_reg_circle', ['classes' => 'h-16'])
-            <p class="h3 text-center">{{ trans('home.services.business_registration.title') }}</p>
-            <p class="body-text-sm">{{ trans('home.services.business_registration.description') }}</p>
-        </div>
+        @include('front.home.service-link-card', [
+            'url' => '/services/tax',
+            'icon' => 'svgs.icons.tax_circle',
+            'title' => trans('home.services.tax.title')
+        ])
+        @include('front.home.service-link-card', [
+            'url' => '/services/business-assistance',
+            'icon' => 'svgs.icons.biz_reg_circle',
+            'title' => trans('home.services.business_registration.title')
+        ])
     </div>
 </section>

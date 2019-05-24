@@ -6,7 +6,7 @@
             @include('svgs.icons.logo_eng')
         @endif
     </div>
-    <div class="max-w-xl mx-auto flex justify-between">
+    <div class="max-w-xl mx-auto flex flex-col md:flex-row justify-between">
         <div class="flex flex-col items-center">
             <a class="text-mid-grey no-underline" href="">{{ trans('footer.nav.audits') }}</a>
             <a class="text-mid-grey no-underline" href="">{{ trans('footer.nav.bookkeeping') }}</a>
@@ -14,7 +14,7 @@
             <a class="text-mid-grey no-underline" href="">{{ trans('footer.nav.business_registration') }}</a>
             <a class="text-mid-grey no-underline" href="">{{ trans('footer.nav.careers') }}</a>
         </div>
-        <div class="flex flex-col items-start">
+        <div class="flex flex-col items-center md:items-start my-12 md:my-0">
             <p class="text-mid-grey">{{ trans('footer.contact_info.phone') }}</p>
             <p class="text-mid-grey">{{ trans('footer.contact_info.fax') }}</p>
             <p class="text-mid-grey">{{ trans('footer.contact_info.email') }}</p>

@@ -1,9 +1,33 @@
-//.home-banner {
-//  background-image: url(../../../images/banners/home.jpg);
-//  background-size: cover;
-//}
+
+
+.home-banner {
+  @media screen and (max-width: 850px) {
+      background-image: url(../../../images/banners/home.jpg);
+      background-size: cover;
+  }
+}
 
 .home .services {
   background-image: url(../../../images/banners/homepage_services_section.jpg);
   background-size: cover;
+}
+
+svg.skyline {
+  margin-bottom: -.5rem;
+  //fill: blue;
+
+  #Windows rect {
+    transition: .5s;
+    @apply .fill-current;
+  }
+
+  #Windows circle {
+  @apply .fill-current;
+  }
+
+  #Windows rect.on {
+    fill: #fff;
+  }
+
+
 }

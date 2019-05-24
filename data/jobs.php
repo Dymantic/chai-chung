@@ -63,7 +63,7 @@ return [
     ],
     [
         'en' => [
-            'title' => 'Bookkeeping/Auditing Assistant',
+            'title' => 'Bookkeeping / Auditing Assistant',
 
             'fields' => [
                 [
