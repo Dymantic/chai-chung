@@ -2,7 +2,7 @@
 
 return [
     'banner'   => [
-        'content' => '專業服務 拓展您的事業版圖'
+        'content' => '專業服務 拓展您的事業版圖.'
     ],
     'about'    => [
         'heading' => '歡迎您',

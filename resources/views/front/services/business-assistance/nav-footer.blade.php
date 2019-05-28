@@ -2,7 +2,7 @@
 <div class="flex flex-col items-center my-12">
 
     <a href="{{ localUrl('/services/business-assistance') }}"
-       class="text-link text-navy mb-12"
+       class="text-link text-navy hover:text-orange-light mb-12"
     >
         {!! trans('service_business_assistance.links.back_assistance') !!}
     </a>

@@ -4,10 +4,9 @@
     <section class="reg-section-space">
         <div class="max-w-md mx-auto">
             <h2 class="h1 text-orange">{{ trans('contact.intro.heading') }}</h2>
+            <p class="mt-8 mb-20">{{ trans('contact.intro.content') }}</p>
+            <contact-form :trans='@json(trans("contact.form"))'></contact-form>
         </div>
-    </section>
-    <section class="reg-section-space">
-        <contact-form :trans='@json(trans("contact.form"))'></contact-form>
     </section>
     <section class="reg-section-space">
         <div class="max-w-md mx-auto">

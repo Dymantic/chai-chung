@@ -3,31 +3,31 @@
     $without = $without ?? '';
     @endphp
 
-    @if($without !== 'planning')
-    <a href="{{ localUrl("/business-planning") }}"
-       class="block flex justify-center items-center text-center p-4 w-32 h-32 bg-grey-lighter shadow-lg mx-4 rounded hover:bg-orange-light no-underline text-navy font-bold">
-        {{ trans('service_business_assistance.subnav.planning') }}
-    </a>
-    @endif
+    @include('front.services.business-assistance.subnav-item', [
+        'isLink' => $without !== 'planning',
+        'address' => localUrl("/business-planning"),
+        'text' => trans('service_business_assistance.subnav.planning'),
+        'number' => 1,
+    ])
 
-    @if($without !== 'formation')
-    <a href="{{ localUrl("/business-formation") }}"
-       class="block flex justify-center items-center text-center p-4 w-32 h-32 bg-grey-lighter shadow-lg mx-4 rounded hover:bg-orange-light no-underline text-navy font-bold">
-        {{ trans('service_business_assistance.subnav.formation') }}
-    </a>
-    @endif
+    @include('front.services.business-assistance.subnav-item', [
+        'isLink' => $without !== 'formation',
+        'address' => localUrl("/business-formation"),
+        'text' => trans('service_business_assistance.subnav.formation'),
+        'number' => 2,
+    ])
 
-    @if($without !== 'succession')
-    <a href="{{ localUrl("/succession-planning") }}"
-       class="block flex justify-center items-center text-center p-4 w-32 h-32 bg-grey-lighter shadow-lg mx-4 rounded hover:bg-orange-light no-underline text-navy font-bold">
-        {{ trans('service_business_assistance.subnav.succession') }}
-    </a>
-    @endif
+    @include('front.services.business-assistance.subnav-item', [
+        'isLink' => $without !== 'succession',
+        'address' => localUrl("/business-succession"),
+        'text' => trans('service_business_assistance.subnav.succession'),
+        'number' => 3,
+    ])
 
-    @if($without !== 'foreign')
-    <a href="{{ localUrl("/foreign-investment-in-taiwan") }}"
-       class="block flex justify-center items-center text-center p-4 w-32 h-32 bg-grey-lighter shadow-lg mx-4 rounded hover:bg-orange-light no-underline text-navy font-bold">
-        {{ trans('service_business_assistance.subnav.foreign') }}
-    </a>
-    @endif
+    @include('front.services.business-assistance.subnav-item', [
+        'isLink' => $without !== 'foreign',
+        'address' => localUrl("/business-foreign"),
+        'text' => trans('service_business_assistance.subnav.foreign'),
+        'number' => 4,
+    ])
 </div>

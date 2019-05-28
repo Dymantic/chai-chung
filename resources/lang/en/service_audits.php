@@ -45,9 +45,6 @@ return [
     ],
 
 
-    'links' => [
-        'contact' => 'Contact us &#155;',
-        'back' => '&#139; Back to services'
-    ]
+
 
 ];

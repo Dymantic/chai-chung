@@ -13,22 +13,23 @@
                     {{ trans('navbar.services') }}</a>
                 <div class="service-nav-outer pt-3 absolute w-80 pt-8">
                     <div class="bg-navy flex flex-col relative bg-navy shadow px-4">
-                        <a class="no-underline flex items-center px-4 py-8 text-white hover:text-orange-light border-b border-pale-baby-blue" href="/en/services/audits">
+                        <a class="no-underline flex items-center px-4 py-8 text-white hover:text-orange-light border-b border-pale-baby-blue" href="{{ localUrl('/services/audits') }}">
                             @include('svgs.icons.audits_icon', ['classes' => 'w-6 mr-6'])
-                            <span>Audits</span>
+                            <span>{{ trans('navbar.audits') }}</span>
                         </a>
-                        <a class="no-underline flex items-center px-4 py-8 text-white hover:text-orange-light border-b border-pale-baby-blue" href="/en/services/bookkeeping">
+                        <a class="no-underline flex items-center px-4 py-8 text-white hover:text-orange-light border-b border-pale-baby-blue" href="{{ localUrl('/services/bookkeeping') }}">
                             @include('svgs.icons.bookkeeping_icon', ['classes' => 'w-6 mr-6'])
-                            <span>Bookkeeping</span>
+                            <span>{{ trans('navbar.bookkeeping') }}</span>
                         </a>
-                        <a class="no-underline flex items-center px-4 py-8 text-white hover:text-orange-light border-b border-pale-baby-blue" href="/en/services/business-assistance">
-                            @include('svgs.icons.biz_reg_icon', ['classes' => 'w-6 mr-6'])
-                            <span>Business Assistance</span>
-                        </a>
-                        <a class="no-underline flex items-center px-4 py-8 text-white hover:text-orange-light" href="/en/services/tax">
+                        <a class="no-underline flex items-center px-4 py-8 text-white hover:text-orange-light border-b border-pale-baby-blue" href="{{ localUrl('/services/tax') }}">
                             @include('svgs.icons.tax_icon', ['classes' => 'w-6 mr-6'])
-                            <span>Tax</span>
+                            <span>{{ trans('navbar.tax') }}</span>
                         </a>
+                        <a class="no-underline flex items-center px-4 py-8 text-white hover:text-orange-light" href="{{ localUrl('/services/business-assistance') }}">
+                            @include('svgs.icons.biz_reg_icon', ['classes' => 'w-6 mr-6'])
+                            <span>{{ trans('navbar.business_assistance') }}</span>
+                        </a>
+
                     </div>
                 </div>
             </div>

@@ -19,9 +19,6 @@ return [
         'Consultation on the combination of financial and tax accounts',
     ],
 
-    'links' => [
-        'contact' => 'Contact us &#155;',
-        'back' => '&#139; Back to services'
-    ]
+
 
 ];

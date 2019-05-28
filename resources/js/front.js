@@ -5,6 +5,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import jump from "jump.js"
 
 import ContactForm from "./components/ContactForm";
 import Usher from "./components/Usher";
@@ -38,10 +39,10 @@ window.addEventListener('scroll', throttle(() => {
 const usher = new Usher();
 
 window.addEventListener('load', () => {
-   if(document.querySelector('svg.skyline')) {
-       const nightLights = new NightLights();
-       nightLights.twinkle();
-   }
+   // if(document.querySelector('svg.skyline')) {
+   //     const nightLights = new NightLights();
+   //     nightLights.twinkle();
+   // }
 
     document.querySelector('.nav-trigger').addEventListener('click', () => {
         const nav = document.querySelector('.main-nav');
@@ -49,6 +50,15 @@ window.addEventListener('load', () => {
             return nav.classList.remove('show-subnav');
         }
         return nav.classList.add('show-subnav');
+    });
+
+    document.querySelectorAll('[data-jump]').forEach(link => {
+        link.addEventListener('click', () => {
+            const target = link.getAttribute('data-jump-target') || 'body';
+            const offset = link.getAttribute('data-jump-offset') || 0;
+
+            jump(target, {offset});
+        });
     })
 });
 

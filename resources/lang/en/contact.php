@@ -2,7 +2,8 @@
 
 return [
     'intro' => [
-        'heading' => 'Contact Us'
+        'heading' => 'Contact Us',
+        'content' => 'Please let us know about your business situation and we would be happy to get in touch and let you know how we can help you.',
     ],
 
     'location' => [

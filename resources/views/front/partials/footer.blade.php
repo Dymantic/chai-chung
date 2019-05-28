@@ -8,11 +8,11 @@
     </div>
     <div class="max-w-xl mx-auto flex flex-col md:flex-row justify-between">
         <div class="flex flex-col items-center">
-            <a class="text-mid-grey no-underline" href="">{{ trans('footer.nav.audits') }}</a>
-            <a class="text-mid-grey no-underline" href="">{{ trans('footer.nav.bookkeeping') }}</a>
-            <a class="text-mid-grey no-underline" href="">{{ trans('footer.nav.tax') }}</a>
-            <a class="text-mid-grey no-underline" href="">{{ trans('footer.nav.business_registration') }}</a>
-            <a class="text-mid-grey no-underline" href="">{{ trans('footer.nav.careers') }}</a>
+            <a class="text-mid-grey hover:text-orange-light no-underline" href="{{ localUrl('/services/audits') }}">{{ trans('footer.nav.audits') }}</a>
+            <a class="text-mid-grey hover:text-orange-light no-underline" href="{{ localUrl('/services/bookkeeping') }}">{{ trans('footer.nav.bookkeeping') }}</a>
+            <a class="text-mid-grey hover:text-orange-light no-underline" href="{{ localUrl('/services/tax') }}">{{ trans('footer.nav.tax') }}</a>
+            <a class="text-mid-grey hover:text-orange-light no-underline" href="{{ localUrl('/services/business-assistance') }}">{{ trans('footer.nav.business_registration') }}</a>
+            <a class="text-mid-grey hover:text-orange-light no-underline" href="{{ localUrl('/about#carreers') }}">{{ trans('footer.nav.careers') }}</a>
         </div>
         <div class="flex flex-col items-center md:items-start my-12 md:my-0">
             <p class="text-mid-grey">{{ trans('footer.contact_info.phone') }}</p>
@@ -24,12 +24,11 @@
     </div>
     <div>
         <div class="text-white text-center flex justify-center">
-            <a href="" class="flex items-center flex-col no-underline">
+            <a href="#" data-jump class="flex items-center flex-col no-underline text-mid-grey hover:text-orange-light">
                 @include('svgs.icons.top_arrow', ['classes' => 'h-3 mb-2'])
-                <p class="h3 text-mid-grey">Top</p>
+                <p class="h3">Top</p>
             </a>
-
         </div>
     </div>
-    <p class="text-sm text-mid-grey text-center mt-8 pb-2">@Copyright {{ \Illuminate\Support\Carbon::now()->year }}. Beautifully built by <a href="" class="text-mid-grey no-underline">Dymantic Design</a></p>
+    <p class="text-sm text-mid-grey text-center mt-8 pb-2">&copy; {{ \Illuminate\Support\Carbon::now()->year }}. Beautifully built by <a href="" class="text-mid-grey no-underline">Dymantic Design</a></p>
 </footer>

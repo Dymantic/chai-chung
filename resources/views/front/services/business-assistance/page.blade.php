@@ -30,10 +30,5 @@
         </div>
 
     </section>
-    <section class="reg-section-space flex flex-col items-center">
-        <a href="{{ localUrl('/contact') }}"
-           class="btn btn-orange">{!! trans('service_business_assistance.links.contact') !!}</a>
-        <a href="{{ localUrl('/services') }}"
-           class="text-link text-navy mt-12">{!! trans('service_business_assistance.links.back') !!}</a>
-    </section>
+    @include('front.services.service-end-nav')
 @endsection

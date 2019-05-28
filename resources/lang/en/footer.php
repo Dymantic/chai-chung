@@ -5,7 +5,7 @@ return [
         'audits' => 'Audits',
         'bookkeeping' => 'Bookkeeping',
         'tax' => 'Tax',
-        'business_registration' => 'Business Reg.',
+        'business_registration' => 'Business Assistance',
         'careers' => 'Careers',
     ],
 

@@ -25,7 +25,7 @@ Route::group([
     Route::get('services/bookkeeping', 'ServicePagesController@bookkeeping');
     Route::get('services/tax', 'ServicePagesController@tax');
     Route::get('services/business-assistance', 'ServicePagesController@businessAssistance');
-    Route::get('services/{service}', 'ServicesController@show');
+
     
     Route::get('business-planning', 'BusinessAssistancePagesController@planning');
     Route::get('business-formation', 'BusinessAssistancePagesController@formation');

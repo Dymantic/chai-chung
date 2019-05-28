@@ -2,7 +2,7 @@
 
 return [
     'banner'   => [
-        'content' => 'Professional accounting services to move your business forward'
+        'content' => 'Professional accounting services to move your business forward.'
     ],
     'about'    => [
         'heading' => 'Nice to meet you.',
@@ -26,7 +26,7 @@ return [
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis debitis explicabo id illo illum omnis praesentium.'
         ],
         'business_registration' => [
-            'title'       => 'Business Registration',
+            'title'       => 'Business Assistance',
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis debitis explicabo id illo illum omnis praesentium.'
         ]
     ],

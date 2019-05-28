@@ -27,10 +27,17 @@ return [
     ],
     
     'business_registration' => [
-        'heading' => 'Business Registration',
+        'heading' => 'Business Assistance',
         'description' => 'New business formation seems easy but it matters when there is a conflict between management power and control. Also you need to determine taxing/licensing filings. Our experts can help you avoid the pitfalls and make your business successful.',
-        'link' => 'More about Business Reg. &#155;'
+        'link' => 'More about Business Assistance. &#155;'
     ],
+
+    'end-nav' => [
+        'links' => [
+            'contact' => 'Contact us &#155;',
+            'back' => '&#139; Back to services'
+        ]
+    ]
 
 
 

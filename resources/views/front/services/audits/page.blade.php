@@ -39,7 +39,7 @@
             </div>
 
             <div class="my-20">
-                <p class="text-orange mb-4">{{ trans('service_audits.tax_compliance.advantages.heading') }}</p>
+                <p class="h2 text-orange mb-4">{{ trans('service_audits.tax_compliance.advantages.heading') }}</p>
                 <ol class="body-text-sm pl-4 max-w-md">
                     <li class="mb-2">{{ trans('service_audits.tax_compliance.advantages.one') }}</li>
                     <li class="mb-2">{{ trans('service_audits.tax_compliance.advantages.two') }}</li>
@@ -49,20 +49,15 @@
 
         </div>
 
+        <div class="max-w-lg mx-auto">
+            <h2 class="h3 text-navy mb-8">{{ trans('service_audits.other_auditing_services.heading') }}</h2>
+            <ul>
+                <li>{{ trans('service_audits.other_auditing_services.mutual_agreements') }}</li>
+                <li>{{ trans('service_audits.other_auditing_services.government_grants') }}</li>
+                <li>{{ trans('service_audits.other_auditing_services.special_purpose') }}</li>
+            </ul>
+        </div>
     </section>
 
-{{--    <section class="reg-section-space">--}}
-{{--        <h2 class="h2">{{ trans('service_audits.other_auditing_services.heading') }}</h2>--}}
-{{--        <ul>--}}
-{{--            <li>{{ trans('service_audits.other_auditing_services.mutual_agreements') }}</li>--}}
-{{--            <li>{{ trans('service_audits.other_auditing_services.government_grants') }}</li>--}}
-{{--            <li>{{ trans('service_audits.other_auditing_services.special_purpose') }}</li>--}}
-{{--        </ul>--}}
-{{--    </section>--}}
-    <section class="reg-section-space flex flex-col items-center">
-        <a href="{{ localUrl('/contact') }}"
-           class="btn btn-orange">{!! trans('service_audits.links.contact') !!}</a>
-        <a href="{{ localUrl('/services') }}"
-           class="text-link text-navy mt-12">{!! trans('service_audits.links.back') !!}</a>
-    </section>
+    @include('front.services.service-end-nav')
 @endsection

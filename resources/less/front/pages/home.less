@@ -16,18 +16,27 @@ svg.skyline {
   margin-bottom: -.5rem;
   //fill: blue;
 
-  #Windows rect {
-    transition: .5s;
-    @apply .fill-current;
+  #Windows rect, #Windows path {
+    animation-name: twinkle;
+    animation-direction: alternate;
+    animation-duration: 10s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
   }
 
-  #Windows circle {
-  @apply .fill-current;
-  }
+  //#Windows circle {
+  //@apply .fill-current;
+  //}
+  //
+  //#Windows rect.on {
+  //  fill: #fff;
+  //}
 
-  #Windows rect.on {
-    fill: #fff;
-  }
 
+}
 
+@keyframes twinkle {
+  from {fill: #fff;}
+  to {fill: #f37121;}
 }
