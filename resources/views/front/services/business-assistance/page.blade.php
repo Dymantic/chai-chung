@@ -15,9 +15,10 @@
                     @endforeach
                 </ul>
             </div>
-            @include('front.services.business-assistance.subnav')
+
         </div>
     </section>
+    @include('front.services.business-assistance.subnav')
     <section class="reg-section-space">
         <div class="max-w-lg mx-auto">
             <h2 class="h2 mb-12 text-navy">{{ trans('service_business_assistance.advantages_of_taiwan.intro') }}</h2>
