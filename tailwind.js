@@ -52,6 +52,7 @@ let colors = {
 
     'navy': '#212a31',
     'navy-light': '#435869',
+    'bright-blue': '#4773b7',
 
     'pale-baby-blue': '#e7f0ed',
     'pale-baby-blue-light': '#f7f8f9',
@@ -791,7 +792,7 @@ module.exports = {
     */
 
     shadows: {
-        default: '5px 5px 5px 1px rgba(0,0,0,0.10)',
+        default: '5px 5px 10px 2px rgba(0,0,0,0.10)',
         'md': '0 4px 8px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.08)',
         'lg': '0 15px 30px 0 rgba(0,0,0,0.11), 0 5px 15px 0 rgba(0,0,0,0.08)',
         'inner': 'inset 0 2px 4px 0 rgba(0,0,0,0.06)',

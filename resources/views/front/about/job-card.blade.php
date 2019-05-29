@@ -1,5 +1,5 @@
-<div class="max-w-md px-4 md:px-8 py-8 mx-auto md:shadow-lg md:bg-grey-lighter my-20" data-usher>
-    <p class="h2 text-orange mb-12">{{ $job['title'] }}</p>
+<div class="max-w-md px-4 md:px-8 py-8 mx-auto md:shadow md:bg-grey-lighter my-20" data-usher>
+    <p class="h2 text-navy mb-12">{{ $job['title'] }}</p>
     @foreach($job['fields'] as $info)
     <p class="mb-1">
         <span class="font-bold text-orange">{{ $info['heading'] }}:</span>

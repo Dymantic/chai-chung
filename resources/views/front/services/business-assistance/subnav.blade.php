@@ -19,7 +19,7 @@
 
     @include('front.services.business-assistance.subnav-item', [
         'isLink' => $without !== 'succession',
-        'address' => localUrl("/business-succession"),
+        'address' => localUrl("/succession-planning"),
         'text' => trans('service_business_assistance.subnav.succession'),
         'number' => 3,
     ])
