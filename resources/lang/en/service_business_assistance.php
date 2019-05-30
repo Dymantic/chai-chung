@@ -39,8 +39,8 @@ return [
 
 
     'links' => [
-        'contact'         => 'Contact us &#155;',
-        'back_assistance' => '&#139; Back to Business Assistance'
+        'contact'         => 'Contact us',
+        'back_assistance' => 'Back to Business Assistance'
     ]
 
 

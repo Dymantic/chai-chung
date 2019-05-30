@@ -33,6 +33,6 @@ return [
     'contact' => [
         'heading' => 'Ready to put your business in safe hands?',
         'content' => 'If you’re ready to start getting expert accounting services you can trust then get in touch with us, and we can help you gain financial security.',
-        'link' => 'Get in touch &#155;'
+        'link' => 'Get in touch'
     ]
 ];

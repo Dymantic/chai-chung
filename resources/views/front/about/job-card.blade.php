@@ -7,6 +7,7 @@
     </p>
     @endforeach
     <div class="text-center mt-8">
-        <a href="/contact" class="text-link text-navy hover:text-bright-blue">{!! trans('about.careers.apply_link') !!}</a>
+        <a href="/contact" class="text-link text-navy hover:text-bright-blue">
+        @include('front.partials.rarr-span', ['text' => trans('about.careers.apply_link')])</a>
     </div>
 </div>

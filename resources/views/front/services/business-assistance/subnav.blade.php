@@ -26,7 +26,7 @@
 
     @include('front.services.business-assistance.subnav-item', [
         'isLink' => $without !== 'foreign',
-        'address' => localUrl("/business-foreign"),
+        'address' => localUrl("/foreign-investment-in-taiwan"),
         'text' => trans('service_business_assistance.subnav.foreign'),
         'number' => 4,
     ])

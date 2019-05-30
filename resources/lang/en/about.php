@@ -149,6 +149,6 @@ return [
 
     'careers' => [
         'heading' => 'Career Opportunities',
-        'apply_link' => 'Apply for this job &#155;'
+        'apply_link' => 'Apply for this job'
     ]
 ];

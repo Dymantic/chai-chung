@@ -4,12 +4,12 @@
     <a href="{{ localUrl('/services/business-assistance') }}"
        class="text-link text-navy hover:text-bright-blue mb-12"
     >
-        {!! trans('service_business_assistance.links.back_assistance') !!}
+        @include('front.partials.larr-span', ['text' => trans('service_business_assistance.links.back_assistance')])
     </a>
 
     <a href="{{ localUrl('/contact') }}"
        class="btn btn-orange"
     >
-        {!! trans('service_business_assistance.links.contact') !!}
+        @include('front.partials.rarr-span', ['text' => trans('service_business_assistance.links.contact')])
     </a>
 </div>
