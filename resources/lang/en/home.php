@@ -6,13 +6,13 @@ return [
     ],
     'about'    => [
         'heading' => 'Nice to meet you.',
-        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis debitis explicabo id illo illum omnis praesentium, recusandae reiciendis voluptatibus voluptatum. Aperiam debitis dolores inventore, minus neque nostrum rerum sed voluptate?',
-        'link'    => 'More about us &#155;'
+        'content' => 'Located in Taichung, Taiwan, Chai-Chung integrates our professionalism with customized services to help our clients achieve more goals. Due to our wide variety of customers, we dedicate ourselves to adopting innovative approaches to assist our clients in reaching success.',
+        'link'    => 'More about us'
     ],
     'services' => [
         'heading'             => 'Accounting services you really need.',
-        'content'             => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis debitis explicabo id illo illum omnis praesentium, recusandae reiciendis voluptatibus voluptatum. Aperiam debitis dolores inventore, minus neque nostrum rerum sed voluptate?',
-        'link'                => 'View all services &#155;',
+        'content'             => 'There’s no need to look elsewhere. We are committed  to providing comprehensive accounting services and tax planning  advice as well as customized solutions.',
+        'link'                => 'View all services',
         'audits'              => [
             'title'       => 'Audits',
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis debitis explicabo id illo illum omnis praesentium.'
@@ -32,7 +32,7 @@ return [
     ],
     'contact' => [
         'heading' => 'Ready to put your business in safe hands?',
-        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis debitis explicabo id illo illum omnis praesentium, recusandae reiciendis voluptatibus voluptatum.',
+        'content' => 'If you’re ready to start getting expert accounting services you can trust then get in touch with us, and we can help you gain financial security.',
         'link' => 'Get in touch &#155;'
     ]
 ];

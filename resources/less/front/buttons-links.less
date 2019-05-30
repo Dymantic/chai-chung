@@ -14,3 +14,20 @@
   @apply .bg-bright-blue .text-white;
 }
 
+.rarr {
+  position: relative;
+  .rarr-arrow {
+    display: inline-block;
+    margin-left: 0.25rem;
+    transition: .3s;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.rarr:hover {
+
+  .rarr-arrow {
+    transform: translate3d(5px, 0,0);
+  }
+}
+

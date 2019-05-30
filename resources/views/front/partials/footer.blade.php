@@ -30,5 +30,5 @@
             </a>
         </div>
     </div>
-    <p class="text-sm text-mid-grey text-center mt-8 pb-2">&copy; {{ \Illuminate\Support\Carbon::now()->year }}. Beautifully built by <a href="" class="text-mid-grey no-underline">Dymantic Design</a></p>
+    <p class="text-sm text-mid-grey text-center mt-8 pb-2">&copy; {{ \Illuminate\Support\Carbon::now()->year }}. Beautifully built by <a href="" class="text-mid-grey hover:text-orange no-underline">Dymantic Design</a></p>
 </footer>
