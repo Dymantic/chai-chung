@@ -5,7 +5,7 @@
 
     <section class="reg-section-space">
         <div class="max-w-lg mx-auto">
-            <div class="my-20">
+            <div class="mb-20">
                 <h1 class="h1 text-orange mb-12">{{ trans('service_audits.page_title') }}</h1>
                 <h2 class="h3 text-navy mb-2">1. {{ trans('service_audits.audits_and_assurance.heading') }}</h2>
                 <ul class="mb-8">

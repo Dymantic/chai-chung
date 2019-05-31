@@ -1,4 +1,4 @@
-<div class="flex flex-col md:flex-row justify-around mt-20 max-w-md mx-auto">
+<div class="flex flex-col md:flex-row justify-around mt-12 max-w-md mx-auto">
     @php
     $without = $without ?? '';
     @endphp

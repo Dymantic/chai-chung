@@ -31,7 +31,7 @@
     @yield('head')
 </head>
 
-<body class="body-text leading-relaxed {{ $bodyClasses ?? '' }}">
+<body class="body-text leading-relaxed {{ $bodyClasses ?? '' }} text-navy">
 <!--[if lte IE 9]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 <![endif]-->

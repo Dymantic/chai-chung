@@ -3,7 +3,7 @@
 @section('content')
     <section class="top-banner"></section>
 
-    <section class="reg-section-space">
+    <section class="reg-section-space tight-bottom">
         <div class="max-w-lg mx-auto">
             <h1 class="h1 text-orange mb-12">{{ trans('service_business_assistance.page_title') }}</h1>
             <div class="max-w-lg mx-auto">

@@ -66,6 +66,10 @@
     & > * {
       @apply .py-4;
     }
+
+    & > .services-link {
+      @apply .py-0;
+    }
   }
 
   .main-nav.show-subnav .subnav {
@@ -78,29 +82,35 @@
 
   .subnav .service-nav-outer {
 
-      display: block;
-      position: static;
       transform: none;
-      visibility: visible;
-      opacity: 1;
-      padding-bottom: 1rem;
-      padding-top: 3rem;
+    @apply .block .static .visible .opacity-100 .px-0 .pt-0 .w-full;
 
       & > div {
-        @apply .shadow-none;
+        @apply .shadow-none .px-0 .w-full;
+
       }
 
 
 
 
     a {
-      color: white;
-      border-bottom: none;
-      padding: .25rem 0;
+      @apply .text-white .py-4;
     }
 
     svg {
-      display: none;
+      @apply .w-4;
+    }
+  }
+
+  .subnav > a {
+    @apply .border-b .w-full;
+  }
+
+  .services-link {
+    @apply .border-b .w-full .py-0;
+
+    & > a {
+      @apply .border-b .pb-4 .w-full .inline-block;
     }
   }
 }

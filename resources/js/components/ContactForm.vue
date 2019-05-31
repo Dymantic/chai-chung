@@ -63,7 +63,7 @@
 
                 <button :disabled="waiting"
                         type="submit"
-                        class="btn-type-1 hover:text-bright-blue text-center block mx-auto">
+                        class="btn-type-1 hover:text-bright-blue text-center block mx-auto py-4">
                     <span v-if="!waiting" v-html="trans.submit"></span>
                     <span v-else>{{ trans.waiting }}</span>
                 </button>
