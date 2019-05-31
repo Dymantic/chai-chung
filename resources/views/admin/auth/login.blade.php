@@ -5,7 +5,7 @@
         <form action="/admin/login"
               method="POST"
               class="max-w-sm shadow w-screen">
-            <p class="text-orange bg-navy py-3 text-center text-xl">Hi there! Please login.</p>
+            <p class="text-orange bg-navy py-3 text-center text-xl">登入</p>
             <div class="px-8 pt-8">
                 {!! csrf_field() !!}
                 <div>
@@ -19,7 +19,7 @@
                 </div>
                 <div class="mt-8">
                     <label class="font-bold text-grey-darkest"
-                           for="password">Password:</label>
+                           for="password">密碼:</label>
                     <input type="password"
                            name="password"
                            id="password"
@@ -27,12 +27,12 @@
                 </div>
                 <div class="mt-8">
                     <button type="submit"
-                            class="bg-navy hover:bg-navy-light rounded text-orange tracking-wide uppercase font-black w-full py-3">Login
+                            class="bg-navy hover:bg-navy-light rounded text-orange tracking-wide uppercase font-black w-full py-3">登入
                     </button>
                 </div>
             </div>
             <p class="my-4 text-grey-dark text-center">
-                <a href="/admin/password/forgot" class="text-grey-dark hover:text-orange no-underline">I forgot my password</a>
+                <a href="/admin/password/forgot" class="text-grey-dark hover:text-orange no-underline">忘記密碼</a>
             </p>
 
         </form>

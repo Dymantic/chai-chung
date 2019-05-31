@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="px-8 max-w-xl mb-20 mt-4 mx-auto items-center flex justify-between">
-            <p class="font-black text-5xl">Users</p>
+            <p class="font-black text-5xl">工作同仁</p>
             <div class="flex justify-end">
-                <button @click="showNewUserForm = true" class="btn btn-orange">New User</button>
+                <button @click="showNewUserForm = true" class="btn btn-orange">新增員工</button>
                 <modal :show="showNewUserForm"
                        @close="showNewUserForm = false">
                     <new-user-form @cancel="showNewUserForm = false" @user-created="userAdded"></new-user-form>
@@ -12,14 +12,14 @@
         </div>
 
         <div class="max-w-lg mx-auto my-20">
-            <h3 class="px-4 mb-4">Managers</h3>
+            <h3 class="px-4 mb-4">管理者</h3>
             <user-index-card v-for="manager in managers"
                  :key="manager.id" :user="manager">
             </user-index-card>
         </div>
 
         <div class="max-w-lg mx-auto my-20">
-            <h3 class="px-4 mb-4">Staff</h3>
+            <h3 class="px-4 mb-4">員工</h3>
             <user-index-card v-for="staff in staffs"
                              :key="staff.id" :user="staff">
             </user-index-card>

@@ -1,7 +1,7 @@
 <template>
     <div class="w-screen max-w-sm mx-auto">
         <div class="border-t-2 border-orange">
-            <p class="bg-navy text-white py-2 text-center text-xl font-bold">Enter time and work details</p>
+            <p class="bg-navy text-white py-2 text-center text-xl font-bold">時間紀錄及工作細節</p>
             <div class="flex justify-center items-center my-4">
                 <div @click="step = 1"
                      :class="{'border-orange': step >= 1, 'border-grey': step < 1}"
@@ -22,7 +22,7 @@
                  :class="{'inactive': step !== 1}">
                 <div class="my-6">
                     <label for="session_date"
-                           class="font-bold text-navy block mb-2">Session date</label>
+                           class="font-bold text-navy block mb-2">日期</label>
                     <div tabindex="0"
                          ref="first_input">
                         <date-picker v-model="session.date"
@@ -32,14 +32,14 @@
                 <div class="flex justify-between items-center my-8">
                     <div class="">
                         <label class="font-bold text-navy block mb-2"
-                               for="">Start time</label>
+                               for="">開始時間</label>
                         <div>
                             <time-input v-model="session.start_time"></time-input>
                         </div>
                     </div>
                     <div class="">
                         <label class="font-bold text-navy block mb-2"
-                               for="">End time</label>
+                               for="">結束時間</label>
                         <div>
                             <time-input v-model="session.end_time"></time-input>
                         </div>
@@ -47,7 +47,7 @@
                 </div>
                 <div>
                     <label class="font-bold text-navy block mb-2"
-                           for="client">Client</label>
+                           for="client">客戶</label>
                     <select name="client_id"
                             class="block w-full p-2 h-8 bg-white border rounded-none"
                             id="client"
@@ -61,7 +61,7 @@
                 </div>
                 <div class="my-8">
                     <label class="font-bold text-navy block mb-2"
-                           for="enagement_code">Engagement Code:</label>
+                           for="enagement_code">工作事項</label>
                     <select name="engagement_code"
                             class="block w-full p-2 h-8 bg-white border rounded-none"
                             id="engagement_code"
@@ -75,7 +75,7 @@
                 </div>
                 <div class="my-8">
                     <label class="font-bold text-navy block mb-2"
-                           for="enagement_code">Service Period:</label>
+                           for="enagement_code">服務期間</label>
                     <select name="engagement_code"
                             class="block w-full p-2 h-8 bg-white border rounded-none"
                             id="service_period"
@@ -91,7 +91,7 @@
 
             <div class="stage"
                  :class="{'inactive': step !== 2}">
-                <p class="font-bold text-navy block mb-2">Summary</p>
+                <p class="font-bold text-navy block mb-2">總結</p>
                 <div class="flex justify-between mb-8">
                     <div>
                         <p>{{ summary_date }}</p>
@@ -106,7 +106,7 @@
                 </div>
                 <div>
                     <label class="font-bold text-navy block mb-2"
-                           for="description">Description:</label>
+                           for="description">說明</label>
                     <textarea name="description"
                               id="description"
                               class="block w-full h-24 border"
@@ -116,7 +116,7 @@
                 </div>
                 <div class="my-8">
                     <label class="font-bold text-navy block mb-2"
-                           for="notes">Notes:</label>
+                           for="notes">備註</label>
                     <textarea name="notes"
                               id="notes"
                               v-model="session.notes"
@@ -127,12 +127,10 @@
             <div class="stage"
                  :class="{'inactive': step !== 3}">
                 <div class="flex flex-col items center text-center">
-                    <p class="font-navy text xl font-bold">There is a problem!</p>
-                    <p class="my-8 leading-normal">There was a problem with some of your input. Please sure tou have
-                                                   filled out eveything correctly, and that your start and end times are
-                                                   correct.</p>
+                    <p class="font-navy text xl font-bold">有錯誤喔！</p>
+                    <p class="my-8 leading-normal">請檢查資料是否正確，務必再次確認所有相關細節。</p>
                     <button class="btn btn-orange my-8"
-                            @click="step = 1">Okay
+                            @click="step = 1">回上一頁
                     </button>
                 </div>
             </div>
@@ -140,19 +138,19 @@
         <div class="p-4 flex justify-center items-center">
             <button @click="close"
                     v-if="step === 1"
-                    class="btn btn-white mx-4">Cancel
+                    class="btn btn-white mx-4">取消
             </button>
             <button @click="step = 1"
                     v-if="step === 2"
-                    class="btn btn-white mx-4">Back
+                    class="btn btn-white mx-4">回上一頁
             </button>
             <button @click="step = 2"
                     v-if="step === 1"
-                    class="btn btn-orange mx-4">Next
+                    class="btn btn-orange mx-4">下一頁
             </button>
             <button @click="submitSession"
                     v-if="step === 2"
-                    class="btn btn-orange mx-4">Submit
+                    class="btn btn-orange mx-4">確認提交
             </button>
         </div>
     </div>
@@ -259,7 +257,7 @@
                 this.resetSession();
                 this.$emit('close');
                 this.$emit('session-created');
-                notify.success({message: 'Your session has been logged'});
+                notify.success({message: '您的紀錄已新增儲存'});
             },
             resetSession() {
                 this.session = {
@@ -277,7 +275,7 @@
                     return;
                 }
                 this.$emit('close');
-                notify.error({message: 'There was a problem saving your work session. Please refresh and try again'});
+                notify.error({message: '出錯了！無法順利儲存您的資料。'});
             }
         }
     }

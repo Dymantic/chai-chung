@@ -4,7 +4,7 @@
             <p class="text-5xl font-black">{{ name }}</p>
             <div class="flex justify-end items-center">
                 <button @click="showUserForm = true"
-                        class="btn btn-orange">Edit
+                        class="btn btn-orange">編輯
                 </button>
                 <modal :show="showUserForm"
                        @close="showUserForm = false">
@@ -24,7 +24,7 @@
             </div>
             <div class="flex items-center text-navy my-4">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="16" class="fill-current"><path d="M12 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm9 11a1 1 0 0 1-2 0v-2a3 3 0 0 0-3-3H8a3 3 0 0 0-3 3v2a1 1 0 0 1-2 0v-2a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v2z"/></svg>
-                <span class="pl-4 text-xl align-middle">{{ user.is_manager ? 'Manager' : 'Regular staff' }}</span>
+                <span class="pl-4 text-xl align-middle">{{ user.is_manager ? '管理者' : '一般員工' }}</span>
             </div>
         </div>
     </div>

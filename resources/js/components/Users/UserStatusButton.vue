@@ -1,7 +1,7 @@
 <template>
     <div class="relative" :class="{'is-manager': is_manager}">
         <div class="flex items-center main-bg p-2 rounded">
-            <span class="font-bold">Status: </span>
+            <span class="font-bold">職稱: </span>
             <span class="px-4 w-24 text-center block">{{ status }}</span>
             <button class="p-1 ml-2 border-l border-grey pl-2" :class="{'text-white': is_manager}"
                     @click="showStatusPanel = !showStatusPanel">
@@ -18,21 +18,20 @@
              :class="{'show': showStatusPanel}">
             <div v-if="is_manager"
                  class="flex flex-col items-end">
-                <p>You can demote this user to become a regular staff member, without any extra admin privileges on the
-                   site</p>
+                <p>更改職務為一般職員</p>
                 <button @click="demote"
                         class="mt-4 p-2 text-xs bg-navy text-white font-bold rounded" :class="{'opacity-50': waiting}">
-                    <span v-if="!waiting">Demote</span>
-                    <span v-else>Waiting</span>
+                    <span v-if="!waiting">確認</span>
+                    <span v-else>請等候</span>
                 </button>
             </div>
             <div v-if="!is_manager"
                  class="flex flex-col items-end">
-                <p>You can promote this user to become a manager, with extra admin privileges on the site</p>
+                <p>員工升遷為管理職務</p>
                 <button @click="promote"
                         class="mt-4 p-2 text-xs bg-navy text-white font-bold rounded"  :class="{'opacity-50': waiting}">
-                    <span v-if="!waiting">Promote</span>
-                    <span v-else>Waiting</span>
+                    <span v-if="!waiting">確認</span>
+                    <span v-else>請等候</span>
                 </button>
             </div>
         </div>
@@ -54,7 +53,7 @@
 
         computed: {
             status() {
-                return this.is_manager ? 'Manager' : 'Staff';
+                return this.is_manager ? '管理者' : '職員';
             },
 
             iconTransform() {
@@ -96,6 +95,8 @@
         transform-origin: top;
         transform: rotateX(90deg);
         transition: .3s;
+        width: 100%;
+        padding-top: 1rem;
     }
 
     .change-status.show {
