@@ -39,7 +39,7 @@ class LeaveRequestDenied extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Leave denied')
+            ->subject('請假沒有批准')
             ->markdown('mail.leave.denied', ['request' => $this->leave_request_info]);
     }
 

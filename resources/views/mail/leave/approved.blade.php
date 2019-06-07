@@ -1,16 +1,14 @@
 @component('mail::message')
-# Leave approved
+# 請假申請已批准
 
-Hi {{ $request['requestee']  }}
+{{ $request['requestee']  }}您好，
 
-{{ $request['decider']  }} has approved your request to take time off from {{ $request['starts_date'] }} ({{ $request['starts_day'] }} - {{ $request['starts_time'] }}) to {{ $request['ends_date'] }} ({{ $request['ends_day'] }} - {{ $request['ends_time'] }}).
+{{ $request['decider']  }}已批准您申請從{{ $request['starts_date'] }} ({{ $request['starts_day'] }} - {{ $request['starts_time'] }})到{{ $request['ends_date'] }} ({{ $request['ends_day'] }} - {{ $request['ends_time'] }})的請假事宜。
 
-Many thanks.
+謝謝，祝順心。
 
 @component('mail::button', ['url' => url('/admin/leave')])
-    See request
+看請假申請
 @endcomponent
 
-Thanks,<br>
-{{ config('app.name') }}
 @endcomponent

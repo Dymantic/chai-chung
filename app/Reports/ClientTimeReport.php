@@ -25,10 +25,10 @@ class ClientTimeReport implements SimpleReport
 
     public function headings() {
         return [
-            'code',
-            'client',
-            'total time (hours)',
-            'overtime (hours)'
+            '代號',
+            '客戶姓名',
+            '總時數(小時)',
+            '加班總時數(小時)'
         ];
     }
 
@@ -51,7 +51,7 @@ class ClientTimeReport implements SimpleReport
     }
 
     public function title() {
-        return 'Client Time Report';
+        return '客戶時間紀錄整理報告';
     }
 
     public function slug()

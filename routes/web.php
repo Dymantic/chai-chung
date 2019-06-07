@@ -82,6 +82,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('admin/clients/{client}', 'Admin\ClientsController@update')->middleware('is_manager');
     Route::delete('admin/clients/{client}', 'Admin\ClientsController@delete')->middleware('is_manager');
 
+    Route::get('admin/clients/{client}/sessions', 'Admin\ClientSessionsController@index')->middleware('is_manager');
+
     Route::get('/admin/engagement-codes', 'Admin\EngagementCodesController@index');
     Route::get('/admin/engagement-codes/{engagementCode}', 'Admin\EngagementCodesController@show')->middleware('is_manager');
     Route::post('/admin/engagement-codes', 'Admin\EngagementCodesController@store')->middleware('is_manager');
@@ -142,4 +144,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('admin/user-covering-requests', 'Admin\UserCoveringRequestsController@index');
 
     Route::get('admin/staff-leave-requests', 'Admin\StaffLeaveRequestsController@index')->middleware('is_manager');
+
+    Route::get('admin/upcoming-leave', 'Admin\UpcomingLeaveController@index')->middleware('is_manager');
 });

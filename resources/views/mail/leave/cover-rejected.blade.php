@@ -1,18 +1,16 @@
 @component('mail::message')
-# Cover rejected
+# 代班請求已被拒絕
 
-Hi {{ $request['requestee']  }}
+{{ $request['requestee']  }}您好，
 
-Unfortunately {{ $request['covered_by']  }} is not able to cover for you when you take time off from {{ $request['starts_date'] }} ({{ $request['starts_day'] }} - {{ $request['starts_time'] }}) to {{ $request['ends_date'] }} ({{ $request['ends_day'] }} - {{ $request['ends_time'] }}).
+很遺憾{{ $request['covered_by']  }}無法在您請假期間從{{ $request['starts_date'] }} ({{ $request['starts_day'] }} - {{ $request['starts_time'] }})到{{ $request['ends_date'] }} ({{ $request['ends_day'] }} - {{ $request['ends_time'] }})幫您代班。
 
-You will need to update your request to ask someone else to cover for you.
+您需登入系統更新代班人選
 
-Many thanks.
+謝謝，祝順心。
 
 @component('mail::button', ['url' => url('/admin/leave')])
-    See request
+看代班請求
 @endcomponent
 
-Thanks,<br>
-{{ config('app.name') }}
 @endcomponent

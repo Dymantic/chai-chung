@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="px-8 max-w-xl mb-20 mt-4 mx-auto items-center flex justify-between">
-        <p class="font-black text-5xl">Staff &rarr; Time Report</p>
+        <p class="font-black text-5xl">員工 &rarr; 時間紀錄整理報告</p>
         <div class="flex justify-end">
 
         </div>

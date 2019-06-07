@@ -1,22 +1,22 @@
 <template>
     <div>
-        <button @click="open = true" class="font-bold text-navy underline hover:text-orange">+ Make Up Day</button>
+        <button @click="open = true" class="font-bold text-navy underline hover:text-orange">新增補班日期</button>
         <modal :show="open" @close="open = false">
             <form action="" class="w-80 mx-auto" @submit.prevent="submit">
-                <p class="text-lg pt-2 text-navy font-bold text-center">Add a new Make up day</p>
+                <p class="text-lg pt-2 text-navy font-bold text-center">新增補班日期</p>
                 <div class="p-4">
                     <p class="my-4 text-red" v-show="error_msg">{{ error_msg }}</p>
                     <div>
-                        <label for="">Date:</label>
+                        <label for="">日期:</label>
                         <date-picker v-model="date"></date-picker>
                     </div>
                     <div class="my-4">
-                        <label for="reason">Description:</label>
+                        <label for="reason">說明:</label>
                         <input type="text" id="reason" name="reason" v-model="reason" class="block w-full border mt-2 h-8">
                     </div>
                     <div class="mt-8 flex justify-end">
-                        <button type="button" @click="open = false" class="btn btn-white">Cancel</button>
-                        <button type="submit" class="btn btn-orange ml-4">Submit</button>
+                        <button type="button" @click="open = false" class="btn btn-white">取消</button>
+                        <button type="submit" class="btn btn-orange ml-4">確認提交</button>
                     </div>
                 </div>
             </form>

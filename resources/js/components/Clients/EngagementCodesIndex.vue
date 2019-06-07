@@ -1,11 +1,10 @@
 <template>
     <div>
         <div class="px-8 max-w-xl mb-20 mt-4 mx-auto items-center flex justify-between">
-            <p class="font-black text-5xl">Engagement Codes</p>
+            <p class="font-black text-5xl">工作事項代號</p>
             <div class="flex justify-end">
                 <button @click="showNewEngagementCodeForm = true"
-                        class="btn btn-orange">New Engagement Code
-                </button>
+                        class="btn btn-orange">新增工作事項</button>
                 <modal :show="showNewEngagementCodeForm"
                        @close="showNewEngagementCodeForm = false">
                     <new-engagement-code-form @cancel="showNewEngagementCodeForm = false"
@@ -14,9 +13,17 @@
             </div>
         </div>
         <div class="max-w-xl mx-auto my-20">
-            <div v-for="engagement_code in engagement_codes" :key="engagement_code.id" class="bg-grey-lighter p-4 my-2 max-w-md mx-auto">
-                <p class="font-black text-navy text-xs uppercase tracking-wide mb-4">{{ engagement_code.code }}</p>
-                <p><a :href="`/admin/engagement-codes/${engagement_code.id}`" class="text-navy no-underline">{{ engagement_code.description }}</a></p>
+            <div v-for="engagement_code in engagement_codes"
+                 :key="engagement_code.id"
+                 class="bg-grey-lighter p-4 my-2 max-w-md mx-auto"
+            >
+                <a :href="`/admin/engagement-codes/${engagement_code.id}`" class="text-navy hover:text-orange no-underline">
+                    <p class="font-black text-navy text-lg uppercase tracking-wide mb-4">
+                        {{ engagement_code.code }}
+                    </p>
+                    <p>{{ engagement_code.description }}</p>
+                </a>
+
             </div>
         </div>
     </div>
@@ -41,7 +48,7 @@
 
         mounted() {
             this.fetchEngagementCodes()
-                .catch(() => notify.error({message: "Unable to fetch engagement codes."}));
+                .catch(() => notify.error({message: "系統無法顯示工作事項資料"}));
         },
 
         methods: {
@@ -60,8 +67,8 @@
             engagementCodeAdded() {
                 this.showNewEngagementCodeForm = false;
                 this.fetchEngagementCodes()
-                    .then(() => notify.success({message: 'Engagement code added', clear: true}))
-                    .catch(() => notify.error({message: "Unable to fetch engagement codes."}));
+                    .then(() => notify.success({message: '此工作事項資料已成功新增儲存', clear: true}))
+                    .catch(() => notify.error({message: "系統無法顯示工作事項資料"}));
             }
         }
     }

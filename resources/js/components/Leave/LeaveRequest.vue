@@ -3,36 +3,35 @@
         <div class="p-4">
             <div class="flex mb-8">
                 <div class="mr-8">
-                    <p class="text-sm">From</p>
+                    <p class="text-sm">開始</p>
                     <p class="text-lg font-bold text-navy">{{ request.starts_date }}</p>
                     <p class="text-sm text-grey-dark">{{ request.starts_day }} ({{ request.starts_time }})</p>
                 </div>
                 <div>
-                    <p class="text-sm">To</p>
+                    <p class="text-sm">結束</p>
                     <p class="text-lg font-bold text-navy">{{ request.ends_date }}</p>
                     <p class="text-sm text-grey-dark">{{ request.ends_day }} ({{ request.ends_time }})</p>
                 </div>
             </div>
 
-            <p><strong>Reason:</strong> {{ request.reason }}</p>
-            <p><strong>Covered by:</strong> {{ request.covered_by }}</p>
+            <p><strong>理由:</strong> {{ request.reason }}</p>
+            <p><strong>代班:</strong> {{ request.covered_by }}</p>
         </div>
         <div class="flex flex-col justify-between w-64 p-4 bg-white">
             <div>
-                <p class="text-sm font-bold text-navy">Status:</p>
+                <p class="text-sm font-bold text-navy">狀態:</p>
                 <p>{{ status_text }}</p>
             </div>
             <div class="text-right mt-6">
                 <button v-if="request.status === 'cover_rejected'"
                         @click="showCoverUserForm = true"
-                        class="text-sm underline text-grey-darkest mr-4">Change sub
-                </button>
+                        class="text-sm underline text-grey-darkest mr-4 hover:text-orange">更改代班人選</button>
                 <modal :show="showCoverUserForm"
                        @close="showCoverUserForm = false">
                     <div class="p-4 w-full max-w-sm">
-                        <p class="text-xs">Request for:</p>
+                        <p class="text-xs">請假時間</p>
                         <p class="text-lg font-bold text-navy mb-8">{{ leave_description }}</p>
-                        <p>Select someone to cover for your leave:</p>
+                        <p>新的代班人選</p>
                         <select v-model="covering_user_id"
                                 class="block h-8 border my-4 w-full">
                             <option v-for="user in users"
@@ -42,32 +41,29 @@
                         </select>
                         <div class="flex justify-end mt-8">
                             <button @click="showCoverUserForm = false"
-                                    class="btn btn-white">Cancel
+                                    class="btn btn-white">取消
                             </button>
                             <button @click="updateRequest"
-                                    class="btn btn-orange ml-4">Update sub.
-                            </button>
+                                    class="btn btn-orange ml-4">確認更新</button>
                         </div>
                     </div>
                 </modal>
 
                 <button v-if="can_be_cancelled"
                         @click="showCancelForm = true"
-                        class="text-sm underline text-grey-darkest">Cancel
+                        class="text-sm underline text-grey-darkest hover:text-orange">取消請假
                 </button>
                 <modal :show="showCancelForm"
                        @close="showCancelForm = false">
                     <div class="p-4 w-full max-w-sm">
-                        <p class="text-xs">Request for:</p>
+                        <p class="text-xs">請假時間</p>
                         <p class="text-lg font-bold text-navy mb-8">{{ leave_description }}</p>
-                        <p>Are you sure you want to cancel this leave request?</p>
+                        <p>您確定要取消請假申請嗎？</p>
                         <div class="flex justify-end mt-8">
                             <button @click="showCancelForm = false"
-                                    class="btn btn-white">No, don't cancel
-                            </button>
+                                    class="btn btn-white">改變心意不取消了！</button>
                             <button @click="cancelRequest"
-                                    class="btn btn-orange ml-4">Yes, do it.
-                            </button>
+                                    class="btn btn-orange ml-4">是的，我確定取消請假！</button>
                         </div>
                     </div>
                 </modal>
@@ -119,12 +115,12 @@
 
             status_text() {
                 const statusMap = {
-                    submitted: `Your request has been submitted and is waiting for ${this.request.covered_by} to agree to cover for you.`,
-                    covered: `${this.request.covered_by} has agreed to cover for you. You are now waiting for your request to be accepted.`,
-                    cover_rejected: `${this.request.covered_by} in not able to cover for you. You need to reselect someone to cover before your request can proceed.`,
-                    accepted: `You request for leave was approved by ${this.request.decider}`,
-                    denied: `You request for leave was denied by ${this.request.decider}`,
-                    cancelled: `You cancelled this request.`,
+                    submitted: `您的請假已成功提交，正在等候${this.request.covered_by}回覆是否確認代班事宜。 `,
+                    covered: `${this.request.covered_by}已確認幫您代班，目前正在等候請假申請批准。`,
+                    cover_rejected: `${this.request.covered_by}無法幫您代班，請假申請通過之前請重新選擇代班人選。`,
+                    accepted: `${this.request.decider}已批准您的請假申請。`,
+                    denied: `${this.request.decider}無法批准您的請假申請。`,
+                    cancelled: `您已經取消本次請假。`,
                 };
 
                 return statusMap[this.request.status];

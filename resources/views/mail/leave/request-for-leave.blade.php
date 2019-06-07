@@ -1,18 +1,16 @@
 @component('mail::message')
-# Request for Leave
+# 員工請假申請
 
-Hi
+您好
 
-{{ $request['requestee']  }} has requested permission to take time off from {{ $request['starts_date'] }} ({{ $request['starts_day'] }} - {{ $request['starts_time'] }}) to {{ $request['ends_date'] }} ({{ $request['ends_day'] }} - {{ $request['ends_time'] }}).
+{{ $request['requestee']  }}已提出請假申請，請假時間從{{ $request['starts_date'] }} ({{ $request['starts_day'] }} - {{ $request['starts_time'] }})到{{ $request['ends_date'] }} ({{ $request['ends_day'] }} - {{ $request['ends_time'] }}).
 
-You may log in to either approve or deny this request.
+您可以登入系統回覆是否批准本次請假
 
-Many Thanks.
+謝謝，祝順心。
 
 @component('mail::button', ['url' => url('/admin/manage-staff-leave')])
-    See request
+    看請假細節
 @endcomponent
 
-Thanks,<br>
-{{ config('app.name') }}
 @endcomponent

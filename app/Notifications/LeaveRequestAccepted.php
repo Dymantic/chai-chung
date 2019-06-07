@@ -39,7 +39,7 @@ class LeaveRequestAccepted extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Leave approved')
+            ->subject('請假已批准')
             ->markdown('mail.leave.approved', ['request' => $this->leave_request_info]);
     }
 

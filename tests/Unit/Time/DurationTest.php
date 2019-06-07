@@ -15,23 +15,23 @@ class DurationTest extends TestCase
         $cases = [
             [
                 'mins' => 120,
-                'expects' => '2 hrs'
+                'expects' => '2 小時'
             ],
             [
                 'mins' => 30,
-                'expects' => '30 mins'
+                'expects' => '30 分鐘'
             ],
             [
                 'mins' => 150,
-                'expects' => '2 hrs 30 mins'
+                'expects' => '2 小時 30 分鐘'
             ],
             [
                 'mins' => 90,
-                'expects' => '1 hrs 30 mins'
+                'expects' => '1 小時 30 分鐘'
             ],
             [
                 'mins' => 60,
-                'expects' => '1 hrs'
+                'expects' => '1 小時'
             ],
         ];
         collect($cases)->each(function($case) {

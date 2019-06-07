@@ -39,7 +39,7 @@ class LeaveRequestCancelled extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Leave cancelled')
+            ->subject('請假已取消')
             ->markdown('mail.leave.cancelled', ['request' => $this->leave_request_info]);
     }
 

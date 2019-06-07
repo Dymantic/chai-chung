@@ -36,12 +36,11 @@
                     <div class="flex justify-between">
                         <div class="flex items-center my-2">
                             <svg class="mr-4 fill-current text-grey-dark" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 465.03 515.03"><path d="M375.58,64.44A220,220,0,1,0,64.44,375.58a218.22,218.22,0,0,0,126.05,62.48,150.65,150.65,0,0,1-9.91-42.4C100.22,377.64,40,305.73,40,220c0-99.26,80.75-180,180-180s180,80.75,180,180a181.42,181.42,0,0,1-1.72,24.93,153.39,153.39,0,0,1,36.22,24.3A221.31,221.31,0,0,0,440,220,218.54,218.54,0,0,0,375.58,64.44Z"/><path d="M220,240H120a20,20,0,1,1,0-40h80V70a20,20,0,0,1,40,0V220A20,20,0,0,1,220,240Z"/><path d="M428.35,291.1a133.5,133.5,0,0,0-34.09-25.81A131.73,131.73,0,0,0,332.52,250C259.45,250,200,309.46,200,382.52A132.53,132.53,0,0,0,332.52,515C405.58,515,465,455.59,465,382.52A132,132,0,0,0,428.35,291.1ZM332.52,475A92.46,92.46,0,1,1,425,382.52,92.42,92.42,0,0,1,332.52,475Z"/><polygon points="395.02 362.52 395.02 402.52 352.52 402.52 352.52 445.03 312.52 445.03 312.52 402.52 270.02 402.52 270.02 362.52 312.52 362.52 312.52 320.02 352.52 320.02 352.52 362.52 395.02 362.52"/><rect x="120.01" y="120.01" width="25" height="25"/><rect x="295.02" y="120.01" width="25" height="25"/><rect x="120.01" y="295.02" width="25" height="25"/></svg>
-                            <p class="text-navy font-bold">{{ session.overtime }} mins.</p>
+                            <p class="text-navy font-bold">{{ session.overtime }} 分鐘</p>
                         </div>
                         <button @click="showOvertimePanel = true"
                                 v-show="session.for_manager && !showOvertimePanel"
-                                class="text-sm font-bold text-orange underline">Set Overtime
-                        </button>
+                                class="text-sm font-bold text-orange underline">紀錄加班時間</button>
                     </div>
                     <div v-if="session.overtime_reason" class="text-xs pl-8">
                         <p>{{ session.overtime_reason }} - {{ session.overtime_set_by}}</p>
@@ -50,10 +49,10 @@
                          class="p-4">
                         <form action=""
                               @submit.prevent="setOvertime">
-                            <p class="my-8 text-lg font-bold text-navy">Set Overtime</p>
+                            <p class="my-8 text-lg font-bold text-navy">加班時間</p>
                             <div class="my-4">
                                 <label for="overtime_minutes"
-                                       class="text-sm font-bold">Overtime (minutes)</label>
+                                       class="text-sm font-bold">加班時數(使用分鐘計算)</label>
                                 <input type="text"
                                        id="overtime_minutes"
                                        name="overtime_minutes"
@@ -62,7 +61,7 @@
                             </div>
                             <div class="my-4">
                                 <label for="overtime_reason"
-                                       class="text-sm font-bold">Reason for overtime</label>
+                                       class="text-sm font-bold">加班原因</label>
                                 <input type="text"
                                        id="overtime_reason"
                                        name="overtime_reason"
@@ -72,12 +71,12 @@
                             <div class="py-4 flex justify-end items-center">
                                 <button @click="showOvertimePanel = false"
                                         type="button"
-                                        class="btn btn-white">Cancel
+                                        class="btn btn-white">取消
                                 </button>
                                 <button type="submit"
                                         :class="{'opacity-50': setting_overtime}"
                                         :disabled="setting_overtime"
-                                        class="btn btn-orange ml-4">Submit
+                                        class="btn btn-orange ml-4">確認提交
                                 </button>
                             </div>
                         </form>
@@ -95,41 +94,39 @@
                             <p class="text-navy font-bold">{{ session.engagement_code_description }}</p>
                         </div>
                         <div class="my-4">
-                            <p class="text-sm font-bold text-grey-dark tracking-wide uppercase">Service Period</p>
+                            <p class="text-sm font-bold text-grey-dark tracking-wide uppercase">服務期間</p>
                             <p class="text-navy font-bold">{{ session.service_period }}</p>
                         </div>
                         <div class="my-4">
-                            <p class="text-sm font-bold text-grey-dark tracking-wide uppercase">Description</p>
+                            <p class="text-sm font-bold text-grey-dark tracking-wide uppercase">說明</p>
                             <p class="text-navy font-bold">{{ session.description }}</p>
                         </div>
                         <div class="my-4"
                              v-if="session.notes">
-                            <p class="text-sm font-bold text-grey-dark tracking-wide uppercase">Notes</p>
+                            <p class="text-sm font-bold text-grey-dark tracking-wide uppercase">備註</p>
                             <p class="text-navy font-bold">{{ session.notes }}</p>
                         </div>
                         <div>
                             <div v-if="showDelete"
                                  class="flex justify-between border border-red p-4 h-32">
-                                <p class="w-2/5">Are you sure you want to delete this session. You will not be able to
-                                                 retrieve it.</p>
+                                <p class="w-2/5">一旦系統刪除資料後將無法回復，請您再次確認是否要將此筆資料刪除？</p>
                                 <div class="flex items-center">
                                     <button class="mr-4 font-bold text-grey-darker underline"
-                                            @click="showDelete = false">Cancel
+                                            @click="showDelete = false">取消
                                     </button>
                                     <button class="btn btn-red"
-                                            @click="deleteSession">Yes, Delete
-                                    </button>
+                                            @click="deleteSession">是的，確認刪除！</button>
                                 </div>
                             </div>
                             <div v-else
                                  class="flex justify-end items-center p-4 h-32">
                                 <button class="mr-4 font-bold text-grey-darker underline"
-                                        @click="$emit('close')">Close
+                                        @click="$emit('close')">關閉
                                 </button>
                                 <button :disabled="deleting"
                                         :class="{'opacity-50': deleting}"
                                         class="btn btn-red"
-                                        @click="showDelete = true">Delete
+                                        @click="showDelete = true">刪除
                                 </button>
                             </div>
 

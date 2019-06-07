@@ -1,28 +1,28 @@
 <template>
     <div class="">
-        <button class="font-bold text-navy underline hover:text-orange" @click="open = true">+ Holiday</button>
+        <button class="font-bold text-navy underline hover:text-orange" @click="open = true">新增節日</button>
         <modal :show="open" @close="open = false">
             <div class="w-screen max-w-sm mx-auto">
-                <p class="text-lg font-bold text-navy text-center pt-4">Add a new holiday</p>
+                <p class="text-lg font-bold text-navy text-center pt-4">新增節日</p>
                 <form @submit.prevent="submit" action="" method="POST" class="p-8">
                     <p class="my-4 text-red" v-show="error_msg">{{ error_msg }}</p>
                     <div class="flex justify-between">
                         <div>
-                            <label for="start_date">From: </label>
+                            <label for="start_date">開始: </label>
                             <date-picker v-model="from"></date-picker>
                         </div>
                         <div>
-                            <label for="start_date">To: </label>
+                            <label for="start_date">結束: </label>
                             <date-picker v-model="to"></date-picker>
                         </div>
                     </div>
                     <div class="my-4">
-                        <label for="holiday_name">Name of Holiday:</label>
+                        <label for="holiday_name">節日名稱</label>
                         <input type="text" id="holiday_name" name="holiday_name" v-model="holiday_name" class="block w-full border mt-2 h-8">
                     </div>
                     <div class="mt-8 flex justify-end">
-                        <button type="button" @click="open = false" class="btn btn-white">Cancel</button>
-                        <button type="submit" class="btn btn-orange ml-4">Submit</button>
+                        <button type="button" @click="open = false" class="btn btn-white">取消</button>
+                        <button type="submit" class="btn btn-orange ml-4">確認提交</button>
                     </div>
                 </form>
             </div>

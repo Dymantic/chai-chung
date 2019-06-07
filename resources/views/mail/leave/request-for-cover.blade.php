@@ -1,18 +1,16 @@
 @component('mail::message')
-# Request to Cover
+# 代班請求
 
-Hi {{ $request['covered_by'] }}
+{{ $request['covered_by'] }}您好，
 
-{{ $request['requestee']  }} has requested for you to cover for them when they take time off from {{ $request['starts_date'] }} ({{ $request['starts_day'] }} - {{ $request['starts_time'] }}) to {{ $request['ends_date'] }} ({{ $request['ends_day'] }} - {{ $request['ends_time'] }}).
+{{ $request['requestee']  }} 已提出代班請求，代班時間從{{ $request['starts_date'] }} ({{ $request['starts_day'] }} - {{ $request['starts_time'] }})到{{ $request['ends_date'] }} ({{ $request['ends_day'] }} - {{ $request['ends_time'] }}).
 
-You may log in to either accept or reject this request.
+您可以登入系統回覆是否接受本次的代班請求
 
-Many Thanks.
+謝謝，祝順心。
 
 @component('mail::button', ['url' => url('/admin/covering-requests')])
-See request
+看代班細節
 @endcomponent
 
-Thanks,<br>
-{{ config('app.name') }}
 @endcomponent

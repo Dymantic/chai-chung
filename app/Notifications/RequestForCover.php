@@ -44,7 +44,7 @@ class RequestForCover extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Request for cover')
+                    ->subject('代班請求')
                     ->markdown('mail.leave.request-for-cover', ['request' => $this->leave_request_info]);
     }
 

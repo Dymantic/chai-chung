@@ -17,7 +17,7 @@
                     <div class="w-screen max-w-sm">
                         <p class="text-center py-2 bg-red text-white font-bold text-lg">刪除 {{ user.name }}?</p>
                         <div class="p-4">
-                            <p>一旦系統刪除將無法回覆，請再次確認是否刪除此員工所有資料？</p>
+                            <p>一旦系統刪除資料後將無法回復，請再次確認是否要刪除此員工的所有資料？</p>
                         </div>
                         <div class="flex justify-end p-4">
                             <button type="button"
@@ -25,7 +25,7 @@
                                     @click="showDeleteForm = false">取消
                             </button>
                             <button class="bg-red text-white px-4 py-2 rounded font-bold hover:bg-orange-light shadow ml-4"
-                                    @click="deleteUser">確認刪除
+                                    @click="deleteUser">是的，確認刪除！
                             </button>
                         </div>
                     </div>

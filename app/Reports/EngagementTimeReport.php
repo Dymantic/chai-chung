@@ -25,10 +25,10 @@ class EngagementTimeReport implements SimpleReport
 
     public function headings() {
         return [
-            'code',
-            'description',
-            'total time (hours)',
-            'overtime (hours)'
+            '代號',
+            '工作說明',
+            '總時數(小時)',
+            '加班總時數(小時)'
         ];
     }
 
@@ -51,7 +51,7 @@ class EngagementTimeReport implements SimpleReport
     }
 
     public function title() {
-        return 'Engagement Time Report';
+        return '工作事項時間紀錄整理報告';
     }
 
     public function slug()

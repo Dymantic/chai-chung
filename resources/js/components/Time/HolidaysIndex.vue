@@ -1,7 +1,7 @@
 <template>
     <div class="bg-pale-baby-blue-light p-2">
         <div class="flex items-center justify-between pb-4 px-4">
-            <p class="text-navy text-2xl font-black">Holidays</p>
+            <p class="text-navy text-2xl font-black">國定假日</p>
             <new-holiday-form @holiday-added="holidayAdded"
                               @holiday-creation-failure="failedToAddHoliday"></new-holiday-form>
         </div>
@@ -45,18 +45,18 @@
 
         mounted() {
             this.fetchHolidays()
-                .catch(() => notify.error({message: 'Problem fetching holidays.'}));
+                .catch(() => notify.error({message: '系統無法顯示節日'}));
         },
 
         methods: {
             holidayAdded() {
-                notify.success({message: 'A new holiday has been added'});
+                notify.success({message: '節日已成功新增儲存'});
                 this.fetchHolidays()
-                    .catch(() => notify.error({message: 'Problem fetching holidays.'}));
+                    .catch(() => notify.error({message: '系統無法顯示節日'}));
             },
 
             failedToAddHoliday() {
-                notify.error({message: 'Unable to add holiday. Please try again later.'});
+                notify.error({message: '節日無法新增儲存'});
             },
 
             fetchHolidays() {
@@ -71,13 +71,13 @@
             },
 
             daysDeleted() {
-                notify.success({message: "Holidays have been deleted"});
-                this.fetchHolidays().catch(() => notify.error({message: 'Unable to fetch holidays'}));
+                notify.success({message: "節日已刪除"});
+                this.fetchHolidays().catch(() => notify.error({message: '系統無法顯示節日'}));
             },
 
             failedToDelete() {
-                notify.error({message: 'Failed to delete some holidays'});
-                this.fetchHolidays().catch(() => notify.error({message: 'Unable to fetch holidays'}));
+                notify.error({message: '無法刪除節日'});
+                this.fetchHolidays().catch(() => notify.error({message: '系統無法顯示節日'}));
             }
         }
     }

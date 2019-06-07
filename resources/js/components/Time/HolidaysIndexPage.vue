@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="px-8 max-w-xl mb-20 mt-4 mx-auto items-center flex justify-between">
-            <p class="font-black text-5xl">Overtime Days</p>
+            <p class="font-black text-5xl">國定假日</p>
         </div>
         <div class="flex justify-between max-w-xl mx-auto">
             <div class="max-w-sm flex-1 mx-4">

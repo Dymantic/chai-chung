@@ -26,10 +26,10 @@ class StaffTimeReport implements SimpleReport
 
     public function headings() {
         return [
-            'code',
-            'name',
-            'total time (hours)',
-            'overtime (hours)'
+            '代號',
+            '姓名',
+            '總時數(小時)',
+            '加班總時數(小時)'
         ];
     }
 
@@ -52,7 +52,7 @@ class StaffTimeReport implements SimpleReport
     }
 
     public function title() {
-        return 'Staff Time Report';
+        return '員工時間紀錄整理報告';
     }
 
     public function slug()

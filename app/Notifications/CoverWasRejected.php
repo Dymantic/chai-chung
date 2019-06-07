@@ -39,7 +39,7 @@ class CoverWasRejected extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Cover rejected')
+            ->subject('代班請求已被拒絕')
             ->markdown('mail.leave.cover-rejected', ['request' => $this->leave_request_info]);
     }
 

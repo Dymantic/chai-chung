@@ -1,11 +1,10 @@
 <template>
     <div>
         <div class="px-8 max-w-xl mb-20 mt-4 mx-auto items-center flex justify-between">
-            <p class="font-black text-5xl">Leave</p>
+            <p class="font-black text-5xl">請假申請</p>
             <div class="flex justify-end">
                 <button @click="showLeaveRequestForm = true"
-                        class="btn btn-orange">Request Leave
-                </button>
+                        class="btn btn-orange">請假細節填寫</button>
                 <modal :show="showLeaveRequestForm"
                        @close="showLeaveRequestForm = false">
                     <leave-request-form @cancel="showLeaveRequestForm = false"
@@ -24,6 +23,9 @@
                            @cover-rerequested="coveringUserUpdated"
                            @cover-rerequest-failed="coveringUserFailedToUpdate"
             ></leave-request>
+            <big-notice v-if="fetched_requests && (requests.length === 0)"
+                        text="You have no current or upcoming requests for leave">
+            </big-notice>
         </div>
     </div>
 </template>
@@ -32,9 +34,11 @@
     import LeaveRequestForm from "./LeaveRequestForm";
     import LeaveRequest from "./LeaveRequest";
     import {notify} from "../notify";
+    import BigNotice from "../BigNotice";
 
     export default {
         components: {
+            BigNotice,
             LeaveRequestForm,
             LeaveRequest
         },
@@ -44,7 +48,8 @@
         data() {
             return {
                 showLeaveRequestForm: false,
-                requests: []
+                requests: [],
+                fetched_requests: false
             };
         },
 
@@ -60,9 +65,10 @@
                     axios.get("/admin/leave-requests")
                          .then(({data}) => {
                              this.requests = data;
+                             this.fetched_requests = true;
                              resolve();
                          })
-                         .catch(() => reject({message: 'Failed to fetch your leave requests'}));
+                         .catch(() => reject({message: '系統無法讀取資料'}));
                 });
             },
 
@@ -72,28 +78,28 @@
             },
 
             requestSuccessfullyCancelled() {
-                notify.success({message: 'Your request has been cancelled'});
+                notify.success({message: '您的請假已成功取消'});
                 this.refreshList();
             },
 
             requestFailedToCancel() {
-                notify.error({message: 'Your request was not cancelled'});
+                notify.error({message: '系統無法取消您的請假'});
                 this.refreshList();
             },
 
             coveringUserUpdated() {
-                notify.success({message: 'Your request has been updated'});
+                notify.success({message: '您的請假已成功更新'});
                 this.refreshList();
             },
 
             coveringUserFailedToUpdate() {
-                notify.error({message: 'The covering user was not updated'});
+                notify.error({message: '系統無法更新資料'});
                 this.refreshList();
             },
 
             requestAdded() {
                 this.showLeaveRequestForm = false;
-                notify.success({message: 'Your application has been submitted'});
+                notify.success({message: '您的請假申請已成功提交'});
                 this.refreshList();
             }
         }

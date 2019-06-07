@@ -38,7 +38,7 @@ class RequestForLeave extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Request for leave')
+            ->subject('員工請假申請')
             ->markdown('mail.leave.request-for-leave', ['request' => $this->leave_request_info]);
     }
 

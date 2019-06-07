@@ -1,12 +1,12 @@
 @component('mail::message')
-# Leave cancelled
+# 員工取消請假申請
 
-Hi
+您好，
 
-{{ $request['requestee']  }} has cancelled their request to take time off from {{ $request['starts_date'] }} ({{ $request['starts_day'] }} - {{ $request['starts_time'] }}) to {{ $request['ends_date'] }} ({{ $request['ends_day'] }} - {{ $request['ends_time'] }}).
+{{ $request['requestee']  }}已取消從{{ $request['starts_date'] }} ({{ $request['starts_day'] }} - {{ $request['starts_time'] }})到{{ $request['ends_date'] }} ({{ $request['ends_day'] }} - {{ $request['ends_time'] }})的請假申請。
 
-You don't need to take any action for this.
+您無需回覆此通知
 
-Thanks,<br>
-{{ config('app.name') }}
+謝謝，祝順心。
+
 @endcomponent

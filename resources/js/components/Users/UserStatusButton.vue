@@ -53,7 +53,7 @@
 
         computed: {
             status() {
-                return this.is_manager ? '管理者' : '職員';
+                return this.is_manager ? '管理者' : '員工';
             },
 
             iconTransform() {

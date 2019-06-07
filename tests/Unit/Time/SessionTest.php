@@ -36,7 +36,7 @@ class SessionTest extends TestCase
         $session = $user->addSession($session_data);
 
         $this->assertTrue($session->start_time->isToday());
-        $this->assertEquals('2 hrs', $session->duration()->asString());
+        $this->assertEquals('2 小時', $session->duration()->asString());
         $this->assertEquals(Carbon::today()->year, $session->service_period);
         $this->assertTrue($session->client->is($client));
         $this->assertTrue($session->engagement_code->is($engagement_code));

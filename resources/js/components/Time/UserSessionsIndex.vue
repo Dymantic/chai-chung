@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="px-8 max-w-xl mb-20 mt-4 mx-auto items-center flex justify-between">
-            <p class="font-black text-5xl">紀錄時間</p>
+            <p class="font-black text-5xl">時間紀錄</p>
             <div class="flex justify-end">
                 <button @click="showNewSessionForm = true"
                         class="btn btn-orange">新增紀錄</button>
@@ -59,7 +59,7 @@
             </div>
         </div>
         <session-list :sessions="sessions"
-                      title="Time Records"
+                      title="時間紀錄"
                       @session-selected="onSessionSelected"></session-list>
         <staff-session :open="showSelected"
                        :session="selectedSession"
@@ -68,6 +68,9 @@
                        @session-deleted-error="failedToDeleteSession"
                        v-if="selectedSession"
         ></staff-session>
+        <big-notice v-if="fetched_sessions && (sessions.length === 0)"
+                    text="You have not logged any sessions for these dates or clients."
+        ></big-notice>
     </div>
 </template>
 
@@ -78,9 +81,11 @@
     import StaffSession from "./StaffSession";
     import {subDays} from "date-fns";
     import DatePicker from "vuejs-datepicker";
+    import BigNotice from "../BigNotice";
 
     export default {
         components: {
+            BigNotice,
             NewSessionForm,
             SessionList,
             StaffSession,
@@ -93,6 +98,7 @@
             return {
                 showNewSessionForm: false,
                 sessions: [],
+                fetched_sessions: false,
                 selectedSession: null,
                 showSelected: false,
                 fetching: false,
@@ -127,9 +133,10 @@
                     axios.get(`/admin/sessions?${this.query}`)
                          .then(({data}) => {
                              this.sessions = data;
+                             this.fetched_sessions = true;
                              resolve();
                          })
-                         .catch(() => reject({message: 'Unable to fetch sessions'}));
+                         .catch(() => reject({message: '系統無法顯示時間紀錄'}));
                 });
             },
 
@@ -149,7 +156,7 @@
 
             sessionAdded() {
                 this.fetchSessions()
-                    .catch(() => notify.error({message: 'Unable to fetch recent sessions'}));
+                    .catch(() => notify.error({message: '系統無法顯示時間紀錄'}));
             },
 
             onSessionSelected(session) {
@@ -158,13 +165,13 @@
             },
 
             removeSession() {
-                notify.success({message: 'Session has been deleted'});
+                notify.success({message: '時間紀錄已刪除'});
                 this.fetchSessions()
-                    .catch(() => notify.error({message: 'Unable to fetch recent sessions'}));
+                    .catch(() => notify.error({message: '系統無法顯示時間紀錄'}));
             },
 
             failedToDeleteSession() {
-                notify.error({message: 'Failed to delete session'});
+                notify.error({message: '時間紀錄無法刪除'});
             }
         }
     }

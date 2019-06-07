@@ -4,9 +4,10 @@
         <div>
             <header class="text-white text-center font-bold py-3">{{ title }}</header>
             <p class="p-8 text-center">{{ message }}</p>
+            <p v-if="status === 'error'" class="text-center">We suggest you refresh the page and try again.</p>
         </div>
         <div class="flex justify-end py-4 px-8">
-            <button @click="show = false">Okay</button>
+            <button @click="show = false">Dismiss</button>
         </div>
     </div>
 </template>

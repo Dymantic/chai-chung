@@ -2,39 +2,40 @@
     <div>
         <div class="max-w-xl mx-auto flex justify-between">
             <div class="px-8">
-                <p class="text-sm font-bold mb-2">From:</p>
+                <p class="text-sm font-bold mb-2">從:</p>
                 <date-picker class="border py-2 pl-2" v-model="start"></date-picker>
             </div>
             <div class="px-8">
-                <p class="text-sm font-bold mb-2">To:</p>
+                <p class="text-sm font-bold mb-2">到:</p>
                 <date-picker class="border py-2 pl-2" v-model="end"></date-picker>
             </div>
             <div class="pr-8 pt-6">
-                <button @click="fetchReport" class="btn btn-orange">Make Report</button>
+                <button @click="fetchReport" class="btn btn-orange">確認</button>
             </div>
         </div>
         <div class="my-20 max-w-md mx-auto" v-if="rows.length">
             <div class="flex justify-between my-12">
                 <p class="text-lg font-bold text-navy">{{ start_date}} - {{ end_date }}</p>
                 <div>
-                    <button @click="clearReport" class="btn btn-white">Clear</button>
-                    <button @click="exportReport" class="btn btn-white">Download</button>
+                    <button @click="clearReport" class="btn btn-white">清除</button>
+                    <button @click="exportReport" class="btn btn-orange ml-4">下載</button>
                 </div>
             </div>
 
-            <table class="w-full">
-                <thead>
-                    <tr>
-                        <th v-for="heading in headings" class="text-left">{{ heading }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="row in rows" :key="row.id" class="hover:bg-grey-lighter">
-                        <td v-for="value in row" class="py-1">{{ value }}</td>
-                    </tr>
-                </tbody>
-            </table>
+
         </div>
+        <table class="w-full max-w-lg mx-auto">
+            <thead>
+            <tr>
+                <th v-for="heading in headings" class="text-left">{{ heading }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="row in rows" :key="row.id" class="hover:bg-grey-lighter">
+                <td v-for="value in row" class="py-1">{{ value }}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </template>
 
@@ -80,7 +81,7 @@
                             this.headings = data.headings;
                             resolve();
                         })
-                        .catch(() => reject({message: 'Failed to fetch report'}));
+                        .catch(() => reject({message: '系統無法讀取資料'}));
                 });
             },
 

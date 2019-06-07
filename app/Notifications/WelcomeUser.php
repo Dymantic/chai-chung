@@ -44,14 +44,14 @@ class WelcomeUser extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Access to company site')
-            ->line("Hi " . $this->login['name'])
-            ->line("An account has been created for you on the company website.")
-            ->line("Your login email is: " . $this->login['email'])
-            ->line("Your password is: " . $this->login['password'])
-            ->line("Once you have logged in, please change your password to something only you know and remember")
-            ->action('You may log in here', url('/admin'))
-            ->line('Thank you!');
+            ->subject('歡迎來到嘉眾會計師事務所')
+            ->line($this->login['name'] . "您好")
+            ->line("公司已註冊了您的帳戶。")
+            ->line("您的使用者名稱: " . $this->login['email'])
+            ->line("您的密碼: " . $this->login['password'])
+            ->line("登入系統後請立即更新您的密碼")
+            ->action('登入', url('/admin'))
+            ->line('謝謝！');
     }
 
     /**

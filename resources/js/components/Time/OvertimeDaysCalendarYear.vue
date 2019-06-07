@@ -6,7 +6,7 @@
         </div>
         <div v-show="open">
             <div class="flex justify-end">
-                <button :disabled="selected_days.length === 0" @click="deleteDays" class="font-bold text-sm" :class="{'opacity-50': selected_days.length === 0}">Delete Selected Days</button>
+                <button :disabled="selected_days.length === 0" @click="deleteDays" class="font-bold text-sm" :class="{'opacity-50': selected_days.length === 0}">刪除選擇項目</button>
             </div>
             <overtime-day v-for="day in year.days" :key="day.id" :day="day" :selected="selected_days.includes(day.id)" @day-selected="toggleSelectedDay"></overtime-day>
         </div>

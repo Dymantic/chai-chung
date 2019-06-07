@@ -1,21 +1,21 @@
 <template>
     <div class="max-w-md mx-auto bg-grey-lightest my-8 p-4 shadow">
-        <p class="mb-4"><strong>Requested By: </strong>{{ request.requestee }}</p>
+        <p class="mb-4"><strong>姓名: </strong>{{ request.requestee }}</p>
         <div class="flex mb-8">
             <div class="mr-8">
-                <p class="text-sm">From</p>
+                <p class="text-sm">開始</p>
                 <p class="text-lg font-bold text-navy">{{ request.starts_date }}</p>
                 <p class="text-sm text-grey-dark">{{ request.starts_day }} ({{ request.starts_time }})</p>
             </div>
             <div>
-                <p class="text-sm">To</p>
+                <p class="text-sm">結束</p>
                 <p class="text-lg font-bold text-navy">{{ request.ends_date }}</p>
                 <p class="text-sm text-grey-dark">{{ request.ends_day }} ({{ request.ends_time }})</p>
             </div>
         </div>
         <div class="flex justify-end mt-6">
-            <button :disabled="waiting" :class="{'opacity-50': waiting}" class="" @click="rejectRequest">Reject</button>
-            <button :disabled="waiting" :class="{'opacity-50': waiting}" class="ml-4" @click="acceptRequest">Accept</button>
+            <button :disabled="waiting" :class="{'opacity-50': waiting}" class="hover:text-orange" @click="rejectRequest">拒絕</button>
+            <button :disabled="waiting" :class="{'opacity-50': waiting}" class="ml-4 hover:text-orange" @click="acceptRequest">接受</button>
         </div>
     </div>
 </template>

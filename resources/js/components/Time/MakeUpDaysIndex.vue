@@ -2,7 +2,7 @@
     <div>
         <div class="bg-pale-baby-blue-light p-2">
             <div class="flex items-center justify-between pb-4 px-4">
-                <p class="text-navy text-2xl font-black">Make Up Days</p>
+                <p class="text-navy text-2xl font-black">補班日</p>
                 <new-make-up-day-form @mud-added="makeUpDayAdded"
                                       @mud-creation-failure="failedToAddMakeUpDay"></new-make-up-day-form>
             </div>
@@ -46,7 +46,7 @@
 
         mounted() {
             this.fetchDays()
-                .catch(() => notify.error({message: 'Unable to fetch make up days'}));
+                .catch(() => notify.error({message: '系統無法顯示補班日期'}));
         },
 
         methods: {
@@ -63,25 +63,25 @@
             },
 
             makeUpDayAdded() {
-                notify.success({message: 'A new make up day has been added'});
+                notify.success({message: '補班日期已成功新增儲存'});
                 this.fetchDays()
-                    .catch(() => notify.error({message: 'Problem fetching make up days.'}));
+                    .catch(() => notify.error({message: '系統無法顯示補班日期'}));
             },
 
             failedToAddMakeUpDay() {
-                notify.error({message: 'Unable to create new make up day'});
+                notify.error({message: '補班日期無法新增儲存'});
             },
 
             daysDeleted() {
-                notify.success({message: 'Make up days have been deleted'});
+                notify.success({message: '補班日期已刪除'});
                 this.fetchDays()
-                    .catch(() => notify.error({message: 'Problem fetching make up days.'}));
+                    .catch(() => notify.error({message: '系統無法顯示補班日期'}));
             },
 
             failedToDelete() {
-                notify.error({message: 'Problem deleting days'});
+                notify.error({message: '補班日期無法刪除'});
                 this.fetchDays()
-                    .catch(() => notify.error({message: 'Problem fetching make up days.'}));
+                    .catch(() => notify.error({message: '系統無法顯示補班日期'}));
             }
         }
     }

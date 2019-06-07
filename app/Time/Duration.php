@@ -25,14 +25,14 @@ class Duration
         $padded_mins = $this->pad($mins);
 
         if ($hours > 0 && $mins > 0) {
-            return "{$hours} hrs {$padded_mins} mins";
+            return "{$hours} 小時 {$padded_mins} 分鐘";
         }
 
         if ($hours > 0 && $mins === 0) {
-            return "{$hours} hrs";
+            return "{$hours} 小時";
         }
 
-        return "{$padded_mins} mins";
+        return "{$padded_mins} 分鐘";
 
     }
 

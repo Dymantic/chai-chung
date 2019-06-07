@@ -30,7 +30,7 @@
             </dropdown-menu>
             <a href="/admin/manage-staff-leave" class="text-white no-underline hover:text-orange mr-4">員工請假紀錄</a>
             <dropdown-menu v-cloak
-                           name="時數總和"
+                           name="時數總整理"
                            class="text-white h-12 flex items-center mr-4">
                 <div slot="dropdown_content"
                      class="pt-3">

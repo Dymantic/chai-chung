@@ -27,6 +27,13 @@ class LeaveRequest extends Model
             ->where('starts', '>=', Carbon::now());
     }
 
+    public function scopeUpcomingGranted($query)
+    {
+        return $query
+            ->where('ends', '>=', Carbon::now())
+            ->where('status', static::ACCEPTED);
+    }
+
 
     public function user()
     {
