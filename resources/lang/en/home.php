@@ -30,6 +30,9 @@ return [
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis debitis explicabo id illo illum omnis praesentium.'
         ]
     ],
+    'logos' => [
+        'heading' => 'A few of our happy clients.'
+    ],
     'contact' => [
         'heading' => 'Ready to put your business in safe hands?',
         'content' => 'If you’re ready to start getting expert accounting services you can trust then get in touch with us, and we can help you gain financial security.',

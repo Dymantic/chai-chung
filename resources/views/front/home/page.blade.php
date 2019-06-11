@@ -4,6 +4,7 @@
     @include('front.home.banner')
     @include('front.home.about')
     @include('front.home.services')
+    @include('front.home.logos')
     @include('front.home.contact')
     @include('front.home.city-sketch')
 
