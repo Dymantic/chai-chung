@@ -1,6 +1,6 @@
 <div class="h-12 bg-navy flex justify-between items-center px-4">
     <div class="flex items-center">
-        <a href="/admin/dashboard" class="font-black text-orange no-underline">ChiaChung CPA</a>
+        <a href="/admin/dashboard" class="font-black text-orange no-underline">嘉眾會計師事務所</a>
         <a href="/admin/dashboard" class="text-white no-underline hover:text-orange mx-4">時間紀錄</a>
         <dropdown-menu v-cloak
                        name="請假"

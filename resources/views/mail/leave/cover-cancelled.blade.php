@@ -1,11 +1,11 @@
 @component('mail::message')
-# Request for Cover cancelled
+# 代班請求已取消
 
-Hi {{ $request['covered_by'] }}
+{{ $request['covered_by'] }}您好
 
-{{ $request['requestee']  }} has cancelled their leave from {{ $request['starts_date'] }} ({{ $request['starts_day'] }} - {{ $request['starts_time'] }}) to {{ $request['ends_date'] }} ({{ $request['ends_day'] }} - {{ $request['ends_time'] }}). You no longer need to cover for them.
+{{ $request['requestee']  }}已經取消了從{{ $request['starts_date'] }} ({{ $request['starts_day'] }} - {{ $request['starts_time'] }})到{{ $request['ends_date'] }} ({{ $request['ends_day'] }} - {{ $request['ends_time'] }})的請假申請。 因此，您將無需代班。
 
-您無需回覆此通知
+您無需回覆此通知。
 
 謝謝，祝順心。
 

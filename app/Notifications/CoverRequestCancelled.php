@@ -38,7 +38,7 @@ class CoverRequestCancelled extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Covering leave cancelled')
+            ->subject('代班請求已取消')
             ->markdown('mail.leave.cover-cancelled', ['request' => $this->leave_request_info]);
     }
 
