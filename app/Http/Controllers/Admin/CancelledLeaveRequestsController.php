@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Leave\LeaveRequest;
+use App\Notifications\CoverRequestCancelled;
 use App\Notifications\LeaveRequestCancelled;
 use App\User;
 use Illuminate\Http\Request;
@@ -29,8 +30,7 @@ class CancelledLeaveRequestsController extends Controller
             });
         }
 
-        $leave_request->covered_by->notify(new LeaveRequestCancelled($leave_request_data));
-
+        $leave_request->covered_by->notify(new CoverRequestCancelled($leave_request_data));
 
     }
 }

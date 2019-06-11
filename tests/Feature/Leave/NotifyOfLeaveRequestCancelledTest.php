@@ -5,6 +5,7 @@ namespace Tests\Feature\Leave;
 
 
 use App\Leave\LeaveRequest;
+use App\Notifications\CoverRequestCancelled;
 use App\Notifications\LeaveRequestAccepted;
 use App\Notifications\LeaveRequestCancelled;
 use App\User;
@@ -105,7 +106,7 @@ class NotifyOfLeaveRequestCancelledTest extends TestCase
 
         Notification::assertSentTo(
             $covering_user,
-            LeaveRequestCancelled::class,
+            CoverRequestCancelled::class,
             function ($notification) use ($staffA) {
                 return ($notification->leave_request_info['requestee'] === $staffA->name) && ($notification->leave_request_info['status'] === LeaveRequest::CANCELLED);
             });

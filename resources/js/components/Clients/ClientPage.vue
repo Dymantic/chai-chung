@@ -104,7 +104,7 @@
             deleteClient() {
                 axios.delete(`/admin/clients/${this.client.id}`)
                     .then(() => window.location = '/admin/manage-clients')
-                     .catch(() => notify.error({message: '此客戶資料無法刪除'}));
+                     .catch(() => notify.error({message: '無法刪除此客戶資料'}));
             },
 
             fetchSessions() {
@@ -114,7 +114,7 @@
                            this.sessions = data;
                            resolve();
                        })
-                       .catch(() => reject({message: 'Unable to fetch client sessions'}));
+                       .catch(() => reject({message: '系統無法讀取資料'}));
                 });
             },
 
@@ -124,7 +124,7 @@
             },
 
             failedToDeleteSession() {
-                notify.error({message: 'unable to delete record'});
+                notify.error({message: '無法刪除時間紀錄'});
             }
         }
     }

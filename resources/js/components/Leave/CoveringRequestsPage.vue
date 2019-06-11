@@ -15,7 +15,14 @@
                               @action-failed="requestActionError"
             ></covering-request>
             <big-notice v-if="fetched_requests && (requests.length === 0)"
-                        text="Nobody is asking you to cover for them at the moment."
+                        text="目前沒有任何代班請求"
+            ></big-notice>
+        </div>
+        <div class="max-w-lg mx-auto py-20">
+            <p class="text-2xl font-black">已接受的代班請求:</p>
+            <agreed-cover v-for="leave in covering" :key="leave.id" :request="leave"></agreed-cover>
+            <big-notice v-if="fetched_covering && (covering.length === 0)"
+                        text="您近期無需代班"
             ></big-notice>
         </div>
     </div>
@@ -25,10 +32,12 @@
     import {notify} from "../notify";
     import CoveringRequest from "./CoveringRequest";
     import BigNotice from "../BigNotice";
+    import AgreedCover from "./AgreedCover";
 
     export default {
 
         components: {
+            AgreedCover,
             BigNotice,
             CoveringRequest
         },
@@ -36,12 +45,15 @@
         data() {
             return {
                 requests: [],
+                covering: [],
+                fetched_covering: false,
                 fetched_requests: false,
             };
         },
 
         mounted() {
             this.refreshList();
+            this.refreshCoveringList();
         },
 
         methods: {
@@ -58,8 +70,25 @@
                 });
             },
 
+            fetchCovering() {
+                return new Promise((resolve, reject) => {
+                    axios.get("/admin/user-agreed-to-cover")
+                         .then(({data}) => {
+                             this.covering = data;
+                             this.fetched_covering = true;
+                             resolve();
+                         })
+                         .catch(() => reject({message: '系統無法讀取資料'}));
+                });
+            },
+
             refreshList() {
                 this.fetchRequests()
+                    .catch(notify.error);
+            },
+
+            refreshCoveringList() {
+                this.fetchCovering()
                     .catch(notify.error);
             },
 
@@ -76,6 +105,7 @@
             requestCovered() {
                 notify.success({message: '已接受代班'});
                 this.refreshList();
+                this.refreshCoveringList();
             }
         }
     }

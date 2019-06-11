@@ -5,6 +5,7 @@ namespace Tests\Feature\Leave;
 
 
 use App\Leave\LeaveRequest;
+use App\Notifications\CoverRequestCancelled;
 use App\Notifications\LeaveRequestAccepted;
 use App\Notifications\LeaveRequestDenied;
 use App\User;
@@ -42,6 +43,38 @@ class NotifyOfLeaveRequestDeniedTest extends TestCase
         Notification::assertSentTo(
             $staffA,
             LeaveRequestDenied::class,
+            function ($notification) {
+                return ($notification->leave_request_info['decided_on'] === Carbon::today()->format('Y-m-d')) && ($notification->leave_request_info['status'] === LeaveRequest::DENIED);
+            });
+    }
+
+    /**
+     *@test
+     */
+    public function notifies_covering_user_when_request_is_denied()
+    {
+        Notification::fake();
+
+        $this->withoutExceptionHandling();
+
+        $staffA = factory(User::class)->create();
+        $staffB = factory(User::class)->create();
+        $leave_request = factory(LeaveRequest::class)->create([
+            'user_id' => $staffA->id,
+            'covering_user_id' => $staffB->id,
+            'status'  => LeaveRequest::COVERED
+        ]);
+
+        $response = $this
+            ->asManager()
+            ->postJson("/admin/denied-leave-requests", [
+                'leave_request_id' => $leave_request->id
+            ]);
+        $response->assertStatus(200);
+
+        Notification::assertSentTo(
+            $staffB,
+            CoverRequestCancelled::class,
             function ($notification) {
                 return ($notification->leave_request_info['decided_on'] === Carbon::today()->format('Y-m-d')) && ($notification->leave_request_info['status'] === LeaveRequest::DENIED);
             });

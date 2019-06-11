@@ -43,10 +43,10 @@ class StaffTimeReportTest extends TestCase
         $report = new StaffTimeReport(DateRange::lastNumberOfDays(11));
 
         $expected_headings = [
-            'code',
-            'name',
-            'total time (hours)',
-            'overtime (hours)'
+            '代號',
+            '姓名',
+            '總時數(小時)',
+            '加班總時數(小時)'
         ];
 
         $expected_rows = [

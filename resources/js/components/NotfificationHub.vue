@@ -4,10 +4,10 @@
         <div>
             <header class="text-white text-center font-bold py-3">{{ title }}</header>
             <p class="p-8 text-center">{{ message }}</p>
-            <p v-if="status === 'error'" class="text-center">We suggest you refresh the page and try again.</p>
+            <p v-if="status === 'error'" class="text-center">建議您更新網頁後再試一次</p>
         </div>
         <div class="flex justify-end py-4 px-8">
-            <button @click="show = false">Dismiss</button>
+            <button @click="show = false">關閉</button>
         </div>
     </div>
 </template>
@@ -60,14 +60,14 @@
                 this.showNotification(clear);
             },
 
-            handleErrorNotification({title = 'Error!', message, clear}) {
+            handleErrorNotification({title = '錯誤!', message, clear}) {
                 this.status = 'error';
                 this.title = title;
                 this.message = message;
                 this.showNotification(clear);
             },
 
-            handleSuccessNotification({title = 'Success!', message, clear}) {
+            handleSuccessNotification({title = '成功!', message, clear}) {
                 this.status = 'success';
                 this.title = title;
                 this.message = message;

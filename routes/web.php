@@ -142,6 +142,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('admin/covering-requests', 'Admin\CoveringRequestsController@index');
 
     Route::get('admin/user-covering-requests', 'Admin\UserCoveringRequestsController@index');
+    Route::get('admin/user-agreed-to-cover', 'Admin\UserAgreedToCoverController@index');
 
     Route::get('admin/staff-leave-requests', 'Admin\StaffLeaveRequestsController@index')->middleware('is_manager');
 

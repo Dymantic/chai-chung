@@ -24,7 +24,7 @@
                            @cover-rerequest-failed="coveringUserFailedToUpdate"
             ></leave-request>
             <big-notice v-if="fetched_requests && (requests.length === 0)"
-                        text="You have no current or upcoming requests for leave">
+                        text="目前沒有任何請假事宜">
             </big-notice>
         </div>
     </div>

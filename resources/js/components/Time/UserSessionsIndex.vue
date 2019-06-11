@@ -69,7 +69,7 @@
                        v-if="selectedSession"
         ></staff-session>
         <big-notice v-if="fetched_sessions && (sessions.length === 0)"
-                    text="You have not logged any sessions for these dates or clients."
+                    text="沒有任何相關資料可顯示"
         ></big-notice>
     </div>
 </template>

@@ -7,10 +7,9 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class LeaveRequestAccepted extends Notification
+class CoverRequestCancelled extends Notification
 {
     use Queueable;
-
 
     public $leave_request_info;
 
@@ -39,8 +38,8 @@ class LeaveRequestAccepted extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('請假已獲准')
-            ->markdown('mail.leave.approved', ['request' => $this->leave_request_info]);
+            ->subject('Covering leave cancelled')
+            ->markdown('mail.leave.cover-cancelled', ['request' => $this->leave_request_info]);
     }
 
     /**

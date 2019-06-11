@@ -15,14 +15,14 @@
                                @action-failed="requestActionError"
             ></undecided-request>
             <big-notice v-if="fetched_list && (requests.length === 0)"
-                        text="There are no current requests.">
+                        text="目前沒有任何請假申請">
             </big-notice>
         </div>
         <div class="max-w-lg mx-auto">
-            <p class="text-3xl font-black mb-12">Upcoming Leave</p>
+            <p class="text-3xl font-black mb-12">近期請假資料</p>
             <upcoming-leave v-for="leave in upcoming" :key="leave.id" :leave="leave"></upcoming-leave>
             <big-notice v-if="fetched_upcoming && (upcoming.length === 0)"
-                        text="There is no upcoming leave.">
+                        text="近期沒有人員請假">
             </big-notice>
         </div>
     </div>
@@ -74,7 +74,7 @@
                             this.fetched_upcoming = true;
                             resolve();
                         })
-                        .catch(() => reject({message: 'failed to fetch upcoming leave'}))
+                        .catch(() => reject({message: '系統無法讀取資料'}))
                 })
             },
 
@@ -101,7 +101,7 @@
             },
 
             requestDenied() {
-                notify.success({message: '已拒絕請假申請'});
+                notify.success({message: '未批准請假申請'});
                 this.refreshList();
             }
         }

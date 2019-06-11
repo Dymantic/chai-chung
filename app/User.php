@@ -19,7 +19,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'is_manager', 'user_code', 'hourly_rate'
+        'name',
+        'email',
+        'password',
+        'is_manager',
+        'user_code',
+        'hourly_rate'
     ];
 
     protected $casts = ['is_manager' => 'bool'];
@@ -30,7 +35,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     public function scopeManagers($query)
@@ -64,7 +70,7 @@ class User extends Authenticatable
     public function addSession($session_data)
     {
 
-        $session =  $this->sessions()->create($session_data);
+        $session = $this->sessions()->create($session_data);
 
         return $session;
     }
@@ -77,5 +83,18 @@ class User extends Authenticatable
     public function createLeaveRequest($input)
     {
         return $this->leaveRequests()->create($input);
+    }
+
+    public function covering()
+    {
+        return $this->hasMany(LeaveRequest::class, 'covering_user_id');
+    }
+
+    public function agreedToCover()
+    {
+        return $this->covering()
+                    ->where('ends', '>=', Carbon::now())
+                    ->whereIn('status', [LeaveRequest::ACCEPTED, LeaveRequest::COVERED])
+                    ->get();
     }
 }

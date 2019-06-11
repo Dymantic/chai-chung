@@ -15,7 +15,7 @@
             </div>
         </div>
         <p class="mb-4"><strong>代班: </strong>{{ leave.covered_by }}</p>
-        <p class="mb-4"><strong>Approved By: </strong>{{ leave.decider }}</p>
+        <p class="mb-4">{{ leave.decider }}已批准請假</p>
     </div>
 </template>
 
