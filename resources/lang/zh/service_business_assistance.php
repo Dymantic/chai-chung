@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'page_title' => 'Business Registration and Planning',
+    'page_title' => '工商登記',
 
     'intro' => [
         'heading' => '',
@@ -36,10 +36,9 @@ return [
 
 
     'links' => [
-        'contact' => 'Contact us',
-        'back'    => '&#139; Back to services',
-        'back_assistance' => 'Back to Business Assistance'
-    ],
+        'contact'         => '聯絡我們',
+        'back_assistance' => '回到工商登記'
+    ]
 
 
 

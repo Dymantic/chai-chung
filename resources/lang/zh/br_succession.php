@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'page_title' => 'Succession Planning',
+    'page_title' => '財富傳承規劃',
 
     'subheading' => '讓您的企業歷久彌堅',
 

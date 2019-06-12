@@ -7,6 +7,16 @@
   }
 }
 
+.banner-text-block {
+  opacity: 0;
+  transform: translate3d(0,50px,0);
+  animation-name: riseAndShine;
+  animation-duration: .75s;
+  animation-delay: .25s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+}
+
 .home .services {
   background-image: url(../../../images/banners/homepage_services_section.jpg);
   background-size: cover;
@@ -42,4 +52,9 @@ svg.skyline {
 @keyframes twinkle {
   from {fill: #fff;}
   to {fill: #f37121;}
+}
+
+@keyframes riseAndShine {
+  from {opacity: 0; transform: translate3d(0,50px,0);}
+  to {opacity: 1; transform: translate3d(0,0,0);}
 }

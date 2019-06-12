@@ -26,7 +26,7 @@
         <div class="text-white text-center flex justify-center">
             <a href="#" data-jump class="flex items-center flex-col no-underline text-mid-grey hover:text-orange-light">
                 @include('svgs.icons.top_arrow', ['classes' => 'h-3 mb-2'])
-                <p class="h3">Top</p>
+                <p class="h3">{{ trans('footer.top') }}</p>
             </a>
         </div>
     </div>

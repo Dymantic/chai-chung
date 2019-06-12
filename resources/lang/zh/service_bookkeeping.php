@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'page_title' => 'Bookkeeping',
+    'page_title' => '會計記帳',
 
     'service_range_intro' => '各產業之服務領域，包括：連鎖加盟體系、製造業、買賣業、餐飲業、營建業、投資公司、補習班、外商企業財團法人及社團法人等組織。',
 

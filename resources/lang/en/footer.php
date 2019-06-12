@@ -15,5 +15,6 @@ return [
         'email' => 'service@chia-chung.com',
         'address_line_one' => 'No. 61, Section 2, Gongyi Rd,',
         'address_line_two' => 'Nantun Dist., Taichung City, 408',
-    ]
+    ],
+    'top' => 'Top'
 ];

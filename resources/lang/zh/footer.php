@@ -2,11 +2,11 @@
 
 return [
     'nav' => [
-        'audits' => 'Audits',
-        'bookkeeping' => 'Bookkeeping',
-        'tax' => 'Tax',
-        'business_registration' => 'Business Assistance',
-        'careers' => 'Careers',
+        'audits' => '審計服務',
+        'bookkeeping' => '會計記帳',
+        'tax' => '稅務服務',
+        'business_registration' => '工商登記',
+        'careers' => '工作機會',
     ],
 
     'contact_info' => [
@@ -15,5 +15,6 @@ return [
         'email' => 'service@chia-chung.com',
         'address_line_one' => '408台中市南屯區公益路二段61號8樓之2',
         'address_line_two' => '',
-    ]
+    ],
+    'top' => '回頂端'
 ];

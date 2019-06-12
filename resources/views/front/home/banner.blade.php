@@ -14,7 +14,7 @@
         <img class="absolute pin orange-lights opacity-0 hidden md:block" src="/images/home/city_orange_narrow.jpg" />
     </picture>
 
-    <div class="w-lg max-w-90 py-8 px-4 lg:pl-8 lg:pr-24 lg:py-12 bg-baby-blue-opq my-20 mt-32 mx-auto lg:ml-40 relative fadeUpOnLoad opacity-0">
+    <div class="banner-text-block w-lg max-w-90 py-8 px-4 lg:pl-8 lg:pr-24 lg:py-12 bg-baby-blue-opq my-20 mt-32 mx-auto lg:ml-40 relative opacity-0">
         <p class="banner-text leading-tight text-navy max-w-narrow pl-8">{{ trans('home.banner.content') }}</p>
     </div>
 </section>
