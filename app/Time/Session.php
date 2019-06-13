@@ -113,7 +113,7 @@ class Session extends Model
 
     public function overtime()
     {
-        $day_start = Carbon::parse($this->start_time)->setHour(9)->setMinutes(0);
+        $day_start = Carbon::parse($this->start_time)->setHour(8)->setMinutes(30);
         $day_end = Carbon::parse($this->start_time)->setHour(17)->setMinutes(30);
 
         if (!is_null($this->overtime_set_by)) {

@@ -39,7 +39,7 @@ class SessionOvertimeTest extends TestCase
     public function overtime_for_overlapping_time()
     {
         $early_session = $this->makeSession(Carbon::parse("last friday"), "07:00", "10:00");
-        $this->assertEquals(120, $early_session->overtime());
+        $this->assertEquals(90, $early_session->overtime());
 
         $late_session = $this->makeSession(Carbon::parse("last friday"), "17:00", "19:00");
         $this->assertEquals(90, $late_session->overtime());
