@@ -15,14 +15,14 @@ class SessionsSeeder extends Seeder
         $clientB = factory(\App\Clients\Client::class)->create();
         $clientC = factory(\App\Clients\Client::class)->create();
 
-        $staffA = factory(\App\User::class)->create(['is_manager' => false]);
-        $staffB = factory(\App\User::class)->create(['is_manager' => false]);
-        $staffC = factory(\App\User::class)->create(['is_manager' => false]);
+        $staffA = factory(\App\User::class)->create(['email' => 'test1@example.com', 'is_manager' => false]);
+        $staffB = factory(\App\User::class)->create(['email' => 'test2@example.com', 'is_manager' => false]);
+        $staffC = factory(\App\User::class)->create(['email' => 'test3@example.com', 'is_manager' => false]);
 
         factory(\App\Time\Session::class)->create([
             'user_id' => $staffA,
             'client_id' => $clientA,
-            'start_time' => \Carbon\Carbon::today()->subDays(3)->setHour(8)->setMinutes(0),
+            'start_time' => \Carbon\Carbon::today()->subDays(3)->setHour(8)->setMinutes(30),
             'end_time' => \Carbon\Carbon::today()->subDays(3)->setHour(10)->setMinutes(0),
         ]);
 
@@ -43,7 +43,7 @@ class SessionsSeeder extends Seeder
         factory(\App\Time\Session::class)->create([
             'user_id' => $staffB,
             'client_id' => $clientA,
-            'start_time' => \Carbon\Carbon::today()->subDays(3)->setHour(8)->setMinutes(0),
+            'start_time' => \Carbon\Carbon::today()->subDays(3)->setHour(8)->setMinutes(30),
             'end_time' => \Carbon\Carbon::today()->subDays(3)->setHour(10)->setMinutes(0),
         ]);
 
@@ -64,7 +64,7 @@ class SessionsSeeder extends Seeder
         factory(\App\Time\Session::class)->create([
             'user_id' => $staffC,
             'client_id' => $clientA,
-            'start_time' => \Carbon\Carbon::today()->subDays(3)->setHour(8)->setMinutes(0),
+            'start_time' => \Carbon\Carbon::today()->subDays(3)->setHour(8)->setMinutes(30),
             'end_time' => \Carbon\Carbon::today()->subDays(3)->setHour(10)->setMinutes(0),
         ]);
 
@@ -86,7 +86,7 @@ class SessionsSeeder extends Seeder
         factory(\App\Time\Session::class)->create([
             'user_id' => $staffA,
             'client_id' => $clientA,
-            'start_time' => \Carbon\Carbon::today()->subDays(2)->setHour(8)->setMinutes(0),
+            'start_time' => \Carbon\Carbon::today()->subDays(2)->setHour(8)->setMinutes(30),
             'end_time' => \Carbon\Carbon::today()->subDays(2)->setHour(10)->setMinutes(0),
         ]);
 
@@ -107,7 +107,7 @@ class SessionsSeeder extends Seeder
         factory(\App\Time\Session::class)->create([
             'user_id' => $staffB,
             'client_id' => $clientA,
-            'start_time' => \Carbon\Carbon::today()->subDays(2)->setHour(8)->setMinutes(0),
+            'start_time' => \Carbon\Carbon::today()->subDays(2)->setHour(8)->setMinutes(30),
             'end_time' => \Carbon\Carbon::today()->subDays(2)->setHour(10)->setMinutes(0),
         ]);
 
@@ -128,7 +128,7 @@ class SessionsSeeder extends Seeder
         factory(\App\Time\Session::class)->create([
             'user_id' => $staffC,
             'client_id' => $clientA,
-            'start_time' => \Carbon\Carbon::today()->subDays(2)->setHour(8)->setMinutes(0),
+            'start_time' => \Carbon\Carbon::today()->subDays(2)->setHour(8)->setMinutes(30),
             'end_time' => \Carbon\Carbon::today()->subDays(2)->setHour(10)->setMinutes(0),
         ]);
 
@@ -150,7 +150,7 @@ class SessionsSeeder extends Seeder
         factory(\App\Time\Session::class)->create([
             'user_id' => $staffA,
             'client_id' => $clientA,
-            'start_time' => \Carbon\Carbon::today()->subDays(1)->setHour(8)->setMinutes(0),
+            'start_time' => \Carbon\Carbon::today()->subDays(1)->setHour(8)->setMinutes(30),
             'end_time' => \Carbon\Carbon::today()->subDays(1)->setHour(10)->setMinutes(0),
         ]);
 
@@ -171,7 +171,7 @@ class SessionsSeeder extends Seeder
         factory(\App\Time\Session::class)->create([
             'user_id' => $staffB,
             'client_id' => $clientA,
-            'start_time' => \Carbon\Carbon::today()->subDays(1)->setHour(8)->setMinutes(0),
+            'start_time' => \Carbon\Carbon::today()->subDays(1)->setHour(8)->setMinutes(30),
             'end_time' => \Carbon\Carbon::today()->subDays(1)->setHour(10)->setMinutes(0),
         ]);
 
@@ -192,7 +192,7 @@ class SessionsSeeder extends Seeder
         factory(\App\Time\Session::class)->create([
             'user_id' => $staffC,
             'client_id' => $clientA,
-            'start_time' => \Carbon\Carbon::today()->subDays(1)->setHour(8)->setMinutes(0),
+            'start_time' => \Carbon\Carbon::today()->subDays(1)->setHour(8)->setMinutes(30),
             'end_time' => \Carbon\Carbon::today()->subDays(1)->setHour(10)->setMinutes(0),
         ]);
 
