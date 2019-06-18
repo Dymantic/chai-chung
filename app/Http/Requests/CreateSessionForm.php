@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\MaximumHours;
 use App\Rules\StartEndTime;
 use App\Time\Holiday;
 use App\Time\MakeUpDay;
@@ -30,7 +31,7 @@ class CreateSessionForm extends FormRequest
         return [
             'session_date'       => ['required', 'date'],
             'start_time'         => [new StartEndTime()],
-            'end_time'           => [new StartEndTime(request('start_time'))],
+            'end_time'           => [new StartEndTime(request('start_time')), new MaximumHours(4, request('start_time'))],
             'service_period'     => ['required'],
             'client_id'          => ['exists:clients,id'],
             'engagement_code_id' => ['exists:engagement_codes,id'],

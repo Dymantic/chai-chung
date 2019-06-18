@@ -4,6 +4,7 @@ namespace Tests\Feature\Sessions;
 
 use App\Clients\EngagementCode;
 use App\Time\Holiday;
+use App\Time\Session;
 use App\User;
 use App\Clients\Client;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -118,6 +119,50 @@ class CreateSessionTest extends TestCase
     public function the_end_time_must_be_later_than_the_start_time()
     {
         $this->assertFieldIsInvalid(['end_time' => '09:30', 'start_time' => '11:30']);
+    }
+
+    /**
+     *@test
+     */
+    public function the_session_duration_cannot_exceed_four_hours()
+    {
+        $this->assertFieldIsInvalid(['end_time' => '13:00', 'start_time' => '08:30']);
+    }
+
+    /**
+     *@test
+     */
+    public function a_session_can_not_be_created_if_previous_four_hours_are_logged()
+    {
+        $user = factory(User::class)->create();
+        factory(Session::class)->create([
+            'user_id' => $user->id,
+            'start_time' => Carbon::today()->setHour(8)->setMinutes(30),
+            'end_time' => Carbon::today()->setHour(10)->setMinutes(30),
+        ]);
+        factory(Session::class)->create([
+            'user_id' => $user->id,
+            'start_time' => Carbon::today()->setHour(10)->setMinutes(30),
+            'end_time' => Carbon::today()->setHour(12)->setMinutes(30),
+        ]);
+
+        $client = factory(Client::class)->create();
+        $engagement_code = factory(EngagementCode::class)->create();
+        $session_data =[
+            'session_date' => Carbon::today()->format('Y-m-d'),
+            'start_time' => "12:30",
+            'end_time' => "13:30",
+            'service_period' => Carbon::today()->year,
+            'client_id' => $client->id,
+            'engagement_code_id' => $engagement_code->id,
+            'description' => 'test description',
+            'notes' => 'test notes',
+        ];
+
+        $response = $this->actingAs($user)->postJson("/admin/sessions", $session_data);
+        $response->assertStatus(422);
+
+        $response->assertJsonValidationErrors('start_time');
     }
 
     /**

@@ -4,6 +4,8 @@
 namespace App\Time;
 
 
+use Illuminate\Support\Carbon;
+
 class Duration
 {
 
@@ -12,6 +14,22 @@ class Duration
     public function __construct($minutes)
     {
         $this->minutes = $minutes;
+    }
+
+    public static function fromTimes($start, $end)
+    {
+        $start = new TimeOfDay($start);
+        $end = new TimeOfDay($end);
+
+        if((!$start->isValid()) || (!$end->isValid())) {
+            throw new \Exception("invalid time of days");
+        }
+
+        $begin = Carbon::now()->setHour($start->hours)->setMinutes($start->mins);
+        $end = Carbon::now()->setHour($end->hours)->setMinutes($end->mins);
+
+        $mins = $end->diffInMinutes($begin);
+        return new static($mins);
     }
 
     public function minutes() {

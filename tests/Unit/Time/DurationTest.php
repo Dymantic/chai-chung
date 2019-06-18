@@ -40,4 +40,14 @@ class DurationTest extends TestCase
             $this->assertEquals($case['mins'], $duration->minutes());
         });
     }
+
+    /**
+     *@test
+     */
+    public function can_be_made_from_times()
+    {
+        $duration = Duration::fromTimes('10:00', '12:00');
+
+        $this->assertEquals(120, $duration->minutes());
+    }
 }
