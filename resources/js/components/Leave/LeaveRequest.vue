@@ -33,7 +33,7 @@
                         <p class="text-lg font-bold text-navy mb-8">{{ leave_description }}</p>
                         <p>新的代班人選</p>
                         <select v-model="covering_user_id"
-                                class="block h-8 border my-4 w-full">
+                                class="block min-h-8 border my-4 w-full">
                             <option v-for="user in users"
                                     :key="user.id"
                                     :value="user.id">{{ user.name }}

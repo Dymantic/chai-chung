@@ -38,7 +38,7 @@
                     <p class="mb-3 font-bold text-navy">客戶</p>
                     <select name="client"
                             v-model="filters.client"
-                            class="py-2 w-40 block bg-white border h-8">
+                            class="py-2 w-40 block bg-white border min-h-8">
                         <option value="">全部客戶</option>
                         <option v-for="client in clients"
                                 :key="client.id"

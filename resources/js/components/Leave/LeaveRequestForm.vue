@@ -31,7 +31,7 @@
             </div>
             <div class="my-12">
                 <p class="font-bold text-navy mb-2">請誰代班?</p>
-                <select name="covering_user_id" class="h-8 border block w-full" v-model="form.covering_user_id">
+                <select name="covering_user_id" class="min-h-8 border block w-full" v-model="form.covering_user_id">
                     <option v-for="user in users" :key="user.id" :value="user.id">{{ user.name }}</option>
                 </select>
             </div>

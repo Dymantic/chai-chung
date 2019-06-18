@@ -49,7 +49,7 @@
                     <label class="font-bold text-navy block mb-2"
                            for="client">客戶</label>
                     <select name="client_id"
-                            class="block w-full p-2 h-8 bg-white border rounded-none"
+                            class="block w-full p-2 min-h-8 bg-white border rounded-none"
                             id="client"
                             v-model="session.client">
                         <option v-for="client in client_list"
@@ -63,7 +63,7 @@
                     <label class="font-bold text-navy block mb-2"
                            for="enagement_code">工作事項</label>
                     <select name="engagement_code"
-                            class="block w-full p-2 h-8 bg-white border rounded-none"
+                            class="block w-full p-2 min-h-8 bg-white border rounded-none"
                             id="engagement_code"
                             v-model="session.engagement_code">
                         <option v-for="engagement in engagements"
@@ -77,7 +77,7 @@
                     <label class="font-bold text-navy block mb-2"
                            for="enagement_code">服務期間</label>
                     <select name="engagement_code"
-                            class="block w-full p-2 h-8 bg-white border rounded-none"
+                            class="block w-full p-2 min-h-8 bg-white border rounded-none"
                             id="service_period"
                             v-model="session.service_period">
                         <option v-for="period in service_periods"
