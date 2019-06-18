@@ -3,14 +3,14 @@
 return [
     'story' => [
         'heading' => 'Company Story',
-        'part_one' => 'Chai-Chung accounting firm was founded by Hong-Yi Chen in 2011, providing the services as “Hui-Jun Accounting Firm”. The office relocated to Gong-Yi Road, Taichung in 2015. We are committed to providing expert services, bringing our clients business success. The DNA of Chai-Chung is innovation and insight so that we are capable of serving huge corporations, McDonald’s for example.  In order to perfect our services and sustain long-lasting business relationships, a panel of experts from different areas have joined us as partners.
+        'part_one' => 'Chia-Chung accounting firm was founded by Tino Chen in 2011, providing the services as “Hui-Jui Accounting Firm”. The office relocated to Gong-Yi Road, Taichung in 2015. We are committed to providing expert services, bringing our clients business success. The DNA of Chia-Chung is innovation and insight so that we are capable of serving huge corporations, McDonald’s for example.  In order to perfect our services and sustain long-lasting business relationships, a panel of experts from different areas have joined us as partners.
 ',
 
     ],
 
     'accountants' => [
         'heading' => 'About Our Accountants',
-        'part_one' => 'Being a manager at Ernst & Young, Hong-Yi Chen specialized in transnational IPO auditing, IPO-related consultation services for Taiwan capital market and capital structure planning. After founding Chai-Chung accounting firm, he offered accounting, financial reporting, business advising and income taxation services for individuals, partnerships, and corporations. With a number of years working for a small and medium-sized accounting firm, Hong-Yi Chen has experience in the financial planning and tax solutions for SMEs. By combining his expertise, experience and passion, each client receives close, personal and professional attention.
+        'part_one' => 'Being a manager at Ernst & Young, Tino Chen specialized in transnational IPO auditing, IPO-related consultation services for Taiwan capital market and capital structure planning. After founding Chia-Chung accounting firm, he offered accounting, financial reporting, business advising and income taxation services for individuals, partnerships, and corporations. With a number of years working for a small and medium-sized accounting firm, Tino Chen has experience in the financial planning and tax solutions for SMEs. By combining his expertise, experience and passion, each client receives close, personal and professional attention.
 ',
         'part_two' => 'In addition to the practice in the firm, he is a lecturer and consultant in many institutions, such as the Department of Accounting at Chao-Yang University of Technology; SME Administration of Ministry of Economic Affairs; the Workforce Development Agency of the Ministry of Labor; the E-commerce & Knowledge Economy Research Center, National Chung-Hsing University, as well as being invited to deliver speeches on the issue of public finance and taxation.'
     ],
@@ -20,7 +20,7 @@ return [
 
         'members' => [
             [
-                'name' => 'Hong-Yi Chen',
+                'name' => 'Tino Chen',
                 'title' => 'CPA',
                 'phone' => '04-23208012#10',
                 'fax' => '04-23208022',
@@ -62,7 +62,7 @@ return [
                 ]
             ],
             [
-                'name' => 'Jia-Siang Liang',
+                'name' => 'Ned Liang',
                 'title' => ' Audit Manager',
                 'phone' => '04-23208012#20',
                 'fax' => '04-23208022',
@@ -116,7 +116,7 @@ return [
                 ]
             ],
             [
-                'name' => 'Ti-Wei Yang',
+                'name' => 'Teaway Yang',
                 'title' => 'Corporate services',
                 'phone' => '04-23208012#12',
                 'fax' => '04-23208022',

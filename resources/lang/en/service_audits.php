@@ -39,7 +39,7 @@ return [
     ],
     'other_auditing_services' => [
         'heading' => 'Other Auditing Services',
-        'mutual_agreements' => 'Mutual agreement procedure before investment ',
+        'mutual_agreements' => 'Agreed-upon Procedures before investment ',
         'government_grants' => 'Audit and assurance of the expenditure related to government grants',
         'special_purpose' => 'Special purpose audit',
     ],

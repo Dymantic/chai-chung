@@ -3,7 +3,7 @@
 return [
     'intro' => [
         'heading' => 'We offer a wide range of accounting services.',
-        'content' => 'Based on the premise that we develop and sustain long-lasting business relationships, Chai-Chung will work hard to assist you in achieving your goals and solving problems. When you start to work with Chai-Chung, you will work with a CPA as well as a professional consultant.'
+        'content' => 'Based on the premise that we develop and sustain long-lasting business relationships, Chia-Chung will work hard to assist you in achieving your goals and solving problems. When you start to work with Chia-Chung, you will work with a CPA as well as a professional consultant.'
     ],
 
     'audits' => [

@@ -6,7 +6,7 @@ return [
     ],
     'about'    => [
         'heading' => 'Nice to meet you.',
-        'content' => 'Located in Taichung, Taiwan, Chai-Chung integrates our professionalism with customized services to help our clients achieve more goals. Due to our wide variety of customers, we dedicate ourselves to adopting innovative approaches to assist our clients in reaching success.',
+        'content' => 'Located in Taichung, Taiwan, Chia-Chung integrates our professionalism with customized services to help our clients achieve more goals. Due to our wide variety of customers, we dedicate ourselves to adopting innovative approaches to assist our clients in reaching success.',
         'link'    => 'More about us'
     ],
     'services' => [
