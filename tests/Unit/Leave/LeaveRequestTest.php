@@ -124,7 +124,8 @@ class LeaveRequestTest extends TestCase
             'ends'             => $ends,
             'status'           => LeaveRequest::ACCEPTED,
             'decided_by'       => $manager->id,
-            'decided_on'       => Carbon::today()
+            'decided_on'       => Carbon::today(),
+            'leave_type'       => '事假'
         ]);
 
         $expected = [
@@ -143,7 +144,8 @@ class LeaveRequestTest extends TestCase
             'status'           => LeaveRequest::ACCEPTED,
             'decider'          => $manager->name,
             'decided_on'       => Carbon::today()->format('Y-m-d'),
-            'has_past'         => false
+            'has_past'         => false,
+            'leave_type'       => '事假'
         ];
 
         $this->assertEquals($expected, $leave_request->toArray());

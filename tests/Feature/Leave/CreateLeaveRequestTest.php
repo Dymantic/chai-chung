@@ -27,7 +27,8 @@ class CreateLeaveRequestTest extends TestCase
             'end_date'         => Carbon::today()->addDays(3)->format('Y-m-d'),
             'end_time'         => '17:00',
             'covering_user_id' => $staffB->id,
-            'reason'           => 'test reason'
+            'reason'           => 'test reason',
+            'leave_type'       => '事假'
         ];
 
         $response = $this->actingAs($staffA)->postJson("/admin/leave-requests", $leave_data);
@@ -40,6 +41,7 @@ class CreateLeaveRequestTest extends TestCase
             'reason'           => 'test reason',
             'covering_user_id' => $staffB->id,
             'status'           => 'submitted',
+            'leave_type'       => '事假'
         ]);
     }
 
@@ -157,6 +159,14 @@ class CreateLeaveRequestTest extends TestCase
         $this->assertFieldInvalid(['covering_user_id' => 99]);
     }
 
+    /**
+     * @test
+     */
+    public function the_leave_type_must_be_a_valid_type()
+    {
+        $this->assertFieldInvalid(['leave_type' => 'not-a-valid-reason']);
+    }
+
     private function assertFieldInvalid($field)
     {
         $staffA = factory(User::class)->create();
@@ -168,7 +178,8 @@ class CreateLeaveRequestTest extends TestCase
             'end_date'         => Carbon::today()->addDays(3)->format('Y-m-d'),
             'end_time'         => '17:00',
             'covering_user_id' => $staffB->id,
-            'reason'           => 'test reason'
+            'reason'           => 'test reason',
+            'leave_type'       => '事假'
         ];
 
         $response = $this->actingAs($staffA)->postJson("/admin/leave-requests",

@@ -15,7 +15,7 @@ class LeaveRequest extends Model
     const DENIED = 'denied';
     const CANCELLED = 'cancelled';
 
-    protected $fillable = ['starts', 'ends', 'status', 'reason', 'covering_user_id'];
+    protected $fillable = ['starts', 'ends', 'status', 'reason', 'covering_user_id', 'leave_type'];
 
     protected $dates = ['starts', 'ends', 'decided_on'];
 
@@ -43,8 +43,8 @@ class LeaveRequest extends Model
     public static function needsCoverBy(User $user)
     {
         return static::where('covering_user_id', $user->id)
-            ->where('status', static::SUBMITTED)
-            ->where('starts', '>=', Carbon::now());
+                     ->where('status', static::SUBMITTED)
+                     ->where('starts', '>=', Carbon::now());
     }
 
     public function covered_by()
@@ -116,7 +116,8 @@ class LeaveRequest extends Model
             'status'           => $this->status,
             'decider'          => $this->decider ? $this->decider->name : '',
             'decided_on'       => $this->decided_on ? $this->decided_on->format('Y-m-d') : '',
-            'has_past'         => $this->starts->isPast()
+            'has_past'         => $this->starts->isPast(),
+            'leave_type'       => $this->leave_type,
         ];
     }
 }

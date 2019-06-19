@@ -1,6 +1,7 @@
 <template>
     <div class="max-w-md mx-auto shadow-lg bg-grey-lightest p-4 my-8">
-        <p class="mb-4"><strong>姓名: </strong>{{ leave.requestee }}</p>
+        <p class="mb-2"><strong>姓名: </strong>{{ leave.requestee }}</p>
+        <p class="mb-4"><strong>請假類型: </strong>{{ leave.leave_type }}</p>
 
         <div class="flex mb-8">
             <div class="mr-8">

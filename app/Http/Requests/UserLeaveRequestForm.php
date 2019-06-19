@@ -6,6 +6,7 @@ use App\Leave\LeaveRequest;
 use App\Rules\BusinessHours;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Carbon;
+use Illuminate\Validation\Rule;
 
 class UserLeaveRequestForm extends FormRequest
 {
@@ -28,7 +29,8 @@ class UserLeaveRequestForm extends FormRequest
             'end_date' => ['required', 'date', 'after_or_equal:start_date'],
             'end_time' => ['required', new BusinessHours()],
             'covering_user_id' => ['required', 'exists:users,id'],
-            'reason' => []
+            'reason' => [],
+            'leave_type' => [Rule::in(['事假', '特別休', '病假', '婚假', '喪假', '公假'])]
         ];
     }
 
@@ -49,7 +51,8 @@ class UserLeaveRequestForm extends FormRequest
             'ends' => $ends,
             'reason' => $this->reason,
             'covering_user_id' => $this->covering_user_id,
-            'status' => LeaveRequest::SUBMITTED
+            'status' => LeaveRequest::SUBMITTED,
+            'leave_type' => $this->leave_type,
         ];
     }
 }

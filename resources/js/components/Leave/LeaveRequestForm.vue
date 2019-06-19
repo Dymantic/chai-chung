@@ -36,6 +36,21 @@
                 </select>
             </div>
             <div class="my-12">
+                <label class="font-bold text-navy block mb-2"
+                       for="leave_type">請假類型</label>
+                <select name="leave_type"
+                        class="block w-full p-2 min-h-8 bg-white border rounded-none"
+                        id="leave_type"
+                        v-model="form.leave_type">
+                    <option value="事假" class="personal">事假</option>
+                    <option value="特別休" class="annual">特別休</option>
+                    <option value="病假" class="sick">病假</option>
+                    <option value="婚假" class="wedding">婚假</option>
+                    <option value="喪假" class="funeral">喪假</option>
+                    <option value="公假" class="public">公假</option>
+                </select>
+            </div>
+            <div class="my-12">
                 <p class="font-bold text-navy mb-2">備註說明?</p>
                 <input type="text" name="reason" v-model="form.reason" class="block w-full p-2 border">
             </div>
@@ -67,7 +82,8 @@
                     end_date: new Date(),
                     end_time: "17:00",
                     covering_user_id: '',
-                    reason: ''
+                    reason: '',
+                    leave_type: '事假',
                 },
                 waiting: false
             };
@@ -83,7 +99,8 @@
                     start_time: this.form.start_time,
                     end_time: this.form.end_time,
                     covering_user_id: this.form.covering_user_id,
-                    reason: this.form.reason
+                    reason: this.form.reason,
+                    leave_type: this.form.leave_type,
                 }).then(() => this.onSubmitted())
                     .catch(({response}) => this.onFailedToSubmit(response.status, response.data))
                     .then(() => this.waiting = false);
@@ -101,7 +118,8 @@
                     end_date: new Date(),
                     end_time: "17:30",
                     covering_user_id: '',
-                    reason: ''
+                    reason: '',
+                    leave_type: '事假',
                 };
             },
 

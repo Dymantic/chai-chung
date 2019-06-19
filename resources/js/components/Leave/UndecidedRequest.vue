@@ -15,6 +15,7 @@
             </div>
         </div>
         <p class="mb-4"><strong>代班: </strong>{{ request.covered_by }}</p>
+        <p class="mb-4"><strong>請假類型: </strong>{{ request.leave_type }}</p>
         <p class="mb-4" v-if="request.reason !== ''"><strong>理由: </strong>{{ request.reason }}</p>
 
         <div class="flex justify-end mt-6">
