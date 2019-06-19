@@ -24,3 +24,5 @@ yarn-error.log
 /public/portfolio/**/*
 /public/fonts/**/*
 .smithy.yaml
+/imports
+/imports/*
