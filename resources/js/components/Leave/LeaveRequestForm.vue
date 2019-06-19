@@ -37,7 +37,7 @@
             </div>
             <div class="my-12">
                 <label class="font-bold text-navy block mb-2"
-                       for="leave_type">請假類型</label>
+                       for="leave_type">請假類別</label>
                 <select name="leave_type"
                         class="block w-full p-2 min-h-8 bg-white border rounded-none"
                         id="leave_type"
