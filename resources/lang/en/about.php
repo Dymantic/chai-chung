@@ -21,6 +21,7 @@ return [
         'members' => [
             [
                 'name' => 'Tino Chen',
+                'avatar' => '/images/profiles/about_tino.png',
                 'title' => 'CPA',
                 'phone' => '04-23208012#10',
                 'fax' => '04-23208022',
@@ -63,6 +64,7 @@ return [
             ],
             [
                 'name' => 'Ned Liang',
+                'avatar' => '/images/profiles/about_ned.png',
                 'title' => ' Audit Manager',
                 'phone' => '04-23208012#20',
                 'fax' => '04-23208022',
@@ -90,6 +92,7 @@ return [
             [
                 'name' => 'Yi-Wun Jheng',
                 'title' => 'Accounting Manager',
+                'avatar' => '/images/profiles/about_yiwun.png',
                 'phone' => '04-23208012#21',
                 'fax' => '04-23208022',
                 'email' => 'Yiwun@hj-cpas.com',
@@ -118,6 +121,7 @@ return [
             [
                 'name' => 'Teaway Yang',
                 'title' => 'Corporate services',
+                'avatar' => '/images/profiles/about_teaway.png',
                 'phone' => '04-23208012#12',
                 'fax' => '04-23208022',
                 'email' => 'Teaway@hj-cpas.com',

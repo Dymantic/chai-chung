@@ -22,6 +22,7 @@ return [
             [
                 'name' => '陳宏義',
                 'title' => '執業會計師',
+                'avatar' => '/images/profiles/about_tino.png',
                 'phone' => '04-23208012#10',
                 'fax' => '04-23208022',
                 'email' => 'Tino.Chen@hj-cpas.com',
@@ -68,6 +69,7 @@ return [
             [
                 'name' => '梁家祥',
                 'title' => '審計部門主管',
+                'avatar' => '/images/profiles/about_ned.png',
                 'phone' => '04-23208012#20',
                 'fax' => '04-23208022',
                 'email' => 'Ned@hj-cpas.com',
@@ -100,6 +102,7 @@ return [
             [
                 'name' => '鄭伊妏',
                 'title' => '會計服務部門主管',
+                'avatar' => '/images/profiles/about_yiwun.png',
                 'phone' => '04-23208012#21',
                 'fax' => '04-23208022',
                 'email' => 'Yiwun@hj-cpas.com',
@@ -131,6 +134,7 @@ return [
             [
                 'name' => '楊提威',
                 'title' => '工商登記服務專員',
+                'avatar' => '/images/profiles/about_teaway.png',
                 'phone' => '04-23208012#12',
                 'fax' => '04-23208022',
                 'email' => 'Teaway@hj-cpas.com',
