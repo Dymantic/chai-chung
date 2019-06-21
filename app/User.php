@@ -4,6 +4,7 @@ namespace App;
 
 use App\Leave\LeaveRequest;
 use App\Time\Session;
+use App\Time\WorkDay;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -96,5 +97,17 @@ class User extends Authenticatable
                     ->where('ends', '>=', Carbon::now())
                     ->whereIn('status', [LeaveRequest::ACCEPTED, LeaveRequest::COVERED])
                     ->get();
+    }
+
+    public function workDay($date)
+    {
+        $start_of_day = Carbon::parse($date)->startOfDay();
+        $end_of_day = Carbon::parse($date)->endOfDay();
+        $sessions = $this
+            ->sessions()
+            ->whereBetween('start_time', [$start_of_day, $end_of_day])
+            ->orderBy('start_time')
+            ->get();
+        return new WorkDay($sessions);
     }
 }

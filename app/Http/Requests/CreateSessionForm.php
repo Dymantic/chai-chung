@@ -4,8 +4,10 @@ namespace App\Http\Requests;
 
 use App\Rules\MaximumHours;
 use App\Rules\StartEndTime;
+use App\Rules\WorkPeriod;
 use App\Time\Holiday;
 use App\Time\MakeUpDay;
+use App\Time\TimeOfDay;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Carbon;
 
@@ -30,7 +32,7 @@ class CreateSessionForm extends FormRequest
     {
         return [
             'session_date'       => ['required', 'date'],
-            'start_time'         => [new StartEndTime()],
+            'start_time'         => [new StartEndTime(), new WorkPeriod($this->user(), $this->end_time, $this->session_date)],
             'end_time'           => [new StartEndTime(request('start_time')), new MaximumHours(4, request('start_time'))],
             'service_period'     => ['required'],
             'client_id'          => ['exists:clients,id'],
@@ -41,11 +43,11 @@ class CreateSessionForm extends FormRequest
 
     public function session_data()
     {
-        $start = explode(":", $this->start_time);
-        $end = explode(":", $this->end_time);
+        $start = new TimeOfDay($this->start_time);
+        $end = new TimeOfDay($this->end_time);
 
-        $start_time = Carbon::parse($this->session_date)->startOfDay()->setHours(intval($start[0]))->setMinutes(intval($start[1]));
-        $end_time = Carbon::parse($this->session_date)->startOfDay()->setHours(intval($end[0]))->setMinutes(intval($end[1]));
+        $start_time = Carbon::parse($this->session_date)->setHours($start->hours)->setMinutes($start->mins);
+        $end_time = Carbon::parse($this->session_date)->setHours($end->hours)->setMinutes($end->mins);
 
         $holiday = Holiday::where([
             ['year', '=', $start_time->year],
