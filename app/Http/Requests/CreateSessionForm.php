@@ -37,7 +37,7 @@ class CreateSessionForm extends FormRequest
             'service_period'     => ['required'],
             'client_id'          => ['exists:clients,id'],
             'engagement_code_id' => ['exists:engagement_codes,id'],
-            'description'        => ['required']
+            'description'        => ['']
         ];
     }
 

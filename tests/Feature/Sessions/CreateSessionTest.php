@@ -231,9 +231,9 @@ class CreateSessionTest extends TestCase
     /**
      *@test
      */
-    public function the_description_is_required()
+    public function the_description_is_not_required()
     {
-        $this->assertFieldIsInvalid(['description' => '']);
+        $this->assertFieldIsValid(['description' => ''], 201);
     }
 
     /**
@@ -293,5 +293,25 @@ class CreateSessionTest extends TestCase
         $response->assertStatus(422);
 
         $response->assertJsonValidationErrors(array_keys($field)[0]);
+    }
+
+    private function assertFieldIsValid($field, $code = 200) {
+        $user = factory(User::class)->create();
+        $client = factory(Client::class)->create();
+        $engagement_code = factory(EngagementCode::class)->create();
+        $valid =[
+            'session_date' => Carbon::today()->format('Y-m-d'),
+            'start_time' => Carbon::now()->subHours(3)->hour . ":30",
+            'end_time' => Carbon::now()->subHours(1)->hour . ":30",
+            'service_period' => Carbon::today()->year,
+            'client_id' => $client->id,
+            'engagement_code_id' => $engagement_code->id,
+            'description' => 'test description',
+            'notes' => 'test notes',
+        ];
+
+        $response = $this->actingAs($user)->postJson("/admin/sessions", array_merge($valid, $field));
+        $response->assertStatus($code);
+
     }
 }
