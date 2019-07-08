@@ -73,6 +73,42 @@ class WorkDayTest extends TestCase
         $this->assertFalse($workDay->canAcceptSession($new_session));
     }
 
+    /**
+     *@test
+     */
+    public function get_total_hours_of_day()
+    {
+        $logged_times = [
+            '8:30' => '10:30',
+            '10:30' => '12:30',
+            '14:00' => '17:00',
+        ];
+        $user = factory(User::class)->create();
+
+        $this->prepareDay($logged_times, $user);
+
+        $workDay = $user->workDay(Carbon::today());
+
+        $this->assertEquals(7, $workDay->totalHours());
+    }
+
+    /**
+     *@test
+     */
+    public function get_overtime_of_day()
+    {
+        $logged_times = [
+            '18:30' => '20:00',
+        ];
+        $user = factory(User::class)->create();
+
+        $this->prepareDay($logged_times, $user);
+
+        $workDay = $user->workDay(Carbon::today());
+
+        $this->assertEquals(1.5, $workDay->totalOvertime());
+    }
+
     private function prepareDay($exsisting_sessions = [], $user)
     {
         collect($exsisting_sessions)->each(function($to, $start) use ($user) {

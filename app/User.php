@@ -5,6 +5,7 @@ namespace App;
 use App\Leave\LeaveRequest;
 use App\Time\Session;
 use App\Time\WorkDay;
+use Carbon\CarbonPeriod;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -109,5 +110,28 @@ class User extends Authenticatable
             ->orderBy('start_time')
             ->get();
         return new WorkDay($sessions);
+    }
+
+    public function costReport($start, $end)
+    {
+        $hrs = 0;
+        $overtime = 0;
+        $cost = 0;
+
+
+        foreach(CarbonPeriod::create($start, $end) as $day) {
+            $workDay = $this->workDay($day);
+            $hrs = $hrs + $workDay->totalHours();
+            $overtime = $overtime + $workDay->totalOvertime();
+            $cost = $cost + $workDay->costOfDay($this->hourly_rate);
+        }
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'total_hours' => $hrs,
+            'overtime_hours' => $overtime,
+            'hourly_rate' => $this->hourly_rate,
+            'cost' => $cost,
+        ];
     }
 }
