@@ -32,6 +32,7 @@ import HolidaysIndexPage from "./components/Time/HolidaysIndexPage";
 import ManageSesions from "./components/Time/ManageSessions";
 
 import TimeReport from "./components/Reports/TimeReport";
+import DownloadReportButton from "./components/Reports/DownloadReportButton";
 
 import StaffLeavePage from "./components/Leave/StaffLeavePage";
 import CoveringRequestsPage from "./components/Leave/CoveringRequestsPage";
@@ -57,7 +58,7 @@ Vue.component('holidays-index-page', HolidaysIndexPage);
 Vue.component('manage-sessions', ManageSesions);
 
 Vue.component('time-report', TimeReport);
-
+Vue.component('download-report-button', DownloadReportButton);
 Vue.component('staff-leave-page', StaffLeavePage);
 Vue.component('covering-requests-page', CoveringRequestsPage);
 Vue.component('manage-staff-leave-page', ManageStaffLeavePage);

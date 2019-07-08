@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Reports\StaffCostReport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -21,4 +22,6 @@ class ManagerReportsController extends Controller
     {
         return view('admin.reports.engagement-time.index');
     }
+
+
 }

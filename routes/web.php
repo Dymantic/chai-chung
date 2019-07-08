@@ -116,6 +116,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('admin/manage-reports/staff-time', 'Admin\ManagerReportsController@staffTime')->middleware('is_manager');
     Route::get('admin/manage-reports/client-time', 'Admin\ManagerReportsController@clientTime')->middleware('is_manager');
     Route::get('admin/manage-reports/engagement-time', 'Admin\ManagerReportsController@engagementTime')->middleware('is_manager');
+    Route::get('admin/manage-reports/staff-cost', 'Admin\StaffCostReportPagesController@index')->middleware('is_manager');
+    Route::get('admin/manage-reports/staff-cost/{report}', 'Admin\StaffCostReportPagesController@show')->middleware('is_manager');
 
     Route::get('admin/reports/staff-time', 'Admin\StaffTimeReportController@show')->middleware('is_manager');
     Route::get('admin/reports/client-time', 'Admin\ClientTimeReportController@show')->middleware('is_manager');
@@ -124,6 +126,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('admin/exports/reports/staff-time', 'Admin\StaffTimeExportController@show')->middleware('is_manager');
     Route::get('admin/exports/reports/client-time', 'Admin\ClientTimeExportController@show')->middleware('is_manager');
     Route::get('admin/exports/reports/engagement-time', 'Admin\EngagementTimeExportController@show')->middleware('is_manager');
+    Route::get('admin/exports/reports/staff-cost/{report}', 'Admin\StaffCostExportController@show')->middleware('is_manager');
 
 
     Route::post('admin/leave-requests', 'Admin\UserLeaveRequestsController@store');
