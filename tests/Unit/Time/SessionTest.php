@@ -71,4 +71,41 @@ class SessionTest extends TestCase
 
 
     }
+
+    /**
+     *@test
+     */
+    public function session_cost()
+    {
+        $user = factory(User::class)->create(['hourly_rate' => 500]);
+        $client = factory(Client::class)->create();
+        $engagement_code = factory(EngagementCode::class)->create();
+
+        $sessionA = Session::forceCreate([
+            'user_id' => $user->id,
+            'start_time' => Carbon::parse('last friday')->setHour(10)->setMinutes(30),
+            'end_time' => Carbon::parse('last friday')->setHour(12)->setMinutes(30),
+            'on_holiday' => true,
+            'service_period' => Carbon::today()->year,
+            'client_id' => $client->id,
+            'engagement_code_id' => $engagement_code->id,
+            'description' => 'test description',
+            'notes' => 'test notes',
+        ]);
+
+        $sessionB = Session::forceCreate([
+            'user_id' => $user->id,
+            'start_time' => Carbon::parse('last friday')->setHour(14)->setMinutes(0),
+            'end_time' => Carbon::parse('last friday')->setHour(17)->setMinutes(30),
+            'on_holiday' => true,
+            'service_period' => Carbon::today()->year,
+            'client_id' => $client->id,
+            'engagement_code_id' => $engagement_code->id,
+            'description' => 'test description',
+            'notes' => 'test notes',
+        ]);
+
+        $this->assertEquals(1000, $sessionA->cost());
+        $this->assertEquals(1750, $sessionB->cost());
+    }
 }

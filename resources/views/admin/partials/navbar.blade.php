@@ -42,6 +42,8 @@
                        class="text-grey-darker no-underline hover:text-orange-light pb-3 block">工作事項</a>
                     <a href="/admin/manage-reports/staff-cost"
                        class="text-grey-darker no-underline hover:text-orange-light pb-3 block">Staff Cost</a>
+                    <a href="/admin/manage-reports/client-cost"
+                       class="text-grey-darker no-underline hover:text-orange-light pb-3 block">Client Cost</a>
                 </div>
             </dropdown-menu>
             <dropdown-menu v-cloak

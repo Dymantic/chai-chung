@@ -111,6 +111,11 @@ class Session extends Model
         return new Duration($mins);
     }
 
+    public function cost()
+    {
+        return $this->user->hourly_rate * ($this->duration()->minutes() / 60);
+    }
+
     public function overtime()
     {
         $day_start = Carbon::parse($this->start_time)->setHour(8)->setMinutes(30);
