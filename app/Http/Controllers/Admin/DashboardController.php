@@ -17,8 +17,8 @@ class DashboardController extends Controller
             ['id' => 3, 'text' => 2020]
         ];
         return view('admin.sessions.index', [
-            'clients' => Client::all(),
-            'engagement_codes' => EngagementCode::all(),
+            'clients' => Client::active()->get(),
+            'engagement_codes' => EngagementCode::active()->get(),
             'service_periods' => $periods
         ]);
     }

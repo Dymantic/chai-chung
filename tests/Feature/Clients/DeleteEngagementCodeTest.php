@@ -23,7 +23,7 @@ class DeleteEngagementCodeTest extends TestCase
         $response = $this->asManager()->deleteJson("/admin/engagement-codes/{$engagement_code->id}");
         $response->assertStatus(200);
 
-        $this->assertDatabaseMissing('engagement_codes', ['id' => $engagement_code->id]);
+        $this->assertTrue($engagement_code->fresh()->isPastured());
     }
 
     /**

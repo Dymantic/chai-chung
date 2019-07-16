@@ -59,9 +59,10 @@ class ClientCostSummaryTest extends TestCase
 
         //overtime
         // clientA 3 hours, clientB 2 hours, clientC 0 hours
-        $this->logSession($clientA, $staffA, Carbon::parse('first wednesday last month'), [['19:00', '20:30']]);
+        $this->logSession($clientA, $staffA, Carbon::parse('first friday last month'), [['19:00', '20:30']]);
         $this->logSession($clientB, $staffA, Carbon::parse('second wednesday last month'), [['19:00', '21:00']]);
-        $this->logSession($clientA, $staffA, Carbon::parse('third thursday last month'), [['19:00', '20:30']]);
+        $this->logSession($clientA, $staffA, Carbon::parse('first thursday last month'), [['19:00', '20:30']]);
+
 
 
         $expected = [
@@ -145,7 +146,7 @@ class ClientCostSummaryTest extends TestCase
         // clientA 3 hours, clientB 2 hours, clientC 0 hours
         $this->logSession($clientA, $staffA, Carbon::parse('first wednesday last month'), [['19:00', '20:30']]);
         $this->logSession($clientB, $staffA, Carbon::parse('second wednesday last month'), [['19:00', '21:00']]);
-        $this->logSession($clientA, $staffA, Carbon::parse('third thursday last month'), [['19:00', '20:30']]);
+        $this->logSession($clientA, $staffA, Carbon::parse('first friday last month'), [['19:00', '20:30']]);
 
         $summary = new ClientCostSummary($month_start, $month_end);
         $summary->save();

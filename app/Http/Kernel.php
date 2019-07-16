@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\ActiveUsers;
 use App\Http\Middleware\IsManager;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter;
@@ -55,6 +56,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'active' => ActiveUsers::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,

@@ -11,7 +11,7 @@ class EngagementCodesController extends Controller
 
     public function index()
     {
-        return EngagementCode::all();
+        return EngagementCode::active()->get();
     }
 
     public function show(EngagementCode $engagementCode)
@@ -40,6 +40,6 @@ class EngagementCodesController extends Controller
     public function delete(EngagementCode $engagement_code)
     {
         $this->flashSuccess(['message' => 'Engagement code has been deleted!']);
-        $engagement_code->delete();
+        $engagement_code->safeDelete();
     }
 }

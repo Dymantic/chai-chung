@@ -29,8 +29,8 @@ class StaffTimeCostReport implements SimpleReport
             '姓名',
             '總時數(小時)',
             '加班總時數(小時)',
-            'Hourly Rate',
-            'Cost'
+            '時薪',
+            '成本'
         ];
 
     }
@@ -54,7 +54,7 @@ class StaffTimeCostReport implements SimpleReport
 
     public function title()
     {
-        return 'Staff Time cost report';
+        return '員工成本報告';
     }
 
     public function slug()

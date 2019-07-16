@@ -21,12 +21,12 @@ class ClientTimeCostReport implements SimpleReport
     public function headings()
     {
         return [
-            '代號',
-            '姓名',
+            '客戶代號',
+            '客戶姓名',
             '總時數(小時)',
             '加班總時數(小時)',
-            'Annual Revenue',
-            'Cost'
+            '每年收入',
+            '所需成本'
         ];
 
     }
@@ -56,7 +56,7 @@ class ClientTimeCostReport implements SimpleReport
 
     public function title()
     {
-        return 'Client Time cost report';
+        return '客戶成本報告';
     }
 
     public function slug()

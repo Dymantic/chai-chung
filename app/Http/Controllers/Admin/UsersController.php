@@ -13,7 +13,7 @@ class UsersController extends Controller
 {
     public function index()
     {
-        return User::all();
+        return User::active()->get();
     }
 
     public function show(User $user)
@@ -48,6 +48,6 @@ class UsersController extends Controller
     public function delete(User $user)
     {
         $this->flashSuccess(['message' => $user->name .' has been deleted!']);
-        $user->delete();
+        $user->safeDelete();
     }
 }

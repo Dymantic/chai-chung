@@ -23,7 +23,7 @@ class DeleteClientTest extends TestCase
         $response = $this->asManager()->deleteJson("/admin/clients/{$client->id}");
         $response->assertStatus(200);
 
-        $this->assertDatabaseMissing('clients', ['id' => $client->id]);
+        $this->assertTrue($client->fresh()->isPastured());
     }
 
     /**

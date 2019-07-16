@@ -11,7 +11,7 @@ class ClientsController extends Controller
 
     public function index()
     {
-        return Client::all();
+        return Client::active()->get();
     }
 
     public function show(Client $client)
@@ -46,6 +46,6 @@ class ClientsController extends Controller
     public function delete(Client $client)
     {
         $this->flashSuccess(['message' => "{$client->name} has been deleted"]);
-        $client->delete();
+        $client->safeDelete();
     }
 }

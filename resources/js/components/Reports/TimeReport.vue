@@ -54,7 +54,8 @@
             return {
                 start: subDays(new Date(), 31),
                 end: new Date(),
-                rows: []
+                rows: [],
+                headings: [],
             };
         },
 

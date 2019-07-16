@@ -49,7 +49,7 @@ Route::post('admin/password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::post('contact', 'ContactMessageController@store');
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => ['auth', 'active']], function() {
 
     Route::redirect('admin', 'admin/dashboard');
 

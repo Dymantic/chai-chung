@@ -21,6 +21,6 @@ class DeleteUserTest extends TestCase
         $response = $this->asManager()->deleteJson("/admin/users/{$user->id}");
         $response->assertStatus(200);
 
-        $this->assertDatabaseMissing('users', ['id' => $user->id]);
+        $this->assertTrue($user->fresh()->isPastured());
     }
 }

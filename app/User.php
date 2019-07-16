@@ -13,7 +13,7 @@ use Illuminate\Support\Carbon;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Pastureable;
 
     /**
      * The attributes that are mass assignable.
@@ -28,6 +28,8 @@ class User extends Authenticatable
         'user_code',
         'hourly_rate'
     ];
+
+    protected $dates = ['pastured_on'];
 
     protected $casts = ['is_manager' => 'bool'];
 
@@ -134,4 +136,6 @@ class User extends Authenticatable
             'cost' => $cost,
         ];
     }
+
+
 }

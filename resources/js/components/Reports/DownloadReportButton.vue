@@ -1,5 +1,5 @@
 <template>
-    <button class="btn btn-orange" type="button" @click="exportReport">Download</button>
+    <button class="btn btn-orange" type="button" @click="exportReport">下載</button>
 </template>
 
 <script type="text/babel">

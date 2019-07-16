@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="px-8 max-w-xl mb-20 mt-4 mx-auto items-center flex justify-between">
-        <p class="font-black text-5xl">Monthly Staff Cost Reports</p>
+        <p class="font-black text-5xl">員工每月成本報告</p>
         <div class="flex justify-end">
 
         </div>
@@ -11,11 +11,11 @@
         <table class="w-full">
             <thead>
             <tr class="text-left">
-                <th>Report Dates</th>
-                <th>Number of Staff</th>
-                <th>Total Hours</th>
-                <th>Total Overtime</th>
-                <th>Total Cost</th>
+                <th>日期</th>
+                <th>員工人數</th>
+                <th>總時數</th>
+                <th>加班總時數</th>
+                <th>總成本</th>
             </tr>
             </thead>
             <tbody>
