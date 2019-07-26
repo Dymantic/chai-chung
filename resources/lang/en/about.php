@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'seo' => [
+        'title' => 'About Us | Chia-Chung CPA',
+        'description' => 'Founded in 2011 by a highly experienced and accomplished CPA, Chia-Chung has grown into a firm with a strong and professional staff providing services to a wide variety of successful clients.'
+    ],
     'story' => [
         'heading' => 'Company Story',
         'part_one' => 'Chia-Chung accounting firm was founded by Tino Chen in 2011, providing the services as “Hui-Jui Accounting Firm”. The office relocated to Gong-Yi Road, Taichung in 2015. We are committed to providing expert services, bringing our clients business success. The DNA of Chia-Chung is innovation and insight so that we are capable of serving huge corporations, McDonald’s for example.  In order to perfect our services and sustain long-lasting business relationships, a panel of experts from different areas have joined us as partners.

@@ -1,5 +1,16 @@
 @extends('front.base', ['bodyClasses' => "pt-12 service-page business-assistance"])
 
+@section("title")
+    {{ trans('service_business_assistance.seo.title') }}
+@endsection
+
+@section('head')
+    @include('front.partials.ogmeta', [
+        'ogTitle' => trans('service_business_assistance.seo.title'),
+        'ogDescription' => trans('service_business_assistance.seo.description'),
+    ])
+@endsection
+
 @section('content')
     <section class="top-banner"></section>
 

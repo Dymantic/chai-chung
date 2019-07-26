@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'seo' => [
+        'title' => 'Chia-Chung CPA Professional Accounting Services',
+        'description' => 'Chia-Chung is a certified public accounting firm based in Taichung offering professional and innovative accounting services to businesses throughout Taiwan, as well as global businesses which are active in Taiwan.'
+    ],
     'banner'   => [
         'content' => 'Professional accounting services to move your business forward.'
     ],

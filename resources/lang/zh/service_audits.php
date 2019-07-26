@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'seo' => [
+        'title' => '審計服務 | 嘉眾會計師事務所',
+        'description' => ''
+    ],
     'page_title' => '我們的簽證服務包括',
 
     'audits_and_assurance' => [

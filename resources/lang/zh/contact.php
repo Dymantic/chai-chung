@@ -2,6 +2,10 @@
 
 return [
     'intro' => [
+        'seo' => [
+            'title' => '聯絡我們 | 嘉眾會計師事務所',
+            'description' => ''
+        ],
         'heading' => '聯絡我們',
         'content' => '請告知您目前的需求，我們將會儘快與您聯絡。',
     ],

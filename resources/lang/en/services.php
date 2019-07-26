@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'seo' => [
+        'title' => 'Services | Chia-Chung CPA',
+        'description' => 'Chia-Chung offers a wide variety of excellent accounting services. Included in our services are Tax services, Auditing services, Business Assistance and Bookkeeping.'
+    ],
     'intro' => [
         'heading' => 'We offer a wide range of accounting services.',
         'content' => 'Based on the premise that we develop and sustain long-lasting business relationships, Chia-Chung will work hard to assist you in achieving your goals and solving problems. When you start to work with Chia-Chung, you will work with a CPA as well as a professional consultant.'

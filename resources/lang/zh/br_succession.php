@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'seo' => [
+        'title' => '財富傳承規劃 | 嘉眾會計師事務所',
+        'description' => ''
+    ],
     'page_title' => '財富傳承規劃',
 
     'subheading' => '讓您的企業歷久彌堅',

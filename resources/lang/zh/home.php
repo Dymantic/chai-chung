@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'seo' => [
+        'title' => '嘉眾會計師事務所',
+        'description' => ''
+    ],
     'banner'   => [
         'content' => '專業服務 拓展您的事業版圖.'
     ],

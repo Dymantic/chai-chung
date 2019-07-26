@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'seo' => [
+        'title' => 'Auditing Services | Chia-Chung CPA',
+        'description' => 'Professional auditing is essential to enhance your credibility and attract investments in your company. We also provide suggestions during the auditing process to further improve your business.'
+    ],
     'page_title' => 'Audit & Assurance Services',
 
     'audits_and_assurance' => [

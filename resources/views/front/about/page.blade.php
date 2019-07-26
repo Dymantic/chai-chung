@@ -1,5 +1,16 @@
 @extends('front.base', ['bodyClasses' => 'pt-12'])
 
+@section("title")
+    {{ trans('about.seo.title') }}
+@endsection
+
+@section('head')
+    @include('front.partials.ogmeta', [
+        'ogTitle' => trans('about.seo.title'),
+        'ogDescription' => trans('about.seo.description'),
+    ])
+@endsection
+
 @section('content')
     <section class="reg-section-space company-story">
         <div class="max-w-md mx-auto">

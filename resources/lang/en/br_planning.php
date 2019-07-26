@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'seo' => [
+        'title' => 'Business Planning | Chia-Chung CPA',
+        'description' => 'Having your own business is a milestone in your life. If you begin your own business for the first time, you are unfamiliar with the steps necessary to successfully start a business. We can help you formulate a business plan to take your business where you want it to go.'
+    ],
     'page_title' => 'Business Planning',
 
     'intro' => 'Having your own business is a milestone in your life. If you begin your own business for the first time, you are unfamiliar with the steps necessary to successfully start a business.

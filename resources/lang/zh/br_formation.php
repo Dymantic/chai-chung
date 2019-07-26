@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'seo' => [
+        'title' => '工商登記專區 | 嘉眾會計師事務所',
+        'description' => ''
+    ],
     'page_title' => '工商登記專區',
 
     'services' => [

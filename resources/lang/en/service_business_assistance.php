@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'seo' => [
+        'title' => 'Business Assistance Services | Chia-Chung CPA',
+        'description' => 'The path to getting a new business registered and up and running successfully can be tricky. Our experts can help you avoid the pitfalls and make your business successful.'
+    ],
     'page_title' => 'Business Assistance',
 
     'intro' => [

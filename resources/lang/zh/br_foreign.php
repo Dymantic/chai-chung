@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'seo' => [
+        'title' => '外國人來台投資專區 | 嘉眾會計師事務所',
+        'description' => ''
+    ],
 
     'page_title' => '外國人來台投資專區',
 

@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'seo' => [
+        'title' => 'Business Formation & Registration | Chia-Chung CPA',
+        'description' => 'There is a lot to be aware of and do when you start a new company. Let our experts guide and assist you through the whole process.'
+    ],
     'page_title' => 'New Business Formation',
 
     'services' => [

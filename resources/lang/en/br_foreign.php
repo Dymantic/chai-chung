@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'seo' => [
+        'title' => 'Foreign Investment in Taiwan | Chia-Chung CPA',
+        'description' => 'Taiwan\'s infrastructure and well established legal system make it a great place for investment. Our experienced staff offers professional services, such as company setup and registration, capital verification, special permit and trademark registration for foreign investors and corporations.'
+    ],
 
     'page_title' => 'Foreign Investment in Taiwan',
 
