@@ -6,8 +6,8 @@
       "name": "嘉眾會計師事務所",
       "alternateName": "Chia-Chung CPA",
       "url": "https://hj-cpas.com",
-      "logo": "https://uptowner.com.tw/images/logos/logo_full.svg",
-      "image": "https://uptowner.com.tw/images/logos/logo_full.svg",
+      "logo": "https://hj-cpas.com/images/cpa_logo.jpg",
+      "image": "https://hj-cpas.com/images/cpas_facebook.jpg",
       "description": "Chia-Chung is a certified public accounting firm based in Taichung offering professional and innovative accounting services to businesses throughout Taiwan, as well as global businesses which are active in Taiwan.",
       "address": {
         "@type": "PostalAddress",
