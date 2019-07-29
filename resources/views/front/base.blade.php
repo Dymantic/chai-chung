@@ -2,8 +2,6 @@
 <html class="no-js" lang="{{ app()->getLocale() }}">
 
 <head>
-    <META NAME="ROBOTS"
-          CONTENT="NOINDEX, NOFOLLOW">
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>@yield('title', 'CPA')</title>
