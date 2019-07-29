@@ -30,6 +30,10 @@ return [
         'secret' => env('SPARKPOST_SECRET'),
     ],
 
+    'google' => [
+        'analytics_id' => env('GA_TRACKING', 'XX-XXXXXXXX-XX'),
+    ],
+
     'stripe' => [
         'model' => App\User::class,
         'key' => env('STRIPE_KEY'),
