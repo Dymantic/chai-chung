@@ -18,4 +18,5 @@
     @include('front.home.logos')
     @include('front.home.contact')
     @include('front.home.city-sketch')
+    @include('front.partials.json-ld')
 @endsection
