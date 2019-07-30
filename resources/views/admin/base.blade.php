@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
+
     @section('title')
         <title>CPA | Admin </title>
     @show
