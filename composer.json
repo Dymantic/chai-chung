@@ -13,9 +13,12 @@
         "dymantic/secretary": "^0.2.0",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
+        "laravel/slack-notification-channel": "^2.0",
         "laravel/tinker": "^1.0",
+        "league/flysystem-aws-s3-v3": "^1.0",
         "maatwebsite/excel": "^3.1",
         "mcamara/laravel-localization": "^1.3",
+        "spatie/laravel-backup": "^6.3",
         "spatie/laravel-sitemap": "^5.3"
     },
     "require-dev": {
