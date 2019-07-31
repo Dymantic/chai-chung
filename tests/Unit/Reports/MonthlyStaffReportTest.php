@@ -57,12 +57,13 @@ class MonthlyStaffReportTest extends TestCase
 
 
         //set overtime
-        $this->logSessions($staffA, Carbon::parse('second Wednesday last month'), [
+        $this->logSessions($staffA, Carbon::parse('last Wednesday')->subMonth(), [
             ["07:00", "8:00"], ["18:30", "20:30"]
         ]);
-        $this->logSessions($staffA, Carbon::parse('second Friday last month'), [
+        $this->logSessions($staffA, Carbon::parse('last Friday')->subMonth(), [
             ["18:30", "20:30"]
         ]);
+
 
         $expected = [
             'start_date' => $month_start->format('Y-m-d'),
@@ -74,7 +75,7 @@ class MonthlyStaffReportTest extends TestCase
                     'total_hours' => ($total_days * 8) + 5,
                     'overtime_hours' => 5,
                     'hourly_rate' => 400,
-                    'cost' => (400 * ($total_days * 8)) + 2796
+                    'cost' => (400 * ($total_days * 8)) + (1600 * 1.33) + (400 * 1.67)
                 ],
                 [
                     'id' => $staffB->id,

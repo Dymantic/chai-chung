@@ -23,9 +23,9 @@ class CreateLeaveRequestTest extends TestCase
 
         $leave_data = [
             'start_date'       => Carbon::today()->format('Y-m-d'),
-            'start_time'       => '08:00',
+            'start_time'       => '08:30',
             'end_date'         => Carbon::today()->addDays(3)->format('Y-m-d'),
-            'end_time'         => '17:00',
+            'end_time'         => '17:30',
             'covering_user_id' => $staffB->id,
             'reason'           => 'test reason',
             'leave_type'       => '事假'
@@ -36,8 +36,8 @@ class CreateLeaveRequestTest extends TestCase
 
         $this->assertDatabaseHas('leave_requests', [
             'user_id'          => $staffA->id,
-            'starts'           => Carbon::today()->setHour(8)->setMinutes(0),
-            'ends'             => Carbon::today()->addDays(3)->setHour(17)->setMinutes(0),
+            'starts'           => Carbon::today()->setHour(8)->setMinutes(30),
+            'ends'             => Carbon::today()->addDays(3)->setHour(17)->setMinutes(30),
             'reason'           => 'test reason',
             'covering_user_id' => $staffB->id,
             'status'           => 'submitted',
@@ -135,11 +135,31 @@ class CreateLeaveRequestTest extends TestCase
             '21:00',
             'aa:bb',
             '113:20',
-            '11:103'
+            '11:103',
         ];
 
         collect($invalid_times)->each(function ($time) {
             $this->assertFieldInvalid(['end_time' => $time]);
+        });
+    }
+
+    /**
+     *@test
+     */
+    public function the_end_times_can_be_valid_business_times()
+    {
+        $valid_times = [
+            '8:30',
+            '9:45',
+            '10:10',
+            '11:00',
+            '13:30',
+            '14:45',
+            '17:30'
+        ];
+
+        collect($valid_times)->each(function($time) {
+            $this->assertGivenFieldIsValid(['end_time' => $time]);
         });
     }
 
@@ -174,9 +194,9 @@ class CreateLeaveRequestTest extends TestCase
 
         $valid = [
             'start_date'       => Carbon::today()->format('Y-m-d'),
-            'start_time'       => '08:00',
+            'start_time'       => '08:30',
             'end_date'         => Carbon::today()->addDays(3)->format('Y-m-d'),
-            'end_time'         => '17:00',
+            'end_time'         => '17:30',
             'covering_user_id' => $staffB->id,
             'reason'           => 'test reason',
             'leave_type'       => '事假'
@@ -187,5 +207,26 @@ class CreateLeaveRequestTest extends TestCase
         $response->assertStatus(422);
 
         $response->assertJsonValidationErrors(array_keys($field)[0]);
+    }
+
+
+    public function assertGivenFieldIsValid($field)
+    {
+        $staffA = factory(User::class)->create();
+        $staffB = factory(User::class)->create();
+
+        $valid = [
+            'start_date'       => Carbon::today()->format('Y-m-d'),
+            'start_time'       => '08:30',
+            'end_date'         => Carbon::today()->addDays(3)->format('Y-m-d'),
+            'end_time'         => '17:30',
+            'covering_user_id' => $staffB->id,
+            'reason'           => 'test reason',
+            'leave_type'       => '事假'
+        ];
+
+        $response = $this->actingAs($staffA)->postJson("/admin/leave-requests",
+            array_merge($valid, $field));
+        $response->assertStatus(201);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Rules;
 
+use App\Time\TimeOfDay;
 use Illuminate\Contracts\Validation\Rule;
 
 class BusinessHours implements Rule
@@ -25,28 +26,7 @@ class BusinessHours implements Rule
      */
     public function passes($attribute, $value)
     {
-        return $this->stringIsValid($value) && $this->hoursAreValid($value) && $this->minsAreValid($value);
-    }
-
-    private function stringIsValid($timeString)
-    {
-        $matches = preg_match("/[0-9]{2}:[0-9]{2}/", $timeString);
-
-        return $matches === 1 && (strlen($timeString) === 5);
-    }
-
-    private function hoursAreValid($timeString)
-    {
-        $hours = intval(substr($timeString, 0, 2));
-
-        return $hours > 7 && $hours < 18;
-    }
-
-    private function minsAreValid($timeString)
-    {
-        $mins = intval(substr($timeString, 3, 2));
-
-        return $mins < 7 && $mins < 18;
+        return TimeOfDay::isBusinessHours($value);
     }
 
     /**

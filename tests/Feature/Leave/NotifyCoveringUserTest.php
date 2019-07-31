@@ -28,9 +28,9 @@ class NotifyCoveringUserTest extends TestCase
 
         $leave_data = [
             'start_date' => Carbon::today()->format('Y-m-d'),
-            'start_time' => '08:00',
+            'start_time' => '08:30',
             'end_date' => Carbon::today()->addDays(3)->format('Y-m-d'),
-            'end_time' => '17:00',
+            'end_time' => '17:30',
             'covering_user_id' => $staffB->id,
             'reason' => 'test reason'
         ];
