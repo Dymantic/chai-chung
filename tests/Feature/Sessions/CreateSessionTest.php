@@ -63,6 +63,55 @@ class CreateSessionTest extends TestCase
     /**
      *@test
      */
+    public function a_consecutive_session_can_be_created()
+    {
+
+        $user = factory(User::class)->create();
+        $client = factory(Client::class)->create();
+        $engagement_code = factory(EngagementCode::class)->create();
+        Holiday::setDates([
+            'start' => Carbon::parse('last friday'),
+            'end' => Carbon::parse('last friday'),
+            'name' => 'test holiday'
+        ]);
+        factory(Session::class)->create([
+            'user_id' => $user->id,
+            'start_time' => Carbon::parse('last friday')->setHour(9)->setMinutes(0),
+            'end_time' => Carbon::parse('last friday')->setHour(10)->setMinutes(30),
+        ]);
+
+        $session_data = [
+            'session_date' => Carbon::parse('last friday')->format('Y-m-d'),
+            'start_time' => "10:30",
+            'end_time' => "12:30",
+            'service_period' => Carbon::today()->year,
+            'client_id' => $client->id,
+            'engagement_code_id' => $engagement_code->id,
+            'description' => 'test description',
+            'notes' => 'test notes',
+        ];
+
+        $response = $this->actingAs($user)->postJson("/admin/sessions", $session_data);
+        $response->assertStatus(201);
+
+        $this->assertDatabaseHas('time_sessions', [
+            'user_id' => $user->id,
+            'start_time' => Carbon::parse('last friday')->setHour(10)->startOfHour()->setMinutes(30),
+            'end_time' => Carbon::parse('last friday')->setHour(12)->startOfHour()->setMinutes(30),
+            'service_period' => Carbon::today()->year,
+            'client_id' => $client->id,
+            'engagement_code_id' => $engagement_code->id,
+            'description' => 'test description',
+            'notes' => 'test notes',
+            'on_holiday' => true,
+            'on_make_up_day' => false,
+            'overtime_minutes' => 120
+        ]);
+    }
+
+    /**
+     *@test
+     */
     public function the_session_date_is_required()
     {
         $this->assertFieldIsInvalid(['session_date' => null]);

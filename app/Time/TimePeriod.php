@@ -22,11 +22,11 @@ class TimePeriod
 
     public function overlapsWith($period)
     {
-        if($period->end->isBefore($this->start)) {
+        if($period->end->isBeforeOrEqual($this->start)) {
             return false;
         }
 
-        if($this->end->isBefore($period->start)) {
+        if($this->end->isBeforeOrEqual($period->start)) {
             return false;
         }
 
