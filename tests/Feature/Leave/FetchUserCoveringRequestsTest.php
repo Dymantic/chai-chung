@@ -39,17 +39,18 @@ class FetchUserCoveringRequestsTest extends TestCase
 
         $fetched_requests = collect($response->decodeResponseJson());
 
-        $this->assertCount(2, $fetched_requests);
+        $this->assertCount(3, $fetched_requests);
 
         $this->assertContains($needsCoverA->id, $fetched_requests->pluck('id')->all());
         $this->assertContains($needsCoverB->id, $fetched_requests->pluck('id')->all());
+        $this->assertContains($date_passed->id, $fetched_requests->pluck('id')->all());
 
         $this->assertNotContains($alreadyCovered->id, $fetched_requests->pluck('id')->all());
         $this->assertNotContains($rejected->id, $fetched_requests->pluck('id')->all());
         $this->assertNotContains($accepted->id, $fetched_requests->pluck('id')->all());
         $this->assertNotContains($denied->id, $fetched_requests->pluck('id')->all());
         $this->assertNotContains($cancelled->id, $fetched_requests->pluck('id')->all());
-        $this->assertNotContains($date_passed->id, $fetched_requests->pluck('id')->all());
+
         $this->assertNotContains($other_user->id, $fetched_requests->pluck('id')->all());
     }
 

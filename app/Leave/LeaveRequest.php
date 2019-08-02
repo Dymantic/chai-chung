@@ -43,8 +43,7 @@ class LeaveRequest extends Model
     public static function needsCoverBy(User $user)
     {
         return static::where('covering_user_id', $user->id)
-                     ->where('status', static::SUBMITTED)
-                     ->where('starts', '>=', Carbon::now());
+                     ->where('status', static::SUBMITTED);
     }
 
     public function covered_by()
