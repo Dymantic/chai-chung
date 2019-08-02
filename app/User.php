@@ -97,7 +97,7 @@ class User extends Authenticatable
     public function agreedToCover()
     {
         return $this->covering()
-                    ->where('ends', '>=', Carbon::now())
+                    ->where('ends', '>=', Carbon::now()->subDays(5))
                     ->whereIn('status', [LeaveRequest::ACCEPTED, LeaveRequest::COVERED])
                     ->get();
     }
