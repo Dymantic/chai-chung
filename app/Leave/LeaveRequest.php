@@ -23,8 +23,7 @@ class LeaveRequest extends Model
     public function scopeUndecided($query)
     {
         return $query
-            ->where('status', static::COVERED)
-            ->where('starts', '>=', Carbon::now());
+            ->where('status', static::COVERED);
     }
 
     public function scopeUpcomingGranted($query)

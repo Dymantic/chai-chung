@@ -34,7 +34,7 @@ class FetchUndecidedRequestsTest extends TestCase
 
         $fetched_requests = collect($response->decodeResponseJson());
 
-        $this->assertCount(2, $fetched_requests);
+        $this->assertCount(3, $fetched_requests);
 
         $this->assertContains($upcomingA->id, $fetched_requests->pluck('id')->all());
         $this->assertContains($upcomingB->id, $fetched_requests->pluck('id')->all());
@@ -44,7 +44,7 @@ class FetchUndecidedRequestsTest extends TestCase
         $this->assertNotContains($accepted->id, $fetched_requests->pluck('id')->all());
         $this->assertNotContains($denied->id, $fetched_requests->pluck('id')->all());
         $this->assertNotContains($cancelled->id, $fetched_requests->pluck('id')->all());
-        $this->assertNotContains($old->id, $fetched_requests->pluck('id')->all());
+        $this->assertContains($old->id, $fetched_requests->pluck('id')->all());
     }
 
     /**
