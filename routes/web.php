@@ -154,4 +154,8 @@ Route::group(['middleware' => ['auth', 'active']], function() {
     Route::get('admin/staff-leave-requests', 'Admin\StaffLeaveRequestsController@index')->middleware('is_manager');
 
     Route::get('admin/upcoming-leave', 'Admin\UpcomingLeaveController@index')->middleware('is_manager');
+
+    Route::get('admin/past-leave-requests', 'Admin\PastLeaveRequestsController@index')->middleware('is_manager');
+
+    Route::get('admin/past-leave-requests-page', 'Admin\PastLeaveRequestsPageController@show')->middleware('is_manager');
 });
