@@ -129,6 +129,9 @@
                 <div class="flex flex-col items center text-center">
                     <p class="font-navy text xl font-bold">有錯誤喔！</p>
                     <p class="my-8 leading-normal">請檢查資料是否正確，務必再次確認所有相關細節。</p>
+                    <div class="my-8 text-red">
+                        <p class="my-3" v-for="error in validation_errors">{{ error }}</p>
+                    </div>
                     <button class="btn btn-orange my-8"
                             @click="step = 1">回上一頁
                     </button>
@@ -177,12 +180,13 @@
         data() {
             return {
                 step: 1,
+                validation_errors: [],
                 session: {
                     date: new Date(),
                     start_time: time_hours_ago(2),
                     end_time: time_hours_ago(0),
                     engagement_code: 2,
-                    client: 1,
+                    client: null,
                     service_period: '2019'
                 },
 
@@ -238,6 +242,7 @@
             },
 
             submitSession() {
+                this.validation_errors = [];
                 const session_data = {
                     session_date: this.session.date.toISOString().slice(0, 10),
                     start_time: this.session.start_time,
@@ -271,6 +276,9 @@
             },
             saveFailed(res) {
                 if (res.status === 422) {
+                    Object.keys(res.data.errors).forEach(key => {
+                        res.data.errors[key].forEach(err => this.validation_errors.push(err));
+                    });
                     this.step = 3;
                     return;
                 }

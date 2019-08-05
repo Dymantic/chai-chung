@@ -36,7 +36,7 @@ class MaximumHours implements Rule
             return false;
         }
 
-        return $duration->minutes() < ($this->max_hours * 60);
+        return $duration->minutes() <= ($this->max_hours * 60);
     }
 
     /**
