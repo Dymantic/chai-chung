@@ -1,106 +1,152 @@
 <template>
-    <span>
-        <span class="text-lg h-8 w-32 border inline-flex items-center justify-center" tabindex="0" @keyup="acceptInput">
-            <span :class="{'current': position === 0}">{{ hour_1 }}</span>
-            <span :class="{'current': position === 1}">{{ hour_2 }}</span>
-            <span>:</span>
-            <span :class="{'current': position === 2}">{{ mins_1 }}</span>
-            <span :class="{'current': position === 3}">{{ mins_2 }}</span>
-        </span>
+    <span class="relative">
+        <input ref="input"
+               type="text"
+               class="relative pl-1 text-lg h-8 w-32 border inline-flex items-center justify-center"
+               :class="{'border-2 border-red outline-none': show_invalid}"
+               tabindex="0"
+               @change="updateInput"
+               v-model="internal"
+               @keyup="handleKeypress">
+
+
+        <ul v-show="has_suggestions"
+            ref="suggestions_list"
+            class="absolute w-full bg-white list-reset shadow-lg overflow-auto"
+            style="{left:0; top: 140%; z-index: 999; max-height: 10rem;}">
+            <li v-for="(suggestion, index) in suggestions"
+                :key="index"
+                tabindex="0"
+                class="py-1 text-lg pl-3 hover:bg-blue-lighter focus:bg-blue-lighter cursor-default"
+                @click.prevent="setInternal(suggestion)"
+                @keyup.down="selectNextSuggestion"
+                @keyup.up="selectPreviousSuggestion"
+                @keyup.enter="setInternal(suggestion)"
+            >{{ suggestion }}</li>
+        </ul>
     </span>
 </template>
 
 <script type="text/babel">
-    import {TimeOfDay} from "../../lib/TimeOfDay";
+    function stripLeadingZero(time) {
+        if(time[0] === '0') {
+            return time.slice(1, time.length);
+        }
+        return time;
+    }
 
     export default {
         props: ['value'],
 
         data() {
             return {
-                time: new TimeOfDay(this.value),
-                position: 0
+                internal: null,
+                can_show: false,
+                allowed: [
+                    '0:00', '0:30', '1:00', '1:30', '2:00', '2:30', '3:00', '3:30', '4:00', '4:30', '5:00', '5:30',
+                    '6:00', '6:30', '7:00', '7:30', '8:00', '8:30', '9:00', '9:30', '10:00', '10:30', '11:00', '11:30',
+                    '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30',
+                    '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00', '23:30',
+                ],
             }
         },
 
         watch: {
-          value(time) {
-              this.time = new TimeOfDay(time);
-          }
-        },
-
-        computed: {
-          hour_1() {
-              return this.time.getPoint(0);
-          },
-
-            hour_2() {
-                return this.time.getPoint(1);
-            },
-
-            mins_1() {
-                return this.time.getPoint(2);
-            },
-
-            mins_2() {
-                return this.time.getPoint(3);
-            },
-
-            time_string() {
-              return this.time.asString();
+            value(time) {
+                this.internal = time;
             }
         },
 
+
+
+        computed: {
+            has_suggestions() {
+                return (this.suggestions.length > 0) && (this.internal !== this.suggestions[0]);
+            },
+
+            suggestions() {
+                if (this.internal === '') {
+                    return [];
+                }
+
+                return this.allowed.filter(allowed => allowed.indexOf(this.internal) === 0);
+            },
+
+            show_invalid() {
+                if(this.internal === null) {
+                    return false;
+                }
+
+                return this.internal.length !== 0 && !this.allowed.includes(this.internal) && (this.suggestions.length === 0);
+            }
+        },
+
+        mounted() {
+            this.internal = stripLeadingZero(this.value);
+        },
+
         methods: {
-            acceptInput({key}) {
-                const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-                if(numbers.includes(key)) {
-                    const success = this.time.setPoint(parseInt(key), this.position);
-                    if(success) {
-                        if(this.position !== 3) {
-                            this.position++;
-                        }
+            updateInput({target}) {
+
+                this.$emit('input', this.internal);
+            },
+
+            setInternal(time) {
+                this.internal = time;
+                this.$refs.input.focus();
+                this.$emit('input', this.internal);
+            },
+
+            handleKeypress({key}) {
+                if (key === 'ArrowDown') {
+                    if(this.suggestions.length) {
+                        this.selectFirstSuggestion();
                     }
                 }
 
-                if(key === "Backspace") {
-                    if(this.position === 0) {
-                        this.time.setPoint(0,0);
-                    } else {
-                        this.time.setPoint(0, this.position);
-                        this.position--;
-                    }
-
-                }
-
-                if(key === "ArrowUp") {
-                    this.time.addMinutes(30)
-                }
-
-                if(key === "ArrowDown") {
-                    this.time.addMinutes(-30)
-                }
-
-                if(key === "ArrowLeft") {
-                    if(this.position !== 0) {
-                        this.position--;
+                if (key === 'ArrowUp') {
+                    if(this.suggestions.length) {
+                        this.selectLastSuggestion();
                     }
                 }
+            },
 
-                if(key === "ArrowRight") {
-                    if(this.position !== 3) {
-                        this.position++;
-                    }
+            selectFirstSuggestion() {
+                this.$refs.suggestions_list.firstChild.focus();
+            },
+
+            selectLastSuggestion() {
+                this.$refs.suggestions_list.lastChild.focus();
+            },
+
+            selectNextSuggestion({target}) {
+                  if(!target.nextSibling) {
+                      return this.selectFirstSuggestion();
+                  }
+
+                  target.nextSibling.focus();
+            },
+
+            selectPreviousSuggestion({target}) {
+                if(!target.previousSibling) {
+                    return this.selectInput();
                 }
 
-                this.$emit('input', this.time.asString());
+                target.previousSibling.focus();
+            },
+
+            nextPositionDown() {
+                this.position++;
+            },
+
+            nextPositionUp() {
+                this.position--;
+            },
+
+            selectInput() {
+                this.$refs.input.focus();
             }
         }
     }
 </script>
 
-<style scoped lang="less" type="text/css">
-    .current {
-        @apply .text-blue;
-    }
-</style>
