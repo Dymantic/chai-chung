@@ -21,6 +21,9 @@
                 @click.prevent="setInternal(suggestion)"
                 @keyup.down="selectNextSuggestion"
                 @keyup.up="selectPreviousSuggestion"
+                @keydown.tab.prevent=""
+                @keydown.down.prevent=""
+                @keydown.up.prevent=""
                 @keyup.enter="setInternal(suggestion)"
             >{{ suggestion }}</li>
         </ul>
