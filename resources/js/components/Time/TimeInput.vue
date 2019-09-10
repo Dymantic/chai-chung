@@ -29,6 +29,9 @@
 
 <script type="text/babel">
     function stripLeadingZero(time) {
+        if(time === undefined) {
+            return time;
+        }
         if(time[0] === '0') {
             return time.slice(1, time.length);
         }
@@ -39,6 +42,8 @@
         if(time.length === 4) {
             return `0${time}`;
         }
+
+        return time;
     }
 
     export default {

@@ -183,8 +183,8 @@
                 validation_errors: [],
                 session: {
                     date: new Date(),
-                    start_time: time_hours_ago(2),
-                    end_time: time_hours_ago(0),
+                    start_time: "",
+                    end_time: "",
                     engagement_code: 2,
                     client: null,
                     service_period: '2019'
@@ -267,8 +267,8 @@
             resetSession() {
                 this.session = {
                     date: new Date(),
-                    start_time: time_hours_ago(2),
-                    end_time: time_hours_ago(0),
+                    start_time: "",
+                    end_time: "",
                     engagement_code: 2,
                     client: 1,
                     service_period: '2019'
