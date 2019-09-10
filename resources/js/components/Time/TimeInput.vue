@@ -35,6 +35,12 @@
         return time;
     }
 
+    function withLeadingZero(time) {
+        if(time.length === 4) {
+            return `0${time}`;
+        }
+    }
+
     export default {
         props: ['value'],
 
@@ -43,6 +49,8 @@
                 internal: null,
                 can_show: false,
                 allowed: [
+                    '00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '04:30', '05:00', '05:30',
+                    '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30',
                     '0:00', '0:30', '1:00', '1:30', '2:00', '2:30', '3:00', '3:30', '4:00', '4:30', '5:00', '5:30',
                     '6:00', '6:30', '7:00', '7:30', '8:00', '8:30', '9:00', '9:30', '10:00', '10:30', '11:00', '11:30',
                     '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30',
@@ -53,7 +61,7 @@
 
         watch: {
             value(time) {
-                this.internal = time;
+                this.internal = stripLeadingZero(time);
             }
         },
 
@@ -86,15 +94,17 @@
         },
 
         methods: {
-            updateInput({target}) {
-
-                this.$emit('input', this.internal);
+            updateInput() {
+                if(!this.allowed.includes(this.internal)) {
+                    return this.$emit('input', this.internal);
+                }
+                this.$emit('input', withLeadingZero(this.internal));
             },
 
             setInternal(time) {
                 this.internal = time;
                 this.$refs.input.focus();
-                this.$emit('input', this.internal);
+                this.updateInput();
             },
 
             handleKeypress({key}) {
