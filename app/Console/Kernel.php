@@ -32,6 +32,12 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('backup:run')
                  ->dailyAt('02:30');
+
+        $schedule->command('reports:client-cost')
+            ->monthlyOn(15, '00:00');
+
+        $schedule->command('reports:monthly-staff-cost')
+                 ->monthlyOn(15, '00:00');
     }
 
     /**
