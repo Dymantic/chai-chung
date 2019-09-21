@@ -32,9 +32,6 @@ Route::group([
     Route::get('succession-planning', 'BusinessAssistancePagesController@succession');
     Route::get('foreign-investment-in-taiwan', 'BusinessAssistancePagesController@foreign');
 
-
-
-
 });
 
 Route::post('contact', 'ContactMessageController@store');
@@ -50,10 +47,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Auth'], function() {
     Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
     Route::post('password/reset', 'ResetPasswordController@reset');
 });
-
-
-
-
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'active'], 'namespace' => 'Admin'], function() {
 
