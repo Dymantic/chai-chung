@@ -37,125 +37,131 @@ Route::group([
 
 });
 
-Route::view('admin/login', 'admin.auth.login')->name('login');
-Route::post('admin/login', 'Auth\LoginController@login');
-Route::post('admin/logout', 'Auth\LoginController@logout');
-
-Route::view('admin/password/forgot', 'passwords/request-new');
-Route::post('admin/password/forgot', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-
-Route::get('admin/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-Route::post('admin/password/reset', 'Auth\ResetPasswordController@reset');
-
 Route::post('contact', 'ContactMessageController@store');
 
-Route::group(['middleware' => ['auth', 'active']], function() {
+Route::group(['prefix' => 'admin', 'namespace' => 'Auth'], function() {
+    Route::view('login', 'admin.auth.login')->name('login');
+    Route::post('login', 'LoginController@login');
+    Route::post('logout', 'LoginController@logout');
 
-    Route::redirect('admin', 'admin/dashboard');
+    Route::view('password/forgot', 'passwords/request-new');
+    Route::post('password/forgot', 'ForgotPasswordController@sendResetLinkEmail');
 
-    Route::post('admin/users', 'Admin\UsersController@store')->middleware('is_manager');
-    Route::post('admin/users/{user}', 'Admin\UsersController@update');
-    Route::delete('admin/users/{user}', 'Admin\UsersController@delete');
-
-    Route::post('admin/managers', 'Admin\ManagersController@store')->middleware('is_manager');
-    Route::delete('admin/managers/{user}', 'Admin\ManagersController@delete')->middleware('is_manager');
-
-    Route::get('admin/reset-password', 'Admin\UserPasswordController@edit');
-    Route::post('admin/users/{user}/password', 'Admin\UserPasswordController@update');
-
-    Route::get('admin/manage-users', 'Admin\ManagerPagesController@users')->middleware('is_manager');
-    Route::get('admin/manage-clients', 'Admin\ManagerPagesController@clients')->middleware('is_manager');
-    Route::get('admin/manage-engagement-codes', 'Admin\ManagerPagesController@engagementCodes')->middleware('is_manager');
-    Route::get('admin/manage-sessions', 'Admin\ManagerPagesController@sessions')->middleware('is_manager');
-
-    Route::get('admin/users', 'Admin\UsersController@index')->middleware('is_manager');
-
-    Route::get('admin/users/{user}', 'Admin\UsersController@show');
-
-    Route::post('admin/users/{user}/rate', 'Admin\UserHourlyRateController@update')->middleware('is_manager');
-
-    Route::get('admin/me', 'Admin\ProfilesController@show');
-
-    Route::get('admin/clients', 'Admin\ClientsController@index')->middleware('is_manager');
-    Route::get('admin/clients/{client}', 'Admin\ClientsController@show')->middleware('is_manager');
-    Route::post('admin/clients', 'Admin\ClientsController@store')->middleware('is_manager');
-    Route::post('admin/clients/{client}', 'Admin\ClientsController@update')->middleware('is_manager');
-    Route::delete('admin/clients/{client}', 'Admin\ClientsController@delete')->middleware('is_manager');
-
-    Route::get('admin/clients/{client}/sessions', 'Admin\ClientSessionsController@index')->middleware('is_manager');
-
-    Route::get('/admin/engagement-codes', 'Admin\EngagementCodesController@index');
-    Route::get('/admin/engagement-codes/{engagementCode}', 'Admin\EngagementCodesController@show')->middleware('is_manager');
-    Route::post('/admin/engagement-codes', 'Admin\EngagementCodesController@store')->middleware('is_manager');
-    Route::post('/admin/engagement-codes/{engagement_code}', 'Admin\EngagementCodesController@update')->middleware('is_manager');
-    Route::delete('/admin/engagement-codes/{engagement_code}', 'Admin\EngagementCodesController@delete')->middleware('is_manager');
+    Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
+    Route::post('password/reset', 'ResetPasswordController@reset');
+});
 
 
-    Route::get('admin/staff-sessions', 'Admin\StaffSessionsController@index')->middleware('is_manager');
-
-    Route::get('admin/sessions', 'Admin\SessionsController@index');
-    Route::post('admin/sessions', 'Admin\SessionsController@store');
-
-    Route::delete('admin/sessions/{session}', 'Admin\SessionsController@delete');
-
-    Route::post('admin/sessions/{session}/overtime', 'Admin\SessionOvertimeController@update')->middleware('is_manager');
-
-    Route::get('admin/dashboard', 'Admin\DashboardController@show');
-
-    Route::get('admin/manage-holidays', 'Admin\ManagerPagesController@holidays')->middleware('is_manager');
-
-    Route::get('admin/manage-staff-leave', 'Admin\ManagerPagesController@leave');
-
-    Route::get('admin/holidays', 'Admin\HolidaysController@index')->middleware('is_manager');
-    Route::get('admin/make-up-days', 'Admin\MakeUpDaysController@index')->middleware('is_manager');
-    Route::post('admin/holidays', 'Admin\HolidaysController@store')->middleware('is_manager');
-    Route::delete('admin/holidays/{holiday}', 'Admin\HolidaysController@delete')->middleware('is_manager');
-    Route::post('admin/make-up-days', 'Admin\MakeUpDaysController@store')->middleware('is_manager');
-    Route::delete('admin/make-up-days/{makeUpDay}', 'Admin\MakeUpDaysController@delete')->middleware('is_manager');
-
-    Route::get('admin/manage-reports/staff-time', 'Admin\ManagerReportsController@staffTime')->middleware('is_manager');
-    Route::get('admin/manage-reports/client-time', 'Admin\ManagerReportsController@clientTime')->middleware('is_manager');
-    Route::get('admin/manage-reports/engagement-time', 'Admin\ManagerReportsController@engagementTime')->middleware('is_manager');
-    Route::get('admin/manage-reports/staff-cost', 'Admin\StaffCostReportPagesController@index')->middleware('is_manager');
-    Route::get('admin/manage-reports/staff-cost/{report}', 'Admin\StaffCostReportPagesController@show')->middleware('is_manager');
-
-    Route::get('admin/manage-reports/client-cost', 'Admin\ClientCostReportPagesController@index')->middleware('is_manager');
-    Route::get('admin/manage-reports/client-cost/{report}', 'Admin\ClientCostReportPagesController@show')->middleware('is_manager');
-
-    Route::get('admin/reports/staff-time', 'Admin\StaffTimeReportController@show')->middleware('is_manager');
-    Route::get('admin/reports/client-time', 'Admin\ClientTimeReportController@show')->middleware('is_manager');
-    Route::get('admin/reports/engagement-time', 'Admin\EngagementTimeReportController@show')->middleware('is_manager');
-
-    Route::get('admin/exports/reports/staff-time', 'Admin\StaffTimeExportController@show')->middleware('is_manager');
-    Route::get('admin/exports/reports/client-time', 'Admin\ClientTimeExportController@show')->middleware('is_manager');
-    Route::get('admin/exports/reports/engagement-time', 'Admin\EngagementTimeExportController@show')->middleware('is_manager');
-    Route::get('admin/exports/reports/staff-cost/{report}', 'Admin\StaffCostExportController@show')->middleware('is_manager');
-    Route::get('admin/exports/reports/client-cost/{report}', 'Admin\ClientCostExportController@show')->middleware('is_manager');
 
 
-    Route::post('admin/leave-requests', 'Admin\UserLeaveRequestsController@store');
 
-    Route::post('admin/leave-requests/{leaveRequest}', 'Admin\UserLeaveRequestsController@update');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'active'], 'namespace' => 'Admin'], function() {
 
-    Route::post('admin/covered-leave-requests', 'Admin\CoveredLeaveRequestsController@store');
-    Route::post('admin/cover-rejected-leave-requests', 'Admin\CoverRejectedLeaveRequestsController@store');
-    Route::post('admin/accepted-leave-requests', 'Admin\AcceptedLeaveRequestsController@store')->middleware('is_manager');
-    Route::post('admin/denied-leave-requests', 'Admin\DeniedLeaveRequestsController@store')->middleware('is_manager');
-    Route::post('admin/cancelled-leave-requests', 'Admin\CancelledLeaveRequestsController@store');
+    Route::group(['middleware' => ['is_manager']], function() {
+        Route::post('users', 'UsersController@store');
 
-    Route::get('admin/leave', 'Admin\StaffLeaveController@index');
-    Route::get('admin/leave-requests', 'Admin\UserLeaveRequestsController@index');
+        Route::post('managers', 'ManagersController@store');
+        Route::delete('managers/{user}', 'ManagersController@delete');
 
-    Route::get('admin/covering-requests', 'Admin\CoveringRequestsController@index');
+        Route::get('manage-users', 'ManagerPagesController@users');
+        Route::get('manage-clients', 'ManagerPagesController@clients');
+        Route::get('manage-engagement-codes', 'ManagerPagesController@engagementCodes');
+        Route::get('manage-sessions', 'ManagerPagesController@sessions');
 
-    Route::get('admin/user-covering-requests', 'Admin\UserCoveringRequestsController@index');
-    Route::get('admin/user-agreed-to-cover', 'Admin\UserAgreedToCoverController@index');
+        Route::get('users', 'UsersController@index');
 
-    Route::get('admin/staff-leave-requests', 'Admin\StaffLeaveRequestsController@index')->middleware('is_manager');
+        Route::post('users/{user}/rate', 'UserHourlyRateController@update');
 
-    Route::get('admin/upcoming-leave', 'Admin\UpcomingLeaveController@index')->middleware('is_manager');
+        Route::get('clients', 'ClientsController@index');
+        Route::get('clients/{client}', 'ClientsController@show');
+        Route::post('clients', 'ClientsController@store');
+        Route::post('clients/{client}', 'ClientsController@update');
+        Route::delete('clients/{client}', 'ClientsController@delete');
 
-    Route::get('admin/past-leave-requests', 'Admin\PastLeaveRequestsController@index')->middleware('is_manager');
+        Route::get('clients/{client}/sessions', 'ClientSessionsController@index');
 
-    Route::get('admin/past-leave-requests-page', 'Admin\PastLeaveRequestsPageController@show')->middleware('is_manager');
+        Route::get('engagement-codes/{engagementCode}', 'EngagementCodesController@show');
+        Route::post('engagement-codes', 'EngagementCodesController@store');
+        Route::post('engagement-codes/{engagement_code}', 'EngagementCodesController@update');
+        Route::delete('engagement-codes/{engagement_code}', 'EngagementCodesController@delete');
+
+        Route::get('staff-sessions', 'StaffSessionsController@index');
+
+        Route::post('sessions/{session}/overtime', 'SessionOvertimeController@update');
+
+        Route::get('manage-holidays', 'ManagerPagesController@holidays');
+
+        Route::get('holidays', 'HolidaysController@index');
+        Route::get('make-up-days', 'MakeUpDaysController@index');
+        Route::post('holidays', 'HolidaysController@store');
+        Route::delete('holidays/{holiday}', 'HolidaysController@delete');
+        Route::post('make-up-days', 'MakeUpDaysController@store');
+        Route::delete('make-up-days/{makeUpDay}', 'MakeUpDaysController@delete');
+
+        Route::get('manage-reports/staff-time', 'ManagerReportsController@staffTime');
+        Route::get('manage-reports/client-time', 'ManagerReportsController@clientTime');
+        Route::get('manage-reports/engagement-time', 'ManagerReportsController@engagementTime');
+        Route::get('manage-reports/staff-cost', 'StaffCostReportPagesController@index');
+        Route::get('manage-reports/staff-cost/{report}', 'StaffCostReportPagesController@show');
+
+        Route::get('manage-reports/client-cost', 'ClientCostReportPagesController@index');
+        Route::get('manage-reports/client-cost/{report}', 'ClientCostReportPagesController@show');
+
+        Route::get('reports/staff-time', 'StaffTimeReportController@show');
+        Route::get('reports/client-time', 'ClientTimeReportController@show');
+        Route::get('reports/engagement-time', 'EngagementTimeReportController@show');
+
+        Route::get('exports/reports/staff-time', 'StaffTimeExportController@show');
+        Route::get('exports/reports/client-time', 'ClientTimeExportController@show');
+        Route::get('exports/reports/engagement-time', 'EngagementTimeExportController@show');
+        Route::get('exports/reports/staff-cost/{report}', 'StaffCostExportController@show');
+        Route::get('exports/reports/client-cost/{report}', 'ClientCostExportController@show');
+
+        Route::post('accepted-leave-requests', 'AcceptedLeaveRequestsController@store');
+        Route::post('denied-leave-requests', 'DeniedLeaveRequestsController@store');
+
+        Route::get('staff-leave-requests', 'StaffLeaveRequestsController@index');
+        Route::get('upcoming-leave', 'UpcomingLeaveController@index');
+        Route::get('past-leave-requests', 'PastLeaveRequestsController@index');
+        Route::get('past-leave-requests-page', 'PastLeaveRequestsPageController@show');
+    });
+
+    Route::redirect('/', 'admin/dashboard');
+
+    Route::post('users/{user}', 'UsersController@update');
+    Route::delete('users/{user}', 'UsersController@delete');
+
+    Route::get('reset-password', 'UserPasswordController@edit');
+    Route::post('users/{user}/password', 'UserPasswordController@update');
+
+    Route::get('users/{user}', 'UsersController@show');
+
+    Route::get('me', 'ProfilesController@show');
+
+    Route::get('engagement-codes', 'EngagementCodesController@index');
+
+    Route::get('sessions', 'SessionsController@index');
+    Route::post('sessions', 'SessionsController@store');
+
+    Route::delete('sessions/{session}', 'SessionsController@delete');
+
+    Route::get('dashboard', 'DashboardController@show');
+
+    Route::get('manage-staff-leave', 'ManagerPagesController@leave');
+
+    Route::post('leave-requests', 'UserLeaveRequestsController@store');
+
+    Route::post('leave-requests/{leaveRequest}', 'UserLeaveRequestsController@update');
+
+    Route::post('covered-leave-requests', 'CoveredLeaveRequestsController@store');
+    Route::post('cover-rejected-leave-requests', 'CoverRejectedLeaveRequestsController@store');
+
+    Route::post('cancelled-leave-requests', 'CancelledLeaveRequestsController@store');
+
+    Route::get('leave', 'StaffLeaveController@index');
+    Route::get('leave-requests', 'UserLeaveRequestsController@index');
+
+    Route::get('covering-requests', 'CoveringRequestsController@index');
+    Route::get('user-covering-requests', 'UserCoveringRequestsController@index');
+    Route::get('user-agreed-to-cover', 'UserAgreedToCoverController@index');
 });
