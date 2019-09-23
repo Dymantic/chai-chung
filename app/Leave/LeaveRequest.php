@@ -96,6 +96,23 @@ class LeaveRequest extends Model
         $this->save();
     }
 
+    public function statusText()
+    {
+        if ($this->status === static::ACCEPTED) {
+            return '批准';
+        }
+
+        if ($this->status === static::DENIED) {
+            return '拒絕';
+        }
+
+        if ($this->status === static::CANCELLED) {
+            return '取消';
+        }
+
+        return '尚未決定';
+    }
+
     public function toArray()
     {
         return [
@@ -112,10 +129,45 @@ class LeaveRequest extends Model
             'ends_day'         => $this->ends->format('D'),
             'reason'           => $this->reason,
             'status'           => $this->status,
+            'status_summary'      => $this->statusText(),
+            'was_cancelled'    => $this->status === static::CANCELLED,
             'decider'          => $this->decider ? $this->decider->name : '',
             'decided_on'       => $this->decided_on ? $this->decided_on->format('Y-m-d') : '',
             'has_past'         => $this->starts->isPast(),
             'leave_type'       => $this->leave_type,
+        ];
+    }
+
+    public static function annualSummary($year)
+    {
+        $start = Carbon::create($year, 1, 1)->startOfDay();
+        $end = Carbon::create($year, 12, 31)->endOfDay();
+
+        $records = static::with('user', 'covered_by')
+                         ->where('ends', '>', $start)
+                         ->where('starts', '<', $end)
+                         ->get();
+
+        return [
+            'head' => [
+                'title'       => 'Staff Leave Records for ' . $year,
+                'starts'      => "1/1 {$year}",
+                'ends'        => "12/31 {$year}",
+                'columns'     => ['代號', '姓名', '開始', '結束', '請假類別', '代班', '狀態', '理由'],
+                'report_date' => Carbon::now()->format('m-d-Y'),
+            ],
+            'data' => $records->map(function ($request) {
+                return [
+                    $request->user->user_code,
+                    $request->user->name,
+                    $request->starts->format('m-d-Y, h:i'),
+                    $request->ends->format('m-d-Y, h:i'),
+                    $request->leave_type,
+                    $request->covered_by->name,
+                    $request->statusText(),
+                    $request->reason,
+                ];
+            })->all(),
         ];
     }
 }

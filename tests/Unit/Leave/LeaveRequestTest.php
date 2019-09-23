@@ -142,6 +142,8 @@ class LeaveRequestTest extends TestCase
             'ends_day'         => $ends->format('D'),
             'reason'           => 'test reason',
             'status'           => LeaveRequest::ACCEPTED,
+            'status_summary'   => '批准',
+            'was_cancelled'    => false,
             'decider'          => $manager->name,
             'decided_on'       => Carbon::today()->format('Y-m-d'),
             'has_past'         => false,
