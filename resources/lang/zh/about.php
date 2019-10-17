@@ -168,6 +168,41 @@ return [
                     'list' => []
                 ]
             ],
+            [
+                'name' => '林昀珊',
+                'title' => '會計師',
+                'avatar' => '/images/profiles/about_sandy.png',
+                'phone' => '04-23208012#14',
+                'fax' => '04-23208022',
+                'email' => 'sandy@hj-cpas.com',
+                'education' => [
+                    'heading' => 'education',
+
+                    'list' => [
+                        '東英格蘭大學(UEA), MBA',
+                        '立本台灣聯合會計師事務所專案部經理',
+                        '勤業眾信聯合會計師事務所審計部副理',
+                    ],
+                ],
+                'experience' => [
+
+                    'heading' => 'experience',
+
+                    'list' => [
+                        '上市櫃及外商公司審計',
+                        '環保署營業量查核計畫專案主持人',
+                        '臺中市及臺南市環保局營業量查核計畫專案主持人',
+
+                    ],
+                ],
+                'certificates' => [
+                    'heading' => 'certificates',
+                    'list' => [
+                        '中華民國會計師',
+                        '美國會計師考試及格'
+                    ]
+                ]
+            ],
         ]
     ],
 
