@@ -76,6 +76,75 @@ class WorkDayTest extends TestCase
     /**
      *@test
      */
+    public function does_not_accept_update_that_results_in_more_than_four_consecutive_hours()
+    {
+        $logged_times = [
+            '8:30' => '10:30',
+            '14:00' => '17:00',
+        ];
+        $user = factory(User::class)->create();
+        $session = factory(Session::class)->create([
+            'user_id' => $user->id,
+            'start_time' => (new TimeOfDay("10:30"))->asDate(),
+            'end_time' => (new TimeOfDay("12:30"))->asDate(),
+        ]);
+
+        $this->prepareDay($logged_times, $user);
+
+        $workDay = $user->workDay(Carbon::today());
+        $updated_session = new TimePeriod(new TimeOfDay("10:30"), new TimeOfDay("13:30"));
+        $this->assertFalse($workDay->canAcceptSessionUpdate($session->id, $updated_session));
+    }
+
+    /**
+     *@test
+     */
+    public function does_not_accept_update_that_results_in_overlapping_sessions()
+    {
+        $logged_times = [
+            '8:30' => '10:30',
+            '14:00' => '17:00',
+        ];
+        $user = factory(User::class)->create();
+        $session = factory(Session::class)->create([
+            'user_id' => $user->id,
+            'start_time' => (new TimeOfDay("10:30"))->asDate(),
+            'end_time' => (new TimeOfDay("12:30"))->asDate(),
+        ]);
+
+        $this->prepareDay($logged_times, $user);
+
+        $workDay = $user->workDay(Carbon::today());
+        $updated_session = new TimePeriod(new TimeOfDay("10:00"), new TimeOfDay("12:00"));
+        $this->assertFalse($workDay->canAcceptSessionUpdate($session->id, $updated_session));
+    }
+
+    /**
+     *@test
+     */
+    public function does_accept_legitimate_update()
+    {
+        $logged_times = [
+            '8:30' => '10:30',
+            '14:00' => '17:00',
+        ];
+        $user = factory(User::class)->create();
+        $session = factory(Session::class)->create([
+            'user_id' => $user->id,
+            'start_time' => (new TimeOfDay("10:30"))->asDate(),
+            'end_time' => (new TimeOfDay("12:30"))->asDate(),
+        ]);
+
+        $this->prepareDay($logged_times, $user);
+
+        $workDay = $user->workDay(Carbon::today());
+        $updated_session = new TimePeriod(new TimeOfDay("10:30"), new TimeOfDay("12:00"));
+        $this->assertTrue($workDay->canAcceptSessionUpdate($session->id, $updated_session));
+    }
+
+    /**
+     *@test
+     */
     public function get_total_hours_of_day()
     {
         $logged_times = [

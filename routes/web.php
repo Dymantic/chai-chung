@@ -65,13 +65,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'active'], 'namespac
 
         Route::post('users/{user}/rate', 'UserHourlyRateController@update');
 
-        Route::get('clients', 'ClientsController@index');
+
         Route::get('clients/{client}', 'ClientsController@show');
         Route::post('clients', 'ClientsController@store');
         Route::post('clients/{client}', 'ClientsController@update');
         Route::delete('clients/{client}', 'ClientsController@delete');
 
         Route::get('clients/{client}/sessions', 'ClientSessionsController@index');
+
 
         Route::get('engagement-codes/{engagementCode}', 'EngagementCodesController@show');
         Route::post('engagement-codes', 'EngagementCodesController@store');
@@ -132,12 +133,18 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'active'], 'namespac
 
     Route::get('me', 'ProfilesController@show');
 
+    Route::get('clients', 'ClientsController@index');
     Route::get('engagement-codes', 'EngagementCodesController@index');
 
     Route::get('sessions', 'SessionsController@index');
     Route::post('sessions', 'SessionsController@store');
-
+    Route::get('sessions/{session}', 'SessionsController@show');
+    Route::post('sessions/{session}', 'SessionsController@update');
     Route::delete('sessions/{session}', 'SessionsController@delete');
+
+    Route::get('service-periods', 'ServicePeriodsController@index');
+
+
 
     Route::get('dashboard', 'DashboardController@show');
 

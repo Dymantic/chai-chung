@@ -24,6 +24,17 @@ class Holiday extends Model
         }
     }
 
+    public static function existsFor($date)
+    {
+        $holiday = static::where([
+            ['year', '=', $date->year],
+            ['month', '=', $date->month],
+            ['day', '=', $date->day]
+        ])->first();
+
+        return !! $holiday;
+    }
+
     public function toArray()
     {
         return [

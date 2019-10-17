@@ -58,4 +58,21 @@ class HolidaysTest extends TestCase
             'name'  => 'Test holiday'
         ]);
     }
+
+    /**
+     *@test
+     */
+    public function can_check_if_holiday_exists_for_given_date()
+    {
+        $holiday = [
+            'start' => Carbon::tomorrow(),
+            'end' => Carbon::tomorrow(),
+            'name' => 'test holiday',
+        ];
+
+        Holiday::setDates($holiday);
+
+        $this->assertTrue(Holiday::existsFor(Carbon::tomorrow()));
+        $this->assertFalse(Holiday::existsFor(Carbon::tomorrow()->addDays(1)));
+    }
 }

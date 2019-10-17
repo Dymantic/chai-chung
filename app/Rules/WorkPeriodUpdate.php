@@ -7,31 +7,22 @@ use App\Time\TimePeriod;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Carbon;
 
-class WorkPeriod implements Rule
+class WorkPeriodUpdate implements Rule
 {
     private $user;
     private $end;
     private $date;
+    private $session_id;
 
-    /**
-     * Create a new rule instance.
-     *
-     * @return void
-     */
-    public function __construct($user, $end, $date)
+    public function __construct($user, $end, $date, $session_id)
     {
         $this->user = $user;
         $this->end = $end;
         $this->date = $date;
+        $this->session_id = $session_id;
     }
 
-    /**
-     * Determine if the validation rule passes.
-     *
-     * @param  string  $attribute
-     * @param  mixed  $value
-     * @return bool
-     */
+
     public function passes($attribute, $value)
     {
         try {
@@ -43,16 +34,11 @@ class WorkPeriod implements Rule
         $workDay = $this->user->workDay($this->date);
         $session = new TimePeriod(new TimeOfDay($value), new TimeOfDay($this->end));
 
-        return $workDay->canAcceptSession($session);
+        return $workDay->canAcceptSessionUpdate($this->session_id, $session);
     }
 
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
     public function message()
     {
-        return 'Creating this session results in either more than 4 hours or has overlapping times.';
+        return 'Updating this session results in either more than 4 hours or has overlapping times.';
     }
 }

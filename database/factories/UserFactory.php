@@ -25,3 +25,11 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->state(\App\User::class, 'staff', [
+    'is_manager' => false
+]);
+
+$factory->state(\App\User::class, 'manager', [
+    'is_manager' => true
+]);

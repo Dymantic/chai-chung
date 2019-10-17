@@ -21,6 +21,17 @@ class MakeUpDay extends Model
         ]);
     }
 
+    public static function existsFor($date)
+    {
+        $day = static::where([
+            ['year', '=', $date->year],
+            ['month', '=', $date->month],
+            ['day', '=', $date->day]
+        ])->first();
+
+        return !! $day;
+    }
+
     public function toArray()
     {
         return [

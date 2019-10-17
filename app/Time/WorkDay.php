@@ -57,6 +57,14 @@ class WorkDay
         return (!$this->willBeTooManyConsecutiveHours($all_hours)) && (!$this->periodOverlapsSession($new_period));
     }
 
+    public function canAcceptSessionUpdate($session_id, $new_period)
+    {
+        $all_hours = $this->intendedTimePeriods($new_period, $session_id);
+
+        return (!$this->willBeTooManyConsecutiveHours($all_hours)) &&
+            (!$this->periodOverlapsSession($new_period, $session_id));
+    }
+
     public function totalHours()
     {
         $minutes = $this->sessions->sum(function ($session) {
@@ -73,10 +81,13 @@ class WorkDay
         return $minutes / 60;
     }
 
-    private function periodOverlapsSession($new_period)
+    private function periodOverlapsSession($new_period, $exclude = null)
     {
         return $this
             ->sessions
+            ->reject(function ($session) use ($exclude) {
+                return $exclude && $exclude === $session->id;
+            })
             ->contains(function ($session) use ($new_period) {
                 return $new_period->overlapsWith(new TimePeriod(TimeOfDay::fromDate($session->start_time),
                     TimeOfDay::fromDate($session->end_time)));
@@ -105,10 +116,13 @@ class WorkDay
         return false;
     }
 
-    private function intendedTimePeriods($including)
+    private function intendedTimePeriods($including, $exclude = null)
     {
         return $this
             ->sessions
+            ->reject(function ($session) use ($exclude) {
+                return $exclude && $exclude === $session->id;
+            })
             ->map(function ($session) {
                 return new TimePeriod(TimeOfDay::fromDate($session->start_time),
                     TimeOfDay::fromDate($session->end_time));

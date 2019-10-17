@@ -26,4 +26,15 @@ class MakeUpDayTest extends TestCase
         $this->assertEquals($today->day, $day->day);
         $this->assertEquals('test reason', $day->reason);
     }
+
+    /**
+     *@test
+     */
+    public function can_check_if_make_up_day_exists_for_given_date()
+    {
+        MakeUpDay::forDate(Carbon::tomorrow());
+
+        $this->assertTrue(MakeUpDay::existsFor(Carbon::tomorrow()));
+        $this->assertFalse(MakeUpDay::existsFor(Carbon::today()));
+    }
 }

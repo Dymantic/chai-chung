@@ -60,4 +60,18 @@ function groupDaysByYear(all_days) {
                  });
 }
 
-export {duration, time_hours_ago, sortSessionsByTimeOfDay, sortByDate, groupDaysByYear};
+function withLeadingZero(value) {
+    if(value < 10) {
+        return `0${value}`;
+    }
+    return `${value}`;
+}
+
+function formattedDate(date) {
+    const year = date.getFullYear();
+    const month = withLeadingZero(date.getMonth());
+    const day = withLeadingZero(date.getDate());
+    return `${year}-${month}-${day}`;
+}
+
+export {duration, time_hours_ago, sortSessionsByTimeOfDay, sortByDate, groupDaysByYear, formattedDate};

@@ -5,38 +5,36 @@ namespace App\Http\Requests;
 use App\Rules\MaximumHours;
 use App\Rules\StartEndTime;
 use App\Rules\WorkPeriod;
+use App\Rules\WorkPeriodUpdate;
 use App\Time\Holiday;
 use App\Time\MakeUpDay;
 use App\Time\TimeOfDay;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Carbon;
 
-class CreateSessionForm extends FormRequest
+class UpdateSessionForm extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
+
     public function authorize()
     {
-        return true;
+        return $this->user()->id === $this->route('session')->user_id;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
+
     public function rules()
     {
         return [
-            'session_date'       => ['required', 'date'],
-            'start_time'         => [
+            'session_date' => ['required', 'date'],
+            'start_time' => [
                 new StartEndTime(),
-                new WorkPeriod($this->user(), $this->end_time, $this->session_date)
+                new WorkPeriodUpdate(
+                    $this->user(),
+                    $this->end_time,
+                    $this->session_date,
+                    $this->route('session')->id
+                )
             ],
-            'end_time'           => [
+            'end_time' => [
                 new StartEndTime(request('start_time')),
                 new MaximumHours(4, request('start_time'))
             ],

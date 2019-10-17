@@ -7,7 +7,34 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+import Vue from "vue";
+
+import VueRouter from "vue-router";
+import Vuex from "vuex";
+
+Vue.use(VueRouter);
+Vue.use(Vuex);
+
+import userSessionsStore from "./stores/user-sessions";
+
+const store = new Vuex.Store({
+    modules: {
+        userSessions: userSessionsStore,
+    }
+});
+
+import UserSessionsIndex from "./components/Time/UserSessionsIndex";
+import UserSessionsPage from "./components/Time/UserSessionsPage";
+import AddSessionForm from "./components/Time/AddSessionForm";
+import EditSessionForm from "./components/Time/EditSessionForm";
+
+const routes = [
+    {path: '/', component: UserSessionsIndex},
+    {path: '/sessions/create', component: AddSessionForm},
+    {path: '/sessions/:id/edit', component: EditSessionForm},
+];
+
+const router = new VueRouter({routes});
 
 import {Dropdown} from "@dymantic/vuetilities";
 import Modal from "@dymantic/modal";
@@ -25,7 +52,7 @@ import ClientPage from "./components/Clients/ClientPage";
 import EngagementCodesIndex from "./components/Clients/EngagementCodesIndex";
 import EngagementCodePage from "./components/Clients/EngagementCodePage";
 
-import UserSessionsIndex from "./components/Time/UserSessionsIndex";
+
 
 import HolidaysIndexPage from "./components/Time/HolidaysIndexPage";
 
@@ -44,6 +71,7 @@ Vue.component('modal', Modal);
 Vue.component('vue-form', VueForm);
 
 Vue.component('notification-hub', NotificationHub);
+Vue.component('user-sessions-page', UserSessionsPage);
 Vue.component('users-index', UsersIndex);
 Vue.component('user-page', UserPage);
 Vue.component('profile-page', ProfilePage);
@@ -72,5 +100,7 @@ Vue.component('past-leave-requests', PastLeaveRequests);
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router,
+    store,
 });

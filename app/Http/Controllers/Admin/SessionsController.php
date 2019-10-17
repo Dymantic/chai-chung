@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\CreateSessionForm;
 use App\Http\Requests\DeleteSessionRequest;
+use App\Http\Requests\UpdateSessionForm;
 use App\Time\Session;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
@@ -23,9 +24,19 @@ class SessionsController extends Controller
             ->map
             ->presentFor($user);
 
-
-
     }
+
+    public function show(Session $session)
+    {
+        return $session->presentFor(request()->user());
+    }
+
+    public function update(Session $session, UpdateSessionForm $form)
+    {
+        $session->update($form->session_data());
+    }
+
+
 
     public function store(CreateSessionForm $form)
     {

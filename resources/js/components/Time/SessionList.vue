@@ -9,6 +9,7 @@
                                   :session="session"
                                   :key="session.id"
                                   :expanded="expanded"
+                                  :editable="editable"
                                   @session-selected="sessionSelected">
                 </session-list-row>
             </div>
@@ -25,7 +26,7 @@
             SessionListRow
         },
 
-        props: ['sessions', 'title', 'expanded'],
+        props: ['sessions', 'title', 'expanded', 'editable'],
 
         computed: {
 
