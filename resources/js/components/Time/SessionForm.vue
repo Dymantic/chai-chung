@@ -1,7 +1,7 @@
 <template>
     <div class="flex justify-between" v-if="ready">
         <form @submit.prevent="submit" class="max-w-md pl-4 shadow py-8">
-            <p class="border-b mb-8">Times</p>
+            <p class="border-b mb-8">時間</p>
             <div class="flex items-center mb-12 px-8">
 
                 <div class="mr-6">
@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            <p class="border-b mb-8">Client</p>
+            <p class="border-b mb-8">客戶</p>
             <div class="flex items-center mb-12 pl-8">
                 <div class="w-64">
                     <label class="font-bold text-navy block mb-2"
@@ -73,7 +73,7 @@
                     </select>
                 </div>
             </div>
-            <p class="border-b mb-8">Notes</p>
+            <p class="border-b mb-8">紀錄</p>
             <div class="flex mb-12 px-8">
                 <div class="w-80">
                     <label class="font-bold text-navy block mb-2"
@@ -99,7 +99,7 @@
             </div>
         </form>
         <div class="p-8">
-            <p v-if="validation_errors.length" class="text-lg font-bold text-red mb-6">Errors</p>
+            <p v-if="validation_errors.length" class="text-lg font-bold text-red mb-6">錯誤</p>
             <p class="mb-4" v-for="error in validation_errors">{{ error }}</p>
         </div>
     </div>
@@ -154,7 +154,7 @@
             },
 
             button_text() {
-                return this.is_edit ? 'Update Record' : 'Save Record';
+                return this.is_edit ? '更新' : '儲存';
             }
 
         },

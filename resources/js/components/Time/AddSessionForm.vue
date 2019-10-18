@@ -3,13 +3,12 @@
         <div class="px-8 max-w-xl mb-12 mt-4 mx-auto items-center flex justify-between">
             <p class="font-black text-5xl">時間紀錄及工作細節</p>
             <div class="flex justify-end">
-                <router-link class="font-bold text-grey-dark no-underline" to="/">Back to Sessions</router-link>
+                <router-link class="font-bold text-grey-dark no-underline" to="/">回上一頁</router-link>
             </div>
         </div>
         <session-form @session-saved="onSessionCreated"
                       @session-save-failed="onSessionFailed"
         ></session-form>
-
     </div>
 </template>
 

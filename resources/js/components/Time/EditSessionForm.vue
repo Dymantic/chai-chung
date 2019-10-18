@@ -2,9 +2,9 @@
     <div>
         <div class="max-w-xl mx-auto" v-if="ready">
             <div class="px-8 max-w-xl mb-12 mt-4 mx-auto items-center flex justify-between">
-                <p class="font-black text-5xl">Edit this record</p>
+                <p class="font-black text-5xl">編輯</p>
                 <div class="flex justify-end">
-                    <router-link class="font-bold text-grey-dark no-underline" to="/">Back to Sessions</router-link>
+                    <router-link class="font-bold text-grey-dark no-underline" to="/">回上一頁</router-link>
                 </div>
             </div>
             <session-form :original-session="session"
@@ -54,12 +54,12 @@
             },
 
             onSessionSaved() {
-                notify.success({message: 'The record has been updated'});
+                notify.success({message: '紀錄已更新'});
                 this.$router.push('/');
             },
 
             onSessionSaveError() {
-                notify.error({message: 'Unable to update record'});
+                notify.error({message: '無法更新紀錄'});
             }
         }
     }

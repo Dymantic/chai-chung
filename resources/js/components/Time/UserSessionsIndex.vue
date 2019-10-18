@@ -3,19 +3,6 @@
         <div class="px-8 max-w-xl mb-12 mt-4 mx-auto items-center flex justify-between">
             <p class="font-black text-5xl">時間紀錄</p>
             <div class="flex justify-end">
-<!--                <button @click="showNewSessionForm = true"-->
-<!--                        class="btn btn-orange">新增紀錄</button>-->
-<!--                <modal :show="showNewSessionForm"-->
-<!--                       @close="showNewSessionForm = false">-->
-<!--                    <new-session-form @cancel="showNewSessionForm = false"-->
-<!--                                      @session-created="sessionAdded"-->
-<!--                                      :client_list="clients"-->
-<!--                                      :engagements="engagements"-->
-<!--                                      :service_periods="service_periods"-->
-<!--                                      @close="showNewSessionForm = false"-->
-<!--                                      :open="showNewSessionForm"-->
-<!--                    ></new-session-form>-->
-<!--                </modal>-->
                 <router-link class="no-underline btn btn-orange" to="/sessions/create">新增紀錄</router-link>
             </div>
         </div>

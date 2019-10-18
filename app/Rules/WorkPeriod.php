@@ -53,6 +53,6 @@ class WorkPeriod implements Rule
      */
     public function message()
     {
-        return 'Creating this session results in either more than 4 hours or has overlapping times.';
+        return '無法儲存紀錄因為時間超過４小時或者時間重疊了';
     }
 }

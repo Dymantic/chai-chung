@@ -54,7 +54,7 @@ class StartEndTime implements Rule
      */
     public function message()
     {
-        return 'The :attribute must be a valid time, such as 08:30.';
+        return '開始與結束的時間必須是有效的時間，例如08:30';
     }
 
     private function hourIsInvalid($hour)

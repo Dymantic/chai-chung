@@ -64,7 +64,7 @@ export default {
                        state.clients = data;
                        resolve();
                    })
-                   .catch(() => reject({message: 'Unable to fetch clients'}));
+                   .catch(() => reject({message: '無法讀取客戶清單'}));
             });
 
         },
@@ -76,7 +76,7 @@ export default {
                          state.engagements = data;
                          resolve();
                      })
-                     .catch(() => reject({message: 'Unable to fetch engagements'}));
+                     .catch(() => reject({message: '無法讀取工作事項'}));
             });
         },
 
@@ -87,7 +87,7 @@ export default {
                          state.service_periods = data;
                          resolve();
                      })
-                     .catch(() => reject({message: 'Unable to fetch service periods'}));
+                     .catch(() => reject({message: '無法讀取服務期間資料'}));
             });
         },
 
@@ -101,7 +101,7 @@ export default {
             return new Promise((resolve, reject) => {
                axios.get(`/admin/sessions/${session_id}`)
                    .then(({data}) => resolve(data))
-                   .catch(() => reject({message: 'Unable to fetch session'}));
+                   .catch(() => reject({message: '無法顯示時間紀錄'}));
             });
         },
 

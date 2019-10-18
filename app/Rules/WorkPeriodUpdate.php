@@ -39,6 +39,6 @@ class WorkPeriodUpdate implements Rule
 
     public function message()
     {
-        return 'Updating this session results in either more than 4 hours or has overlapping times.';
+        return '無法更新紀錄因為時間超過４小時或者時間重疊了';
     }
 }

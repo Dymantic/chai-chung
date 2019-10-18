@@ -46,6 +46,6 @@ class MaximumHours implements Rule
      */
     public function message()
     {
-        return "Session cannot be longer than {$this->max_hours} hours";
+        return "工作時間不能超過{$this->max_hours}小時";
     }
 }
