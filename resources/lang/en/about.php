@@ -67,6 +67,40 @@ return [
                 ]
             ],
             [
+                'name' => 'Sandy Lin',
+                'title' => 'CPA',
+                'avatar' => '/images/profiles/about_sandy.png',
+                'phone' => '04-23208012#14',
+                'fax' => '04-23208022',
+                'email' => 'sandy@hj-cpas.com',
+                'education' => [
+                    'heading' => 'education',
+
+                    'list' => [
+                        'University of East Anglia, MBA',
+                    ],
+                ],
+                'experience' => [
+
+                    'heading' => 'experience',
+
+                    'list' => [
+                        'Assurance manager at Deloitte',
+                        'Project Manager at BDO',
+                        'Project Leader of Environmental Protection Administration Executive Yuan Recycling Fee Audit Project',
+                        'Project Leader of Taichung and Tainan City Government Environmental Protection Bureau Recycling Fee Audit Project',
+                        'Audit and assurance services for Public and Foreign invested companies',
+                    ],
+                ],
+                'certificates' => [
+                    'heading' => 'certificates',
+                    'list' => [
+                        'Taiwan CPA',
+                        'AICPA Qualification'
+                    ]
+                ]
+            ],
+            [
                 'name' => 'Ned Liang',
                 'avatar' => '/images/profiles/about_ned.png',
                 'title' => ' Audit Manager',
@@ -152,6 +186,7 @@ return [
                     'list' => []
                 ]
             ],
+            
         ]
     ],
 
