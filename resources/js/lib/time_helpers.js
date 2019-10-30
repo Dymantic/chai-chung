@@ -69,9 +69,16 @@ function withLeadingZero(value) {
 
 function formattedDate(date) {
     const year = date.getFullYear();
-    const month = withLeadingZero(date.getMonth());
+    const month = withLeadingZero(date.getMonth() + 1);
     const day = withLeadingZero(date.getDate());
     return `${year}-${month}-${day}`;
 }
 
-export {duration, time_hours_ago, sortSessionsByTimeOfDay, sortByDate, groupDaysByYear, formattedDate};
+function dateFromString(date_string) {
+    const year = parseInt(date_string.slice(0,4));
+    const month = parseInt(date_string.slice(4,6)) - 1;
+    const day = parseInt(date_string.slice(6,8));
+    return new Date(year, month, day);
+}
+
+export {duration, time_hours_ago, sortSessionsByTimeOfDay, sortByDate, groupDaysByYear, formattedDate, dateFromString};

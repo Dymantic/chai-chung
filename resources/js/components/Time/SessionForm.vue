@@ -108,7 +108,7 @@
 <script type="text/babel">
     import DatePicker from "vuejs-datepicker";
     import TimeInput from "./TimeInput";
-    import {formattedDate} from "../../lib/time_helpers";
+    import {formattedDate, dateFromString} from "../../lib/time_helpers";
 
     export default {
         components: {
@@ -200,7 +200,7 @@
               const orig_date = this.originalSession.date_comp;
 
               this.session = {
-                  date: new Date(orig_date.slice(0,4), orig_date.slice(4,6), orig_date.slice(6,8)),
+                  date: dateFromString(orig_date),
                   start_time: this.originalSession.start_time,
                   end_time: this.originalSession.end_time,
                   client: this.originalSession.client_id,
