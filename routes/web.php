@@ -26,7 +26,7 @@ Route::group([
     Route::get('services/tax', 'ServicePagesController@tax');
     Route::get('services/business-assistance', 'ServicePagesController@businessAssistance');
 
-    
+
     Route::get('business-planning', 'BusinessAssistancePagesController@planning');
     Route::get('business-formation', 'BusinessAssistancePagesController@formation');
     Route::get('succession-planning', 'BusinessAssistancePagesController@succession');
@@ -165,4 +165,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'active'], 'namespac
     Route::get('covering-requests', 'CoveringRequestsController@index');
     Route::get('user-covering-requests', 'UserCoveringRequestsController@index');
     Route::get('user-agreed-to-cover', 'UserAgreedToCoverController@index');
+
+    Route::view('mac-reports', 'admin.macdonalds.show');
+    Route::post('mac-reports', 'MacDonaldsReportsExportController@store');
+    Route::get('mac-reports/{key}', 'MacDonaldsReportsExportController@show');
 });

@@ -16,6 +16,7 @@
                    class="text-grey-darker no-underline hover:text-orange-light">代班</a>
             </div>
         </dropdown-menu>
+        <a href="/admin/mac-reports" class="text-white no-underline hover:text-orange mx-4">麥當勞報表</a>
     </div>
 
     <div class="flex items-center justify-end text-orange">

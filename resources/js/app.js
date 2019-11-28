@@ -66,6 +66,8 @@ import CoveringRequestsPage from "./components/Leave/CoveringRequestsPage";
 import ManageStaffLeavePage from "./components/Leave/ManageStaffLeavePage";
 import PastLeaveRequests from "./components/Leave/PastLeaveRequests";
 
+import MacReportsPage from "./components/MacDonalds/CreateSummaryPage";
+
 Vue.component('dropdown-menu', Dropdown);
 Vue.component('modal', Modal);
 Vue.component('vue-form', VueForm);
@@ -92,6 +94,8 @@ Vue.component('staff-leave-page', StaffLeavePage);
 Vue.component('covering-requests-page', CoveringRequestsPage);
 Vue.component('manage-staff-leave-page', ManageStaffLeavePage);
 Vue.component('past-leave-requests', PastLeaveRequests);
+
+Vue.component('mac-reports-page', MacReportsPage);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
