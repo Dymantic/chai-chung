@@ -21,10 +21,13 @@
                             <div class="w-4 h-4 rounded-full mr-4" :class="fileStatusColour(file)"></div>
                         </div>
                         <div class="flex-1">
-                            <div class="">
-                                <p class="w-full truncate"><strong>{{ lang.card_name }}: </strong>{{ file.name }}</p>
-                                <p class="mt-2"><strong>{{ lang.card_company }}: </strong>{{ file.company }}</p>
-                                <p class="mt-2"><strong>{{ lang.card_status }}: </strong>{{ file.status }}</p>
+                            <p class="w-full truncate"><strong>{{ lang.card_name }}: </strong>{{ file.name }}</p>
+                            <p class="mt-2"><strong>{{ lang.card_company }}: </strong>{{ file.company }}</p>
+                            <p class="mt-2"><strong>{{ lang.card_status }}: </strong>{{ file.status }}</p>
+                            <div class="flex justify-end p-2">
+                                <button :disabled="!file.processed" @click="removeFile(file.id)">
+                                    <svg class="h-4 text-grey-dark hover:text-red fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M3.389 7.113L4.49 18.021c.061.461 2.287 1.977 5.51 1.979 3.225-.002 5.451-1.518 5.511-1.979l1.102-10.908C14.929 8.055 12.412 8.5 10 8.5c-2.41 0-4.928-.445-6.611-1.387zm9.779-5.603l-.859-.951C11.977.086 11.617 0 10.916 0H9.085c-.7 0-1.061.086-1.392.559l-.859.951C4.264 1.959 2.4 3.15 2.4 4.029v.17C2.4 5.746 5.803 7 10 7c4.198 0 7.601-1.254 7.601-2.801v-.17c0-.879-1.863-2.07-4.433-2.519zM12.07 4.34L11 3H9L7.932 4.34h-1.7s1.862-2.221 2.111-2.522c.19-.23.384-.318.636-.318h2.043c.253 0 .447.088.637.318.248.301 2.111 2.522 2.111 2.522h-1.7z"/></svg>
+                                </button>
                             </div>
 
                         </div>
@@ -214,7 +217,8 @@
                 }, {});
                 this.processed.push({
                     company_id,
-                    report
+                    report,
+                    file: id,
                 });
                 this.setStatusProcessed(id, company_id);
             },
@@ -292,6 +296,11 @@
                 }
 
                 return file.error ? 'bg-red' : 'bg-green';
+            },
+
+            removeFile(id) {
+                this.files = this.files.filter(f => f.id !== id);
+                this.processed = this.processed.filter(p => p.file !== id);
             }
         }
     }
