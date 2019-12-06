@@ -16,6 +16,8 @@ class MacDonaldsReport implements FromView, ShouldAutoSize, WithEvents
     private $date;
     private $franchises;
 
+    const SHEET_LENGTH = 291;
+
     public function __construct($data)
     {
         $this->date = $data['date'];
@@ -50,8 +52,8 @@ class MacDonaldsReport implements FromView, ShouldAutoSize, WithEvents
             ->map(function ($report, $index) {
                 return collect($this->baseColourRanges())
                     ->map(function ($block) use ($index) {
-                        $start = $block['range'][0] + (285 * $index);
-                        $end = $block['range'][1] + (285 * $index);
+                        $start = $block['range'][0] + (static::SHEET_LENGTH * $index);
+                        $end = $block['range'][1] + (static::SHEET_LENGTH * $index);
 
                         return ["C{$start}:F{$end}", $block['colour']];
                     });
@@ -66,7 +68,7 @@ class MacDonaldsReport implements FromView, ShouldAutoSize, WithEvents
             ['range' => [54, 58], 'colour' => 'fad3b3'],
             ['range' => [59, 69], 'colour' => 'e4b8b6'],
             ['range' => [70, 124], 'colour' => 'fdfd00'],
-            ['range' => [125, 286], 'colour' => 'b6dde7'],
+            ['range' => [125, 292], 'colour' => 'b6dde7'],
         ];
     }
 }
