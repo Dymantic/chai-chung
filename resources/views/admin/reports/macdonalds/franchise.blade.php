@@ -1561,6 +1561,14 @@
 <tr>
 	<td>{{ $date }}</td>
 	<td>{{ $branch_id }}</td>
+	<td>3359000</td>
+	<td></td>
+	<td>加值淨額</td>
+	<td>{{ $franchise['k_3359000'] }}</td>
+</tr>
+<tr>
+	<td>{{ $date }}</td>
+	<td>{{ $branch_id }}</td>
 	<td>3359001</td>
 	<td></td>
 	<td>消費淨額</td>
