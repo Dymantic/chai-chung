@@ -16,7 +16,7 @@ class MacDonaldsReport implements FromView, ShouldAutoSize, WithEvents
     private $date;
     private $franchises;
 
-    const SHEET_LENGTH = 291;
+    const SHEET_LENGTH = 292;
 
     public function __construct($data)
     {
