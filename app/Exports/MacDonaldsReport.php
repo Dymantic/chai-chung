@@ -68,7 +68,7 @@ class MacDonaldsReport implements FromView, ShouldAutoSize, WithEvents
             ['range' => [54, 58], 'colour' => 'fad3b3'],
             ['range' => [59, 69], 'colour' => 'e4b8b6'],
             ['range' => [70, 124], 'colour' => 'fdfd00'],
-            ['range' => [125, 292], 'colour' => 'b6dde7'],
+            ['range' => [125, 293], 'colour' => 'b6dde7'],
         ];
     }
 }
