@@ -1,11 +1,11 @@
 <?php
 
 return [
+    'seo' => [
+        'title' => 'Contact Us | Chia-Chung CPA',
+        'description' => 'Feel free to get in touch with Chia-Chung to find out how our great team can help you with any of your accounting needs.'
+    ],
     'intro' => [
-        'seo' => [
-            'title' => 'Contact Us | Chia-Chung CPA',
-            'description' => 'Feel free to get in touch with Chia-Chung to find out how our great team can help you with any of your accounting needs.'
-        ],
         'heading' => 'Contact Us',
         'content' => 'Please let us know about your business situation and we would be happy to get in touch and let you know how we can help you.',
     ],
