@@ -111,6 +111,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'active'], 'namespac
         Route::get('exports/reports/staff-cost/{report}', 'StaffCostExportController@show');
         Route::get('exports/reports/client-cost/{report}', 'ClientCostExportController@show');
         Route::get('exports/reports/annual-leave', 'AnnualLeaveExportController@show');
+        Route::get('exports/reports/timesheet', 'TimesheetExportController@show');
 
         Route::post('accepted-leave-requests', 'AcceptedLeaveRequestsController@store');
         Route::post('denied-leave-requests', 'DeniedLeaveRequestsController@store');

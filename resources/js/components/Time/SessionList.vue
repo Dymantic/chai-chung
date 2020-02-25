@@ -1,6 +1,9 @@
 <template>
     <div class="my-20 max-w-lg mx-auto">
-        <p class="text-xl font-bold text-navy">{{ title }}</p>
+        <div class="flex justify-between">
+            <p class="text-xl font-bold text-navy">{{ title }}</p>
+            <a v-if="downloadUrl" :href="downloadUrl" class="font-bold text-orange hover:underline">下載 XLSX</a>
+        </div>
         <div class="recent-sessions mx-auto" :class="expanded ? 'max-w-lg' : 'max-w-md'">
             <div v-for="day, index in session_days"
                  :key="index">
@@ -26,7 +29,7 @@
             SessionListRow
         },
 
-        props: ['sessions', 'title', 'expanded', 'editable'],
+        props: ['sessions', 'title', 'expanded', 'editable', 'download-url'],
 
         computed: {
 

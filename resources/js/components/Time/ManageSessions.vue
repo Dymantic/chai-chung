@@ -56,10 +56,12 @@
                 </button>
             </div>
         </div>
+
         <session-list :sessions="sessions"
                       title="員工時數紀錄"
                       @session-selected="onSessionSelected"
-                      expanded="true"></session-list>
+                      :download-url="`/admin/exports/reports/timesheet?${exportQuery}`"
+                      expanded="true"/>
         <staff-session :open="showSelected"
                        :session="selectedSession"
                        @close="showSelected = false"
@@ -68,7 +70,7 @@
                        @session-deleted-error="failedToDeleteSession"
                        v-if="selectedSession"
 
-        ></staff-session>
+        />
     </div>
 </template>
 
@@ -107,6 +109,27 @@
         computed: {
             query() {
                 return `from=${this.filters.from.toISOString().slice(0, 10)}&to=${this.filters.to.toISOString().slice(0, 10)}&client_id=${this.filters.client ? this.filters.client : ''}&user_id=${this.filters.staff ? this.filters.staff : ''}`;
+            },
+
+            exportQuery() {
+                const start = this.filters.from.toISOString().slice(0, 10);
+                const end = this.filters.to.toISOString().slice(0, 10);
+                const user = this.filters.staff;
+                const client = this.filters.client;
+
+                if((!user) && (!client)) {
+                    return `start=${start}&end=${end}`
+                }
+
+                if((user) && (!client)) {
+                    return `start=${start}&end=${end}&user_id=${user}`;
+                }
+
+                if((!user) && (client)) {
+                    return `start=${start}&end=${end}&client_id=${client}`;
+                }
+
+                return `start=${start}&end=${end}&client_id=${client}&user_id=${user}`;
             }
         },
 
@@ -164,7 +187,7 @@
 
             failedToDeleteSession() {
                 notify.error({message: "時間紀錄資料無法刪除"});
-            }
+            },
         }
     }
 </script>
