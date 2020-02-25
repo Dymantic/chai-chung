@@ -39,6 +39,7 @@ class TimesheetReport implements SimpleReport
             $overtime = $data['overtime'] ? $data['overtime'] / 60 : 0;
             return [
                 $data['date'],
+                $data['day_of_week'],
                 $data['user'],
                 "{$data['start_time']} - {$data['end_time']}",
                 $data['duration'],
@@ -57,6 +58,7 @@ class TimesheetReport implements SimpleReport
     {
         return [
             '日期',
+            '天',
             '員工',
             '時間',
             '時間長度',

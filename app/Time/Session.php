@@ -48,7 +48,9 @@ class Session extends Model
             $builder->where('user_id', $user_id);
         }
 
-        return $builder->get();
+        return $builder
+            ->orderBy('start_time')->get();
+//        ->get();
     }
 
     public static function summary($constraints)
@@ -60,21 +62,21 @@ class Session extends Model
 
     public static function staffTimeReport($date_range)
     {
-        return static::timeReport($date_range, 'user_id', function($session) {
+        return static::timeReport($date_range, 'user_id', function ($session) {
             return $session->user->name;
         });
     }
 
     public static function clientTimeReport($date_range)
     {
-        return static::timeReport($date_range, 'client_id', function($session) {
+        return static::timeReport($date_range, 'client_id', function ($session) {
             return $session->client->name;
         });
     }
 
     public static function engagementTimeReport($date_range)
     {
-        return static::timeReport($date_range, 'engagement_code_id', function($session) {
+        return static::timeReport($date_range, 'engagement_code_id', function ($session) {
             return $session->engagement_code->description;
         });
     }
@@ -85,17 +87,17 @@ class Session extends Model
 
         return [
             'date_range' => $date_range['from']->format('Y-m-d') . ' - ' . $date_range['to']->format('Y-m-d'),
-            'rows' => $sessions->groupBy($group)
-                               ->map(function ($sessions, $id) use ($get_name) {
-                                   $summary = new SessionSummary($sessions);
+            'rows'       => $sessions->groupBy($group)
+                                     ->map(function ($sessions, $id) use ($get_name) {
+                                         $summary = new SessionSummary($sessions);
 
-                                   return [
-                                       'id'       => $id,
-                                       'name'     => $get_name($sessions->first()),
-                                       'time'     => $summary->total_time(),
-                                       'overtime' => $summary->total_overtime()
-                                   ];
-                               })->values()->all()
+                                         return [
+                                             'id'       => $id,
+                                             'name'     => $get_name($sessions->first()),
+                                             'time'     => $summary->total_time(),
+                                             'overtime' => $summary->total_overtime()
+                                         ];
+                                     })->values()->all()
         ];
     }
 
@@ -195,6 +197,7 @@ class Session extends Model
             'user'                        => $this->user->name,
             'date'                        => $this->start_time->format('m/d Y'),
             'date_comp'                   => $this->start_time->format('Ymd'),
+            'day_of_week'                 => $this->start_time->format('D'),
             'start_time'                  => $this->start_time->format('H:i'),
             'end_time'                    => $this->end_time->format('H:i'),
             'service_period'              => $this->service_period,
@@ -221,6 +224,7 @@ class Session extends Model
             'id'                          => $this->id,
             'user'                        => $this->user->name,
             'date'                        => $this->start_time->format('m/d Y'),
+            'day_of_week'                 => $this->start_time->format('D'),
             'date_comp'                   => $this->start_time->format('Ymd'),
             'start_time'                  => $this->start_time->format('H:i'),
             'end_time'                    => $this->end_time->format('H:i'),
