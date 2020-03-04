@@ -4,8 +4,10 @@
 namespace Tests\Unit\Reports;
 
 
+use App\Reports\SimpleSheetReport;
 use App\Reports\TimesheetReport;
 use App\Time\Session;
+use App\Time\TimesheetData;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
 use Tests\TestCase;
@@ -33,28 +35,11 @@ class TimesheetReportTest extends TestCase
 
         $included = $inclA->merge($inclB)->merge($inclC);
 
-        $expected_rows = $included->map(function($session) {
-            $data = $session->toArray();
-            $overtime = $data['overtime'] ? $data['overtime'] / 60 : 0;
-            return [
-                $data['date'],
-                $data['day_of_week'],
-                $data['user'],
-                "{$data['start_time']} - {$data['end_time']}",
-                $data['duration'],
-                $data['client_name'],
-                $data['engagement_code_description'],
-                $data['description'],
-                $data['notes'],
-                $overtime >= 2 ? 2 : $overtime,
-                $overtime >= 2 ? $overtime - 2 : 0,
-                $overtime,
-            ];
-        });
+        $expected_rows = TimesheetData::from($included);
 
         $expected_headings = [
             '日期',
-            '天',
+            '星期',
             '員工',
             '時間',
             '時間長度',
@@ -67,14 +52,14 @@ class TimesheetReportTest extends TestCase
             '加班 (總時數)',
         ];
 
-        $expected_slug = "timesheet_{$start->format('Y_m_d')}_to_{$end->format('Y_m_d')}";
-
+        $expected_title = '員工時數紀錄';
         $report = new TimesheetReport($start, $end);
 
+        $this->assertInstanceOf(SimpleSheetReport::class, $report);
         $this->assertCount(10, $report->rows());
         $this->assertEquals($expected_rows, $report->rows());
+        $this->assertEquals($expected_title, $report->title());
         $this->assertEquals($expected_headings, $report->headings());
-        $this->assertEquals($expected_slug, $report->slug());
     }
 
     private function createSessionsOnDay($date, $number)

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\MultisheetExport;
 use App\Exports\SimpleReportExport;
 use App\Http\Controllers\Controller;
 use App\Reports\TimesheetReport;
+use App\Reports\TimeSummaryReport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
@@ -18,9 +20,9 @@ class TimesheetExportController extends Controller
         $user = request('user_id');
         $client = request('client_id');
 
-        $report = new TimesheetReport(Carbon::parse($start), Carbon::parse($end), $user, $client);
-        $export = new SimpleReportExport($report);
+        $report = new TimeSummaryReport(Carbon::parse($start), Carbon::parse($end));
+        $export = new MultisheetExport($report);
 
-        return Excel::download($export, $report->slug() . '.xlsx');
+        return Excel::download($export, $export->exportName());
     }
 }

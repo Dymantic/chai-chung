@@ -5,8 +5,9 @@ namespace App\Reports;
 
 
 use App\Time\Session;
+use App\Time\TimesheetData;
 
-class TimesheetReport implements SimpleReport
+class TimesheetReport implements SimpleSheetReport
 {
 
     private $start;
@@ -22,43 +23,24 @@ class TimesheetReport implements SimpleReport
         $this->client = $client;
     }
 
-    public function slug()
-    {
-        return "timesheet_{$this->start->format('Y_m_d')}_to_{$this->end->format('Y_m_d')}";
-    }
-
     public function rows()
     {
-        return Session::matching([
+        $sessions =  Session::matching([
             'from' => $this->start->startOfDay(),
             'to' => $this->end->endOfDay(),
             'user_id' => $this->user,
             'client_id' => $this->client
-        ])->map(function($session) {
-            $data = $session->toArray();
-            $overtime = $data['overtime'] ? $data['overtime'] / 60 : 0;
-            return [
-                $data['date'],
-                $data['day_of_week'],
-                $data['user'],
-                "{$data['start_time']} - {$data['end_time']}",
-                $data['duration'],
-                $data['client_name'],
-                $data['engagement_code_description'],
-                $data['description'],
-                $data['notes'],
-                $overtime >= 2 ? 2 : $overtime,
-                $overtime >= 2 ? $overtime - 2 : 0,
-                $overtime,
-            ];
-        });
+        ]);
+
+        return TimesheetData::from($sessions);
+
     }
 
     public function headings()
     {
         return [
             '日期',
-            '天',
+            '星期',
             '員工',
             '時間',
             '時間長度',
