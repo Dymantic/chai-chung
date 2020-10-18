@@ -26,7 +26,7 @@ class FetchSessionsTest extends TestCase
         $response = $this->actingAs($staff)->getJson("/admin/sessions");
         $response->assertStatus(200);
 
-        $fetched_sessions = $response->decodeResponseJson();
+        $fetched_sessions = $response->json();
         $this->assertEquals($sessions->map->toArray()->all(), $fetched_sessions);
     }
 }

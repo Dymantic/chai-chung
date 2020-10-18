@@ -27,8 +27,8 @@ class UpdateUserTest extends TestCase
         ]);
         $response->assertStatus(200);
 
-        $this->assertEquals('New name', $response->decodeResponseJson("name"));
-        $this->assertEquals('new@test.test', $response->decodeResponseJson("email"));
+        $this->assertEquals('New name', $response->json("name"));
+        $this->assertEquals('new@test.test', $response->json("email"));
 
         $this->assertEquals('New name', $user->fresh()->name);
         $this->assertEquals('new@test.test', $user->fresh()->email);

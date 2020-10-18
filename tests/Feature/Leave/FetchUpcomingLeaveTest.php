@@ -34,7 +34,7 @@ class FetchUpcomingLeaveTest extends TestCase
         $response = $this->asManager()->getJson("/admin/upcoming-leave");
         $response->assertStatus(200);
 
-        $fetched_requests = $response->decodeResponseJson();
+        $fetched_requests = $response->json();
 
         $this->assertCount(3, $fetched_requests);
 

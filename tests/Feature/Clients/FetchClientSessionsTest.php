@@ -53,7 +53,7 @@ class FetchClientSessionsTest extends TestCase
         $response = $this->asManager()->getJson("/admin/clients/{$client->id}/sessions");
         $response->assertStatus(200);
 
-        $fetched_sessions = $response->decodeResponseJson();
+        $fetched_sessions = $response->json();
 
         $this->assertCount(50, $fetched_sessions);
 

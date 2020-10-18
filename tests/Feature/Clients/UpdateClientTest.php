@@ -30,9 +30,9 @@ class UpdateClientTest extends TestCase
         ]);
         $response->assertStatus(200);
 
-        $this->assertEquals('New name', $response->decodeResponseJson('name'));
-        $this->assertEquals('test_code', $response->decodeResponseJson('client_code'));
-        $this->assertEquals(222, $response->decodeResponseJson('annual_revenue'));
+        $this->assertEquals('New name', $response->json('name'));
+        $this->assertEquals('test_code', $response->json('client_code'));
+        $this->assertEquals(222, $response->json('annual_revenue'));
 
         $this->assertDatabaseHas('clients', [
             'id'             => $client->id,

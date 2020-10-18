@@ -22,7 +22,7 @@ class UpdateUserRateTest extends TestCase
 
         $response = $this->asManager()->postJson("/admin/users/{$staff->id}/rate", ['hourly_rate' => 600]);
         $response->assertStatus(200);
-        $this->assertEquals(600, $response->decodeResponseJson('hourly_rate'));
+        $this->assertEquals(600, $response->json('hourly_rate'));
 
         $this->assertDatabaseHas('users', [
             'id' => $staff->id,

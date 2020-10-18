@@ -24,7 +24,7 @@ class FetchClientListTest extends TestCase
         $response = $this->asManager()->getJson("/admin/clients");
         $response->assertStatus(200);
 
-        $fetched_clients = $response->decodeResponseJson();
+        $fetched_clients = $response->json();
 
         $this->assertCount(10, $fetched_clients);
         $this->assertEquals($clients->map->toArray()->all(), $fetched_clients);

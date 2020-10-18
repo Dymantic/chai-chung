@@ -26,7 +26,7 @@ class FetchUsersTest extends TestCase
         $response = $this->actingAs($manager)->get("/admin/users");
         $response->assertStatus(200);
 
-        $fetched_users = collect($response->decodeResponseJson());
+        $fetched_users = collect($response->json());
 
         $this->assertTrue($system_users->count() === $fetched_users->count());
         $system_users->each(function($user) use ($fetched_users) {

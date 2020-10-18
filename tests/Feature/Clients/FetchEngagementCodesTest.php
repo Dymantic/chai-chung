@@ -24,7 +24,7 @@ class FetchEngagementCodesTest extends TestCase
         $response = $this->asManager()->getJson("/admin/engagement-codes");
         $response->assertStatus(200);
 
-        $fecthed_codes = $response->decodeResponseJson();
+        $fecthed_codes = $response->json();
 
         $this->assertCount(10, $fecthed_codes);
         $this->assertEquals($codes->map->toArray()->all(), $fecthed_codes);

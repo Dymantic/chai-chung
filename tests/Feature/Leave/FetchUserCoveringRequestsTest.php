@@ -37,7 +37,7 @@ class FetchUserCoveringRequestsTest extends TestCase
         $response = $this->actingAs($staff)->getJson("/admin/user-covering-requests");
         $response->assertStatus(200);
 
-        $fetched_requests = collect($response->decodeResponseJson());
+        $fetched_requests = collect($response->json());
 
         $this->assertCount(3, $fetched_requests);
 
@@ -77,7 +77,7 @@ class FetchUserCoveringRequestsTest extends TestCase
         $response = $this->actingAs($staff)->getJson("/admin/user-agreed-to-cover");
         $response->assertStatus(200);
 
-        $fetched_requests = collect($response->decodeResponseJson());
+        $fetched_requests = collect($response->json());
 
         $this->assertCount(3, $fetched_requests);
 

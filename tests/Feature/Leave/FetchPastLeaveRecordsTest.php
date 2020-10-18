@@ -31,7 +31,7 @@ class FetchPastLeaveRecordsTest extends TestCase
         $response = $this->asManager()->getJson("/admin/past-leave-requests?year={$year}");
         $response->assertStatus(200);
 
-        $fetched = $response->decodeResponseJson();
+        $fetched = $response->json();
 
         $this->assertCount(3, $fetched);
 

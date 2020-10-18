@@ -28,8 +28,8 @@ class UpdateEngagementCodeTest extends TestCase
         ]);
         $response->assertStatus(200);
 
-        $this->assertEquals('test_code', $response->decodeResponseJson('code'));
-        $this->assertEquals('new description', $response->decodeResponseJson('description'));
+        $this->assertEquals('test_code', $response->json('code'));
+        $this->assertEquals('new description', $response->json('description'));
 
         $this->assertDatabaseHas('engagement_codes', [
             'id' => $engagement_code->id,

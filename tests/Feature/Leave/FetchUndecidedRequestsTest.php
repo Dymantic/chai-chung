@@ -32,7 +32,7 @@ class FetchUndecidedRequestsTest extends TestCase
         $response = $this->asManager()->getJson("/admin/staff-leave-requests");
         $response->assertStatus(200);
 
-        $fetched_requests = collect($response->decodeResponseJson());
+        $fetched_requests = collect($response->json());
 
         $this->assertCount(3, $fetched_requests);
 
