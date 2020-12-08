@@ -28,7 +28,7 @@ class WorkDayTest extends TestCase
         ];
         $user = factory(User::class)->create();
 
-        $this->prepareDay($logged_times, $user);
+        $this->prepareDay($user, $logged_times);
 
         $workDay = $user->workDay(Carbon::today());
         $new_session = new TimePeriod(new TimeOfDay("12:30"), new TimeOfDay("13:30"));
@@ -47,7 +47,7 @@ class WorkDayTest extends TestCase
         ];
         $user = factory(User::class)->create();
 
-        $this->prepareDay($logged_times, $user);
+        $this->prepareDay($user, $logged_times);
 
         $workDay = $user->workDay(Carbon::today());
         $new_session = new TimePeriod(new TimeOfDay("10:30"), new TimeOfDay("12:30"));
@@ -66,7 +66,7 @@ class WorkDayTest extends TestCase
         ];
         $user = factory(User::class)->create();
 
-        $this->prepareDay($logged_times, $user);
+        $this->prepareDay($user, $logged_times);
 
         $workDay = $user->workDay(Carbon::today());
         $new_session = new TimePeriod(new TimeOfDay("16:30"), new TimeOfDay("17:30"));
@@ -89,7 +89,7 @@ class WorkDayTest extends TestCase
             'end_time' => (new TimeOfDay("12:30"))->asDate(),
         ]);
 
-        $this->prepareDay($logged_times, $user);
+        $this->prepareDay($user, $logged_times);
 
         $workDay = $user->workDay(Carbon::today());
         $updated_session = new TimePeriod(new TimeOfDay("10:30"), new TimeOfDay("13:30"));
@@ -112,7 +112,7 @@ class WorkDayTest extends TestCase
             'end_time' => (new TimeOfDay("12:30"))->asDate(),
         ]);
 
-        $this->prepareDay($logged_times, $user);
+        $this->prepareDay($user, $logged_times);
 
         $workDay = $user->workDay(Carbon::today());
         $updated_session = new TimePeriod(new TimeOfDay("10:00"), new TimeOfDay("12:00"));
@@ -135,7 +135,7 @@ class WorkDayTest extends TestCase
             'end_time' => (new TimeOfDay("12:30"))->asDate(),
         ]);
 
-        $this->prepareDay($logged_times, $user);
+        $this->prepareDay($user, $logged_times);
 
         $workDay = $user->workDay(Carbon::today());
         $updated_session = new TimePeriod(new TimeOfDay("10:30"), new TimeOfDay("12:00"));
@@ -154,7 +154,7 @@ class WorkDayTest extends TestCase
         ];
         $user = factory(User::class)->create();
 
-        $this->prepareDay($logged_times, $user);
+        $this->prepareDay($user, $logged_times);
 
         $workDay = $user->workDay(Carbon::today());
 
@@ -171,14 +171,14 @@ class WorkDayTest extends TestCase
         ];
         $user = factory(User::class)->create();
 
-        $this->prepareDay($logged_times, $user);
+        $this->prepareDay($user, $logged_times);
 
         $workDay = $user->workDay(Carbon::today());
 
         $this->assertEquals(1.5, $workDay->totalOvertime());
     }
 
-    private function prepareDay($exsisting_sessions = [], $user)
+    private function prepareDay($user, $exsisting_sessions = [])
     {
         collect($exsisting_sessions)->each(function($to, $start) use ($user) {
             factory(Session::class)->create([
