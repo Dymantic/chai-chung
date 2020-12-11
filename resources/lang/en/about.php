@@ -25,9 +25,9 @@ return [
         'members' => [
             [
                 'name' => 'Tino Chen',
-                'avatar' => '/images/profiles/about_tino.png',
+                'avatar' => '/images/profiles/about_tino_2.jpeg',
                 'title' => 'CPA',
-                'phone' => '04-23208012#10',
+                'phone' => '04-23208012#101',
                 'fax' => '04-23208022',
                 'email' => 'Tino.Chen@hj-cpas.com',
                 'education' => [
@@ -43,9 +43,10 @@ return [
                     'heading' => 'experience',
 
                     'list' => [
+                        'Auditor at Solomon & Co., CPAs',
                         'Assurance manager at Ernst & Young',
-                        'Lecturer at E-commerce & Knowledge Economy Research Center, National Chung-Hsing University'.
-                        'Lecturer of the team teaching program at Department of accounting Chao-Yang university of technology',
+                        'Lecturer of the team teaching program at E-commerce & Knowledge Economy Research Center, National Chung-Hsing University'.
+                        'Lecturer at Department of accounting, Chao-Yang university of technology',
                         'Accounting consultant of SME administration of ministry of Economic Affairs',
                         'Audit and assurance services for IPO',
                         'IFRS consultant',
@@ -67,10 +68,55 @@ return [
                 ]
             ],
             [
+                'name' => 'Ann Cheng',
+                'avatar' => '/images/profiles/about_ann.jpg',
+                'title' => 'CPA',
+                'phone' => '04-23208012#301',
+                'fax' => '04-23208022',
+                'email' => 'ann@hj-cpas.com',
+                'education' => [
+                    'heading' => 'education',
+
+                    'list' => [
+                        'Bachelor’s degree in Accounting, Shih Chien University'
+                    ],
+
+                ],
+                'experience' => [
+
+                    'heading' => 'experience',
+
+                    'list' => [
+                        'Assurance manager at DINKUM & Co., CPAs (Formerly known as Crowe (TW) CPAs)',
+                        'Assurance manager at Ernst & Young',
+                        'CPA at HAPS Consulting Ltd., & CPAs'.
+                        'CPA at Prime Global CPAs',
+                        'Vice President at Prime Global Consulting Co., Ltd.',
+                        'Audit and assurance services for public and private companies',
+                        'Project Audit, including merger and acquisition',
+                        'Tax advisor for profit-seeking enterprises and individuals',
+                        'IFRS consultant',
+                        'Consulting services, such as internal control system development, project management, bookkeeping, budgeting, and financial planning',
+                    ],
+
+
+                ],
+                'certificates' => [
+
+                    'heading' => 'certificates',
+
+                    'list' => [
+                        'Taiwan CPA',
+                        'Taiwan tax agent',
+                        'Member of CPA association Taichung',
+                    ],
+                ]
+            ],
+            [
                 'name' => 'Sandy Lin',
                 'title' => 'CPA',
                 'avatar' => '/images/profiles/about_sandy.png',
-                'phone' => '04-23208012#14',
+                'phone' => '04-23208012#214',
                 'fax' => '04-23208022',
                 'email' => 'sandy@hj-cpas.com',
                 'education' => [
@@ -89,7 +135,7 @@ return [
                         'Project Manager at BDO',
                         'Project Leader of Environmental Protection Administration Executive Yuan Recycling Fee Audit Project',
                         'Project Leader of Taichung and Tainan City Government Environmental Protection Bureau Recycling Fee Audit Project',
-                        'Audit and assurance services for Public and Foreign invested companies',
+                        'Audit and assurance services for public and foreign invested companies',
                     ],
                 ],
                 'certificates' => [
@@ -128,10 +174,37 @@ return [
                 ]
             ],
             [
+                'name' => 'Yu-Xuan Chang',
+                'title' => 'Audit Service',
+                'avatar' => '/images/profiles/generic.jpg',
+                'phone' => '04-23208012#217',
+                'fax' => '04-23208022',
+                'email' => 'yuxuan@hj-cpas.com',
+                'education' => [
+                    'heading' => 'education',
+
+                    'list' => [
+                        'Bachelor’s degree in accounting, Providence University',
+                    ],
+                ],
+                'experience' => [
+
+                    'heading' => 'experience',
+
+                    'list' => [
+                        'Experience in auditing, tax and litigation includes manufacturing, investment corporation, construction industry, apparel industry, chain restaurants, foreign conglomerates, traditional industry, technology industry, geological prospecting industry, education, textile mills, travel agency and nonprofits.',
+                    ],
+                ],
+                'certificates' => [
+                    'heading' => 'certificates',
+                    'list' => []
+                ]
+            ],
+            [
                 'name' => 'Yi-Wun Jheng',
-                'title' => 'Accounting Manager',
+                'title' => 'Accounting Service',
                 'avatar' => '/images/profiles/about_yiwun.png',
-                'phone' => '04-23208012#21',
+                'phone' => '04-23208012#221',
                 'fax' => '04-23208022',
                 'email' => 'Yiwun@hj-cpas.com',
                 'education' => [
@@ -186,7 +259,37 @@ return [
                     'list' => []
                 ]
             ],
-            
+            [
+                'name' => 'Hui-Ru Tsai',
+                'title' => 'Corporate Services',
+                'avatar' => '/images/profiles/generic.jpg',
+                'phone' => '04-23208012#211',
+                'fax' => '04-23208022',
+                'email' => 'rurumi@hj-cpas.com',
+                'education' => [
+                    'heading' => 'education',
+
+                    'list' => [
+                        'Bachelor’s degree in Accounting Information, National Taichung University of Science and Technology',
+                    ],
+                ],
+                'experience' => [
+
+                    'heading' => 'experience',
+
+                    'list' => [
+                        'Helping to establish many startup companies',
+                        'Assisting foreign national and mainland China investors with investment in Taiwan',
+                        'Company registration of any modification or alteration',
+                        'Franchise setup and registration',
+                    ],
+                ],
+                'certificates' => [
+                    'heading' => 'certificates',
+                    'list' => []
+                ]
+            ],
+
         ]
     ],
 

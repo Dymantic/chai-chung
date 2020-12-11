@@ -1,7 +1,10 @@
 <div class="max-w-md mx-auto md:bg-grey-lightest px-4 md:px-8 py-8 md:shadow mt-20 body-text-sm">
     <div class="flex flex-col md:flex-row items-center md:items-start mb-12" data-usher>
-        <img src="{{ $member['avatar'] }}" class="w-32 h-32 mb-8 md:mb-0"
-             alt="{{ $member['name'] }}">
+        <div class="w-32 h-32 mb-8 md:mb-0 rounded-full overflow-hidden">
+            <img src="{{ $member['avatar'] }}" class="w-full h-full object-cover"
+                 alt="{{ $member['name'] }}">
+        </div>
+
         <div class="md:pl-12 flex flex-col justify-center">
             <p>
                 <span class="text-lg font-bold text-navy">{{ $member['name'] }}</span>
