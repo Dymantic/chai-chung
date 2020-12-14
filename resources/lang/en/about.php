@@ -147,33 +147,6 @@ return [
                 ]
             ],
             [
-                'name' => 'Ned Liang',
-                'avatar' => '/images/profiles/about_ned.png',
-                'title' => ' Audit Manager',
-                'phone' => '04-23208012#20',
-                'fax' => '04-23208022',
-                'email' => 'Ned@hj-cpas.com',
-                'education' => [
-                    'heading' => 'education',
-
-                    'list' => [
-                        'Bachelor’s degree in accounting, Fong-Jia university',
-                    ],
-                ],
-                'experience' => [
-
-                    'heading' => 'experience',
-
-                    'list' => [
-                        'Over 5 years of experience in auditing, tax and litigation includes manufacturing, investment corporation, construction industry, apparel industry, chain restaurants, foreign conglomerates, traditional industry, technology industry, geological prospecting industry, education, textile mills, travel agency and nonprofits.'
-                    ],
-                ],
-                'certificates' => [
-                    'heading' => 'certificates',
-                    'list' => []
-                ]
-            ],
-            [
                 'name' => 'Yu-Xuan Chang',
                 'title' => 'Audit Service',
                 'avatar' => '/images/profiles/generic.jpg',
@@ -223,36 +196,6 @@ return [
                         'Over 5 years of experience in bookkeeping, tax preparation and financial management includes manufacturing, investment companies, construction, chain restaurants, foreign conglomerates, education and nonprofits.'
                     ],
 
-                ],
-                'certificates' => [
-                    'heading' => 'certificates',
-                    'list' => []
-                ]
-            ],
-            [
-                'name' => 'Teaway Yang',
-                'title' => 'Corporate services',
-                'avatar' => '/images/profiles/about_teaway.png',
-                'phone' => '04-23208012#12',
-                'fax' => '04-23208022',
-                'email' => 'Teaway@hj-cpas.com',
-                'education' => [
-                    'heading' => 'education',
-
-                    'list' => [
-                        'Bachelor’s degree in accounting, National Kaohsiung University of Science and Technology',
-                    ],
-                ],
-                'experience' => [
-
-                    'heading' => 'experience',
-
-                    'list' => [
-                        'Helping to establish many startup companies',
-                        'Assisting foreign national and mainland China investors with investment in Taiwan',
-                        'Company registration of any modification or alteration',
-                        'Franchise setup and registration'
-                    ],
                 ],
                 'certificates' => [
                     'heading' => 'certificates',

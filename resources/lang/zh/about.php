@@ -161,39 +161,6 @@ return [
                 ]
             ],
             [
-                'name' => '梁家祥',
-                'title' => '審計部門主管',
-                'avatar' => '/images/profiles/about_ned.png',
-                'phone' => '04-23208012#20',
-                'fax' => '04-23208022',
-                'email' => 'Ned@hj-cpas.com',
-                'education' => [
-
-                    'heading' => '相關資歷',
-
-                    'list' => [
-                        '現任嘉眾會計師事務所審計部副理',
-                        '逢甲大學會計系',
-                        '具有審計、稅務諮詢及法令諮詢超過五年以上經驗',
-                    ],
-
-                ],
-                'experience' => [
-
-                    'heading' => '相關經驗',
-
-                    'list' => [
-                        '具有跨國企業、上市櫃子公司及知名企業查核經驗',
-                        '查核產業別：製造業、投資公司、營建業、服飾業、連鎖餐飲業、外商企業、機械業、科技業、地質探勘業、紡織業、補教業、旅行社及基金會等'
-                    ],
-
-                ],
-                'certificates' => [
-                    'heading' => '專業資格',
-                    'list' => []
-                ]
-            ],
-            [
                 'name' => '張宇宣',
                 'title' => '審計部門',
                 'avatar' => '/images/profiles/generic.jpg',
@@ -269,39 +236,6 @@ return [
                     'list' => [
                         '現任嘉眾會計師事務所工商部',
                         '台中科技大學會計資訊系',
-                    ],
-
-                ],
-                'experience' => [
-
-                    'heading' => '相關經驗',
-
-                    'list' => [
-                        '協助成立多家新創公司',
-                        '數十家外資及陸資設立經驗',
-                        '各項變更登記(董監事變更、遷址、修章等)',
-                        '特許行業設立登記',
-                    ],
-
-                ],
-                'certificates' => [
-                    'heading' => '專業資格',
-                    'list' => []
-                ]
-            ],
-            [
-                'name' => '楊提威',
-                'title' => '工商登記服務專員',
-                'avatar' => '/images/profiles/about_teaway.png',
-                'phone' => '04-23208012#12',
-                'fax' => '04-23208022',
-                'email' => 'Teaway@hj-cpas.com',
-                'education' => [
-                    'heading' => '相關資歷',
-
-                    'list' => [
-                        '現任嘉眾會計師事務所工商部專員',
-                        '高雄應用大學會計系',
                     ],
 
                 ],
