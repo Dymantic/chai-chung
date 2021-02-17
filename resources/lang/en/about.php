@@ -149,7 +149,7 @@ return [
             [
                 'name' => 'Yu-Xuan Chang',
                 'title' => 'Audit Service',
-                'avatar' => '/images/profiles/generic.jpg',
+                'avatar' => '/images/profiles/about_yuxuan.png',
                 'phone' => '04-23208012#217',
                 'fax' => '04-23208022',
                 'email' => 'yuxuan@hj-cpas.com',
@@ -205,7 +205,7 @@ return [
             [
                 'name' => 'Hui-Ru Tsai',
                 'title' => 'Corporate Services',
-                'avatar' => '/images/profiles/generic.jpg',
+                'avatar' => '/images/profiles/about_rurumi.png',
                 'phone' => '04-23208012#211',
                 'fax' => '04-23208022',
                 'email' => 'rurumi@hj-cpas.com',

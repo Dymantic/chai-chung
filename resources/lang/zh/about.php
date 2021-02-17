@@ -37,7 +37,7 @@ return [
                         '中興大學財務金融學系EMBA',
                         '群智聯合會計師事務所',
                         '安永聯合會計師事務所審計部經理',
-                        '中興大學電子商務暨知識經濟研究中心講師'.
+                        '中興大學電子商務暨知識經濟研究中心講師',
                         '朝陽科技大學會計系協同教學業界專家',
                         '經濟部中小企業諮詢會計師',
                         '勞委會職訓局講師',
@@ -76,7 +76,7 @@ return [
                 'name' => '鄭佳蕙',
                 'title' => '執業會計師',
                 'avatar' => '/images/profiles/about_ann.jpg',
-                'phone' => '04-23208012分機︰301',
+                'phone' => '04-23208012#301',
                 'fax' => '04-23208022',
                 'email' => 'ann@hj-cpas.com',
                 'education' => [
@@ -86,7 +86,7 @@ return [
                         '實踐大學會計系',
                         '鼎信聯合會計師事務所（現為國富浩華聯合會計師事務所）',
                         '安永聯合會計師事務所審計部經理',
-                        '冠昱聯合會計師事務所執業會計師'.
+                        '冠昱聯合會計師事務所執業會計師',
                         '普萊聯合會計師事務所執業會計師',
                         '普萊國際股份有限公司副總經理',
                         '中華民國全國創新創業總會/青輔會創業輔導顧問/青創楷模評審委員',
@@ -163,7 +163,7 @@ return [
             [
                 'name' => '張宇宣',
                 'title' => '審計部門',
-                'avatar' => '/images/profiles/generic.jpg',
+                'avatar' => '/images/profiles/about_yuxuan.png',
                 'phone' => '04-23208012#217',
                 'fax' => '04-23208022',
                 'email' => 'yuxuan@hj-cpas.com',
@@ -226,7 +226,7 @@ return [
             [
                 'name' => '蔡蕙如',
                 'title' => '工商登記服務',
-                'avatar' => '/images/profiles/generic.jpg',
+                'avatar' => '/images/profiles/about_rurumi.png',
                 'phone' => '04-23208012#211',
                 'fax' => '04-23208022',
                 'email' => 'rurumi@hj-cpas.com',
