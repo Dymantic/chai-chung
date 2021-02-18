@@ -149,7 +149,7 @@ return [
             [
                 'name' => 'Yu-Xuan Chang',
                 'title' => 'Audit Service',
-                'avatar' => '/images/profiles/about_yuxuan.png',
+                'avatar' => '/images/profiles/yuxuan.png',
                 'phone' => '04-23208012#217',
                 'fax' => '04-23208022',
                 'email' => 'yuxuan@hj-cpas.com',
