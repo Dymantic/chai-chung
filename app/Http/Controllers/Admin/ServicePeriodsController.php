@@ -9,10 +9,9 @@ class ServicePeriodsController extends Controller
 {
     public function index()
     {
-        return [
-            ['id' => 1, 'text' => 2018],
-            ['id' => 2, 'text' => 2019],
-            ['id' => 3, 'text' => 2020]
-        ];
+
+        return collect(range(2018, now()->year))
+            ->map(fn ($year, $index) => ['id' => $index + 1, 'text' => $year])
+            ->all();
     }
 }
