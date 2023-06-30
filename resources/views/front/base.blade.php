@@ -26,6 +26,16 @@
 
     <link rel="stylesheet" href="{{ mix('css/front.css') }}">
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('services.google.analytics_id') }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{ config('services.google.analytics_id') }}');
+    </script>
+
     @yield('head')
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -47,11 +57,7 @@
 </div>
 @yield('bodyscripts')
 <script src="{{ mix("js/front.js") }}"></script>
-<script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', '{{ config('services.google.analytics_id') }}', 'auto'); ga('send', 'pageview')
-</script>
-<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
 </body>
 
 </html>
